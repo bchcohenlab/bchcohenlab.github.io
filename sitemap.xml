@@ -3,47 +3,767 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/authors/admin/</loc>
+    <loc>https://bchcohenlab.com/publication_types/2/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/authors/alexander-cohen/</loc>
+    <loc>https://bchcohenlab.com/authors/alexander-l-cohen/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/authors/mallory-kroeck/</loc>
+    <loc>https://bchcohenlab.com/authors/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/authors/</loc>
+    <loc>https://bchcohenlab.com/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>https://bchcohenlab.com/publication/snider-2020-cortical/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>https://bchcohenlab.com/authors/danielle-cooke/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/</loc>
+    <loc>https://bchcohenlab.com/authors/david-fischer/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publication_types/</loc>
+    <loc>https://bchcohenlab.com/authors/joey-hsu/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publication/</loc>
+    <loc>https://bchcohenlab.com/authors/jordan-h-grafman/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/talk/</loc>
+    <loc>https://bchcohenlab.com/authors/juho-joutsa/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>https://bchcohenlab.com/authors/louis-soussand/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/burke-2020-mapping/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/matthew-j-burke/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/michael-d-fox/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication_types/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/r-ryan-darby/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/rami-burstein/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/samuel-b-snider/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/others/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication_types/1/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/a-cohen/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/a-gholipour/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/a-prohl/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/aaron-d-boes/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/annah-n-abrams/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/b-mulder/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/b-scherrer/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/d-krueger/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/e-bebin/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/fatimah-m-albazron/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/jason-js-barton/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/joel-bruss/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/l-soussand/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/cohen-2019-looking/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/m-sahin/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/margaret-b-pulsifer/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/mariko-sato/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/olivier-martinaud/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/p-davis/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/albazron-2019-pediatric/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/peg-c-nopoulos/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/robin-m-jones/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/sherryse-l-corrow/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/torunn-i-yock/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/cohen-2019-tubers/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/alexander-cohen/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/anthony-l-fine/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/brenda-m-schiltz/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/cohen-2018-comorbidities/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/patel-2018-comparison/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/conor-s-ryan/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/ryan-2018-novo/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/deborah-l-renaud/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/dusica-babovic-vuksanovic/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/elaine-c-wirrell/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/erik-k-st-louis/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/gaurav-h-patel/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/jay-mandrekar/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/justin-t-baker/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/lawrence-h-snyder/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/marc-c-patterson/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/maurizio-corbetta/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/michael-h-silber/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/nicole-j-boczek/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/raymond-liu/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/cohen-2018-response/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/suresh-kotagal/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/alexander-li-cohen/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/gorgolewski-2017-bids/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/daniel-kenney-jung/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/fidel-alfaro-almagro/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/gabriel-a-devenyi/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/hugo-botha/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/cohen-2017-intractable/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/james-p-klaas/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/jan-mendelt-tillema/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/joseph-e-parisi/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/krzysztof-j-gorgolewski/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/lyell-k-jones/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/m-mallar-chakravarty/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/mihai-capota/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/nathan-w-churchill/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/cohen-2017-neurodebian/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/pierre-bellec/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/r-cameron-craddock/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/tibor-auer/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/abraham-z-snyder/</loc>
+    <lastmod>2014-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/bradley-l-schlaggar/</loc>
+    <lastmod>2014-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/cohen-2014-case/</loc>
+    <lastmod>2014-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/francis-m-miezin/</loc>
+    <lastmod>2014-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/gagan-s-wig/</loc>
+    <lastmod>2014-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/jonathan-d-power/</loc>
+    <lastmod>2014-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/lily-c-wong-kisiel/</loc>
+    <lastmod>2014-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/matthew-f-glasser/</loc>
+    <lastmod>2014-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/wig-2014-parcellating/</loc>
+    <lastmod>2014-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/steven-e-petersen/</loc>
+    <lastmod>2014-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/steven-m-nelson/</loc>
+    <lastmod>2014-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/timothy-o-laumann/</loc>
+    <lastmod>2014-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/alecia-c-vogel/</loc>
+    <lastmod>2012-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/jessica-a-church/</loc>
+    <lastmod>2012-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/joseph-w-dubis/</loc>
+    <lastmod>2012-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/kelly-anne-barnes/</loc>
+    <lastmod>2012-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/barnes-2012-parcellation/</loc>
+    <lastmod>2012-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/rebecca-s-coalson/</loc>
+    <lastmod>2012-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication_types/7/</loc>
+    <lastmod>2011-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/cohen-2011-cortical/</loc>
+    <lastmod>2011-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/fran-m-miezin/</loc>
+    <lastmod>2011-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/power-2011-functional/</loc>
+    <lastmod>2011-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/nelson-2010-parcellation/</loc>
+    <lastmod>2010-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/binyam-nardos/</loc>
+    <lastmod>2010-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/christina-n-lessov-schlaggar/</loc>
+    <lastmod>2010-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/damien-a-fair/</loc>
+    <lastmod>2010-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/david-i-donaldson/</loc>
+    <lastmod>2010-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/barnes-2010-identifying/</loc>
+    <lastmod>2010-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/jeffrey-s-phillips/</loc>
+    <lastmod>2010-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/katerina-velanova/</loc>
+    <lastmod>2010-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/kelly-a-barnes/</loc>
+    <lastmod>2010-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/mark-e-wheeler/</loc>
+    <lastmod>2010-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/nico-uf-dosenbach/</loc>
+    <lastmod>2010-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/dosenbach-2010-prediction/</loc>
+    <lastmod>2010-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/nelson-2010-role/</loc>
+    <lastmod>2010-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/yannic-bl-dosenbach/</loc>
+    <lastmod>2010-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/brian-r-white/</loc>
+    <lastmod>2009-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/church-2009-control/</loc>
+    <lastmod>2009-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/fair-2009-functional/</loc>
+    <lastmod>2009-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/joseph-p-culver/</loc>
+    <lastmod>2009-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/marcus-e-raichle/</loc>
+    <lastmod>2009-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/white-2009-resting/</loc>
+    <lastmod>2009-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/dosenbach-2008-dual/</loc>
+    <lastmod>2008-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/david-c-van-essen/</loc>
+    <lastmod>2008-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/deanna-m-barch/</loc>
+    <lastmod>2008-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/cohen-2008-defining/</loc>
+    <lastmod>2008-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/donna-dierker/</loc>
+    <lastmod>2008-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/fair-2008-maturing/</loc>
+    <lastmod>2008-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/fair-2007-method/</loc>
+    <lastmod>2007-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/fair-2007-development/</loc>
+    <lastmod>2007-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/dosenbach-2007-distinct/</loc>
+    <lastmod>2007-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/justin-l-vincent/</loc>
+    <lastmod>2007-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/kristin-k-wenger/</loc>
+    <lastmod>2007-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/ronny-at-dosenbach/</loc>
+    <lastmod>2007-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/shefali-brahmbhatt/</loc>
+    <lastmod>2007-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/jeff-w-lichtman/</loc>
+    <lastmod>2003-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/joshua-r-sanes/</loc>
+    <lastmod>2003-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/margaret-m-maimone/</loc>
+    <lastmod>2003-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/mohammed-akaaboune/</loc>
+    <lastmod>2003-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/r-mark-grady/</loc>
+    <lastmod>2003-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/publication/grady-2003-tyrosine/</loc>
+    <lastmod>2003-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/admin/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/authors/mallory-kroeck/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/post/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/talk/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bchcohenlab.com/tags/</loc>
   </url>
   
 </urlset>
