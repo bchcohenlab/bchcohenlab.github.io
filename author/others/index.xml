@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title> others | Boston Children’s Hospital Laboratory of Translational Neuroimaging</title>
+    <link>https://bchcohenlab.com/author/others/</link>
+      <atom:link href="https://bchcohenlab.com/author/others/index.xml" rel="self" type="application/rss+xml" />
+    <description> others</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 01 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://bchcohenlab.com/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title> others</title>
+      <link>https://bchcohenlab.com/author/others/</link>
+    </image>
+    
+    <item>
+      <title>Tubers Associated with Infantile Spasms Impact a Common Brain Network in Tuberous Sclerosis Complex</title>
+      <link>https://bchcohenlab.com/publication/cohen-2019-tubers/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/cohen-2019-tubers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>De novo DNM1L variant in a teenager with progressive paroxysmal dystonia and lethal super-refractory myoclonic status epilepticus</title>
+      <link>https://bchcohenlab.com/publication/ryan-2018-novo/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/ryan-2018-novo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>BIDS apps: Improving ease of use, accessibility, and reproducibility of neuroimaging data analysis methods</title>
+      <link>https://bchcohenlab.com/publication/gorgolewski-2017-bids/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/gorgolewski-2017-bids/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Parcellation in left lateral parietal cortex is similar in adults and children</title>
+      <link>https://bchcohenlab.com/publication/barnes-2012-parcellation/</link>
+      <pubDate>Sun, 01 Jan 2012 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/barnes-2012-parcellation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Functional network organization of the human brain</title>
+      <link>https://bchcohenlab.com/publication/power-2011-functional/</link>
+      <pubDate>Sat, 01 Jan 2011 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/power-2011-functional/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A parcellation scheme for human left lateral parietal cortex</title>
+      <link>https://bchcohenlab.com/publication/nelson-2010-parcellation/</link>
+      <pubDate>Fri, 01 Jan 2010 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/nelson-2010-parcellation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Prediction of individual brain maturity using fMRI</title>
+      <link>https://bchcohenlab.com/publication/dosenbach-2010-prediction/</link>
+      <pubDate>Fri, 01 Jan 2010 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/dosenbach-2010-prediction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Distinct brain networks for adaptive and stable task control in humans</title>
+      <link>https://bchcohenlab.com/publication/dosenbach-2007-distinct/</link>
+      <pubDate>Mon, 01 Jan 2007 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/dosenbach-2007-distinct/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

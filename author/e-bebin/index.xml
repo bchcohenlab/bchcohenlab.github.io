@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>E Bebin | Boston Children’s Hospital Laboratory of Translational Neuroimaging</title>
+    <link>https://bchcohenlab.com/author/e-bebin/</link>
+      <atom:link href="https://bchcohenlab.com/author/e-bebin/index.xml" rel="self" type="application/rss+xml" />
+    <description>E Bebin</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 01 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://bchcohenlab.com/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>E Bebin</title>
+      <link>https://bchcohenlab.com/author/e-bebin/</link>
+    </image>
+    
+    <item>
+      <title>Tubers Associated with Infantile Spasms Impact a Common Brain Network in Tuberous Sclerosis Complex</title>
+      <link>https://bchcohenlab.com/publication/cohen-2019-tubers/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/cohen-2019-tubers/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

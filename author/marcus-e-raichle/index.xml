@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Marcus E Raichle | Boston Children’s Hospital Laboratory of Translational Neuroimaging</title>
+    <link>https://bchcohenlab.com/author/marcus-e-raichle/</link>
+      <atom:link href="https://bchcohenlab.com/author/marcus-e-raichle/index.xml" rel="self" type="application/rss+xml" />
+    <description>Marcus E Raichle</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 01 Jan 2009 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://bchcohenlab.com/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Marcus E Raichle</title>
+      <link>https://bchcohenlab.com/author/marcus-e-raichle/</link>
+    </image>
+    
+    <item>
+      <title>Resting-state functional connectivity in the human brain revealed with diffuse optical tomography</title>
+      <link>https://bchcohenlab.com/publication/white-2009-resting/</link>
+      <pubDate>Thu, 01 Jan 2009 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/white-2009-resting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The maturing architecture of the brain&#39;s default network</title>
+      <link>https://bchcohenlab.com/publication/fair-2008-maturing/</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/fair-2008-maturing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A method for using blocked and event-related fMRI data to study “resting state” functional connectivity</title>
+      <link>https://bchcohenlab.com/publication/fair-2007-method/</link>
+      <pubDate>Mon, 01 Jan 2007 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/fair-2007-method/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Development of distinct control networks through segregation and integration</title>
+      <link>https://bchcohenlab.com/publication/fair-2007-development/</link>
+      <pubDate>Mon, 01 Jan 2007 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/fair-2007-development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Distinct brain networks for adaptive and stable task control in humans</title>
+      <link>https://bchcohenlab.com/publication/dosenbach-2007-distinct/</link>
+      <pubDate>Mon, 01 Jan 2007 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/dosenbach-2007-distinct/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
