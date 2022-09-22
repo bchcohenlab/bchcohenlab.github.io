@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Matthew F Glasser | Boston Children’s Hospital Laboratory of Translational Neuroimaging</title>
+    <link>https://bchcohenlab.com/author/matthew-f-glasser/</link>
+      <atom:link href="https://bchcohenlab.com/author/matthew-f-glasser/index.xml" rel="self" type="application/rss+xml" />
+    <description>Matthew F Glasser</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 01 Jan 2014 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://bchcohenlab.com/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Matthew F Glasser</title>
+      <link>https://bchcohenlab.com/author/matthew-f-glasser/</link>
+    </image>
+    
+    <item>
+      <title>Parcellating an individual subject&#39;s cortical and subcortical brain structures using snowball sampling of resting-state correlations</title>
+      <link>https://bchcohenlab.com/publication/wig-2014-parcellating/</link>
+      <pubDate>Wed, 01 Jan 2014 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/wig-2014-parcellating/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

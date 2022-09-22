@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>M Kroeck | Boston Children’s Hospital Laboratory of Translational Neuroimaging</title>
+    <link>https://bchcohenlab.com/author/m-kroeck/</link>
+      <atom:link href="https://bchcohenlab.com/author/m-kroeck/index.xml" rel="self" type="application/rss+xml" />
+    <description>M Kroeck</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 20 Mar 2021 12:02:03 -0400</lastBuildDate>
+    <image>
+      <url>https://bchcohenlab.com/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>M Kroeck</title>
+      <link>https://bchcohenlab.com/author/m-kroeck/</link>
+    </image>
+    
+    <item>
+      <title>Face-Processing Performance is an Independent Predictor of Social Affect as Measured by the Autism Diagnostic Observation Schedule Across Large-Scale Datasets</title>
+      <link>https://bchcohenlab.com/publication/zagurlyorly-2021-bfrt/</link>
+      <pubDate>Sat, 20 Mar 2021 12:02:03 -0400</pubDate>
+      <guid>https://bchcohenlab.com/publication/zagurlyorly-2021-bfrt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tuber Locations Associated with Infantile Spasms Map to a Common Brain Network</title>
+      <link>https://bchcohenlab.com/publication/cohen-2021-tsc/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/cohen-2021-tsc/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
