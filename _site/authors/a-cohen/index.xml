@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>A Cohen | Boston Children’s Hospital Laboratory of Translational Neuroimaging</title>
-    <link>https://bchcohenlab.com/authors/a-cohen/</link>
-      <atom:link href="https://bchcohenlab.com/authors/a-cohen/index.xml" rel="self" type="application/rss+xml" />
-    <description>A Cohen</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 01 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <title>Alexander Cohen, MD, PhD | Boston Children’s Hospital Laboratory of Translational Neuroimaging</title>
+    <link>https://bchcohenlab.com/author/a-cohen/</link>
+      <atom:link href="https://bchcohenlab.com/author/a-cohen/index.xml" rel="self" type="application/rss+xml" />
+    <description>Alexander Cohen, MD, PhD</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://bchcohenlab.com/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
-      <title>A Cohen</title>
-      <link>https://bchcohenlab.com/authors/a-cohen/</link>
+      <title>Alexander Cohen, MD, PhD</title>
+      <link>https://bchcohenlab.com/author/a-cohen/</link>
     </image>
     
     <item>
-      <title>Tubers Associated with Infantile Spasms Impact a Common Brain Network in Tuberous Sclerosis Complex</title>
-      <link>https://bchcohenlab.com/publication/cohen-2019-tubers/</link>
-      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>https://bchcohenlab.com/publication/cohen-2019-tubers/</guid>
+      <title>Comorbidities in a community sample of narcolepsy</title>
+      <link>https://bchcohenlab.com/publication/cohen-2018-comorbidities/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/cohen-2018-comorbidities/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NeuroDebian Virtual Machine Deployment Facilitates Trainee-Driven Bedside Neuroimaging Research</title>
+      <link>https://bchcohenlab.com/publication/cohen-2017-neurodebian/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      <guid>https://bchcohenlab.com/publication/cohen-2017-neurodebian/</guid>
       <description></description>
     </item>
     
