@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Roshan Mathur | Boston Children’s Hospital Laboratory of Translational Neuroimaging</title>
-    <link>https://bchcohenlab.com/author/r-mathur/</link>
-      <atom:link href="https://bchcohenlab.com/author/r-mathur/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://bchcohenlab.com/authors/r-mathur/</link>
+      <atom:link href="https://bchcohenlab.com/authors/r-mathur/index.xml" rel="self" type="application/rss+xml" />
     <description>Roshan Mathur</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
     <image>
       <url>https://bchcohenlab.com/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Roshan Mathur</title>
-      <link>https://bchcohenlab.com/author/r-mathur/</link>
+      <link>https://bchcohenlab.com/authors/r-mathur/</link>
     </image>
     
   </channel>
