@@ -7089,10 +7089,7 @@ width:200px;
 height:200px;
 };
 }.avatar-circle {
-    width: 60px;
-    height: 60px;
-    border-radius:50%;
-    object-fit: fill;
+border-radius:50%;
 }.avatar-square {
 border-radius:3px;
 }.portrait-title h2 {
