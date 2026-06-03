@@ -1,0 +1,173 @@
+{
+  "albazron-2019-pediatric": {
+    "citations": 96
+  },
+  "balachandrasekaran-2022-reducing": {
+    "citations": 17
+  },
+  "barnes-2010-identifying": {
+    "citations": 146
+  },
+  "barnes-2012-parcellation": {
+    "citations": 43
+  },
+  "bonkhoff-2022-sex": {
+    "citations": 16
+  },
+  "bonkhoff-2024-prediction": {
+    "citations": 4
+  },
+  "burke-2020-mapping": {
+    "citations": 109
+  },
+  "church-2009-control": {
+    "citations": 353
+  },
+  "cohen-2008-defining": {
+    "citations": 693
+  },
+  "cohen-2014-case": {
+    "citations": 5
+  },
+  "cohen-2017-intractable": {
+    "citations": 2
+  },
+  "cohen-2017-neurodebian": {
+    "citations": 2
+  },
+  "cohen-2018-comorbidities": {
+    "citations": 152
+  },
+  "cohen-2019-looking": {
+    "citations": 147
+  },
+  "cohen-2021-tsc": {
+    "citations": 59
+  },
+  "cohen-2023-tubers": {
+    "citations": 13
+  },
+  "cotovio-2020-mapping": {
+    "citations": 74
+  },
+  "dosenbach-2007-distinct": {
+    "citations": 3311
+  },
+  "dosenbach-2008-dual": {
+    "citations": 2454
+  },
+  "dosenbach-2010-prediction": {
+    "citations": 2584
+  },
+  "fair-2007-development": {
+    "citations": 1590
+  },
+  "fair-2007-method": {
+    "citations": 695
+  },
+  "fair-2008-maturing": {
+    "citations": 1698
+  },
+  "fair-2009-functional": {
+    "citations": 2047
+  },
+  "ferguson-2021-neural": {
+    "citations": 95
+  },
+  "gelineau-morel-2025-network": {
+    "citations": 9
+  },
+  "gorgolewski-2017-bids": {
+    "citations": 394
+  },
+  "grady-2003-tyrosine": {
+    "citations": 120
+  },
+  "guler-2021-matched": {
+    "citations": 3
+  },
+  "hadjinicolaou-2024-timing": {
+    "citations": 7
+  },
+  "ihnen-2025-accumulated": {
+    "citations": 12
+  },
+  "ji-2025-generalized": {
+    "citations": 28
+  },
+  "jiang-2023-lesion": {
+    "citations": 31
+  },
+  "joutsa-2022-brain": {
+    "citations": 240
+  },
+  "kletenik-2021-network": {
+    "citations": 33
+  },
+  "kletenik-2023-multiple": {
+    "citations": 19
+  },
+  "kletenik-2023-network": {
+    "citations": 32
+  },
+  "kletenik-2025-white": {
+    "citations": 8
+  },
+  "kutsche-2025-mapping": {
+    "citations": 18
+  },
+  "kutsche-2026-lesions": {
+    "citations": 5
+  },
+  "nelson-2010-parcellation": {
+    "citations": 427
+  },
+  "nelson-2010-role": {
+    "citations": 571
+  },
+  "peng-2024-heterogenous": {
+    "citations": 7
+  },
+  "peng-2024-mapping": {
+    "citations": 8
+  },
+  "pines-2025-mapping": {
+    "citations": 29
+  },
+  "poldrack-2024-past": {
+    "citations": 71
+  },
+  "power-2011-functional": {
+    "citations": 5113
+  },
+  "ryan-2018-novo": {
+    "citations": 42
+  },
+  "schaper-2023-mapping": {
+    "citations": 118
+  },
+  "snider-2020-cortical": {
+    "citations": 84
+  },
+  "snider-2022-regional": {
+    "citations": 35
+  },
+  "stubbs-2023-heterogeneous": {
+    "citations": 33
+  },
+  "theys-2024-localization": {
+    "citations": 34
+  },
+  "wall-2025-coordinate": {
+    "citations": 6
+  },
+  "white-2009-resting": {
+    "citations": 351
+  },
+  "wig-2014-parcellating": {
+    "citations": 151
+  },
+  "zagurlyorly-2021-bfrt": {
+    "citations": 14
+  }
+}

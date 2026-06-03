@@ -1,0 +1,26 @@
+---
+title: "Heterogeneous neuroimaging findings across substance use disorders localize to a common brain network"
+authors:
+  - "Stubbs JL"
+  - "Taylor JJ"
+  - "Siddiqi SH"
+  - "Schaper FLWVJ"
+  - "Cohen AL"
+  - "Drew W"
+  - "Hanlon CA"
+  - "Abdolahi A"
+  - "Wang HZ"
+  - "Honer WG"
+  - "Panenka WJ"
+  - "Fox MD"
+year: 2023
+journal: "Nature Mental Health"
+doi: "10.1038/s44220-023-00128-7"
+url: "https://doi.org/10.1038/s44220-023-00128-7"
+citations: 33
+isMenteePaper: false
+menteeFirstAuthor: false
+cohenFirstOrSenior: false
+featured: false
+openAccess: false
+---

@@ -1,0 +1,233 @@
+{
+  "cohen-2021-tsc": {
+    "doi": "10.1002/ana.26015",
+    "pmid": "33410532",
+    "pmcid": "PMC7969435",
+    "journal": "Annals of neurology",
+    "openAccess": true
+  },
+  "zagurlyorly-2021-bfrt": {
+    "doi": "10.1007/s10803-021-04971-4",
+    "pmid": "33743118",
+    "pmcid": "PMC9747289",
+    "journal": "Journal of autism and developmental disorders",
+    "openAccess": true
+  },
+  "burke-2020-mapping": {
+    "doi": "10.1093/brain/awz405",
+    "pmid": "31919494",
+    "pmcid": "PMC7009560",
+    "journal": "Brain",
+    "openAccess": true
+  },
+  "snider-2020-cortical": {
+    "doi": "10.1002/hbm.24892",
+    "pmid": "31904898",
+    "pmcid": "PMC7268053",
+    "journal": "Human brain mapping",
+    "openAccess": true
+  },
+  "albazron-2019-pediatric": {
+    "doi": "10.1212/WNL.0000000000008326",
+    "pmid": "31527284",
+    "pmcid": "PMC6815203",
+    "journal": "Neurology",
+    "openAccess": true
+  },
+  "cohen-2019-looking": {
+    "doi": "10.1093/brain/awz332",
+    "pmid": "31740940",
+    "pmcid": "PMC6906597",
+    "journal": "Brain",
+    "openAccess": true
+  },
+  "cohen-2019-tubers": {
+    "doi": null,
+    "pmid": null,
+    "pmcid": null,
+    "journal": null,
+    "openAccess": false
+  },
+  "cohen-2018-comorbidities": {
+    "doi": "10.1016/j.sleep.2017.11.1125",
+    "pmid": "29482805",
+    "pmcid": "PMC5931205",
+    "journal": "Sleep medicine",
+    "openAccess": true
+  },
+  "cohen-2018-response": {
+    "doi": "10.1016/j.sleep.2018.08.009",
+    "pmid": "30316702",
+    "pmcid": null,
+    "journal": "Sleep medicine",
+    "openAccess": false
+  },
+  "patel-2018-comparison": {
+    "doi": null,
+    "pmid": null,
+    "pmcid": null,
+    "journal": null,
+    "openAccess": false
+  },
+  "ryan-2018-novo": {
+    "doi": "10.1177/0883073818778203",
+    "pmid": "29877124",
+    "pmcid": "PMC8176639",
+    "journal": "Journal of child neurology",
+    "openAccess": true
+  },
+  "cohen-2017-intractable": {
+    "doi": "10.1001/jamaneurol.2016.3195",
+    "pmid": "28384730",
+    "pmcid": null,
+    "journal": "JAMA neurology",
+    "openAccess": false
+  },
+  "cohen-2017-neurodebian": {
+    "doi": "10.1177/0883073816668113",
+    "pmid": "27655470",
+    "pmcid": null,
+    "journal": "Journal of child neurology",
+    "openAccess": false
+  },
+  "gorgolewski-2017-bids": {
+    "doi": "10.1371/journal.pcbi.1005209",
+    "pmid": "28278228",
+    "pmcid": "PMC5363996",
+    "journal": "PLoS computational biology",
+    "openAccess": true
+  },
+  "cohen-2014-case": {
+    "doi": "10.1016/j.spen.2014.04.014",
+    "pmid": "25149942",
+    "pmcid": null,
+    "journal": "Seminars in pediatric neurology",
+    "openAccess": false
+  },
+  "wig-2014-parcellating": {
+    "doi": "10.1093/cercor/bht056",
+    "pmid": "23476025",
+    "pmcid": "PMC4089380",
+    "journal": "Cerebral cortex",
+    "openAccess": true
+  },
+  "barnes-2012-parcellation": {
+    "doi": "10.1093/cercor/bhr189",
+    "pmid": "21810781",
+    "pmcid": "PMC3328346",
+    "journal": "Cerebral cortex",
+    "openAccess": true
+  },
+  "cohen-2011-cortical": {
+    "doi": null,
+    "pmid": null,
+    "pmcid": null,
+    "journal": null,
+    "openAccess": false
+  },
+  "power-2011-functional": {
+    "doi": "10.1016/j.neuron.2011.09.006",
+    "pmid": "22099467",
+    "pmcid": "PMC3222858",
+    "journal": "Neuron",
+    "openAccess": true
+  },
+  "barnes-2010-identifying": {
+    "doi": "10.3389/fnsys.2010.00018",
+    "pmid": "20589235",
+    "pmcid": "PMC2892946",
+    "journal": "Frontiers in systems neuroscience",
+    "openAccess": true
+  },
+  "dosenbach-2010-prediction": {
+    "doi": "10.1126/science.1194144",
+    "pmid": "20829489",
+    "pmcid": "PMC3135376",
+    "journal": "Science",
+    "openAccess": true
+  },
+  "nelson-2010-parcellation": {
+    "doi": "10.1016/j.neuron.2010.05.025",
+    "pmid": "20624599",
+    "pmcid": "PMC2913443",
+    "journal": "Neuron",
+    "openAccess": true
+  },
+  "nelson-2010-role": {
+    "doi": "10.1007/s00429-010-0260-2",
+    "pmid": "20512372",
+    "pmcid": "PMC2886908",
+    "journal": "Brain structure & function",
+    "openAccess": true
+  },
+  "church-2009-control": {
+    "doi": "10.1093/brain/awn223",
+    "pmid": "18952678",
+    "pmcid": "PMC2638693",
+    "journal": "Brain",
+    "openAccess": true
+  },
+  "fair-2009-functional": {
+    "doi": "10.1371/journal.pcbi.1000381",
+    "pmid": "19412534",
+    "pmcid": "PMC2671306",
+    "journal": "PLoS computational biology",
+    "openAccess": true
+  },
+  "white-2009-resting": {
+    "doi": "10.1016/j.neuroimage.2009.03.058",
+    "pmid": "19344773",
+    "pmcid": "PMC2699418",
+    "journal": "NeuroImage",
+    "openAccess": true
+  },
+  "cohen-2008-defining": {
+    "doi": "10.1016/j.neuroimage.2008.01.066",
+    "pmid": "18367410",
+    "pmcid": "PMC2705206",
+    "journal": "NeuroImage",
+    "openAccess": true
+  },
+  "dosenbach-2008-dual": {
+    "doi": "10.1016/j.tics.2008.01.001",
+    "pmid": "18262825",
+    "pmcid": "PMC3632449",
+    "journal": "Trends in cognitive sciences",
+    "openAccess": true
+  },
+  "fair-2008-maturing": {
+    "doi": "10.1073/pnas.0800376105",
+    "pmid": "18322013",
+    "pmcid": "PMC2268790",
+    "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+    "openAccess": true
+  },
+  "dosenbach-2007-distinct": {
+    "doi": "10.1073/pnas.0704320104",
+    "pmid": "17576922",
+    "pmcid": "PMC1904171",
+    "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+    "openAccess": true
+  },
+  "fair-2007-development": {
+    "doi": "10.1073/pnas.0705843104",
+    "pmid": "17679691",
+    "pmcid": "PMC1940033",
+    "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+    "openAccess": true
+  },
+  "fair-2007-method": {
+    "doi": "10.1016/j.neuroimage.2006.11.051",
+    "pmid": "17239622",
+    "pmcid": "PMC2563954",
+    "journal": "NeuroImage",
+    "openAccess": true
+  },
+  "grady-2003-tyrosine": {
+    "doi": "10.1083/jcb.200209045",
+    "pmid": "12604589",
+    "pmcid": "PMC2173352",
+    "journal": "The Journal of cell biology",
+    "openAccess": true
+  }
+}
