@@ -1,17 +1,75 @@
 ---
+import BaseLayout from "../components/BaseLayout.astro";
+import { site } from "../data/site";
 
+const sections = [
+  {
+    href: "/research",
+    title: "Research",
+    body: "Lesion network mapping, ADHD, and neuroimaging methods development.",
+  },
+  {
+    href: "/people",
+    title: "People",
+    body: "Faculty, researchers, and alumni of the lab.",
+  },
+  {
+    href: "/publications",
+    title: "Publications",
+    body: "Peer-reviewed papers, with mentee-led work highlighted.",
+  },
+  {
+    href: "/figures",
+    title: "Figures",
+    body: "Selected figures from the lab's published work.",
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+  <section class="bg-gradient-to-b from-primary-50 to-white">
+    <div class="container-page py-20 sm:py-28">
+      <p class="text-sm font-semibold tracking-wide text-accent-600 uppercase">
+        {site.institution} · {site.university}
+      </p>
+      <h1
+        class="mt-4 max-w-3xl text-4xl leading-tight font-semibold text-slate-900 sm:text-5xl"
+      >
+        {site.name}
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-slate-600">{site.description}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href="/research"
+          class="rounded-md bg-primary-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-800"
+        >
+          Explore our research
+        </a>
+        <a
+          href="/people"
+          class="rounded-md border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+        >
+          Meet the team
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-page py-16">
+    <div class="grid gap-6 sm:grid-cols-2">
+      {
+        sections.map((s) => (
+          <a
+            href={s.href}
+            class="group rounded-xl border border-slate-200 p-6 transition-colors hover:border-primary-300 hover:bg-primary-50/40"
+          >
+            <h2 class="font-serif text-xl text-slate-900 group-hover:text-primary-700">
+              {s.title}
+            </h2>
+            <p class="mt-2 text-sm text-slate-600">{s.body}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

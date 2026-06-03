@@ -1,0 +1,117 @@
+---
+import { site } from "../data/site";
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/"
+    ? pathname === "/"
+    : pathname === href || pathname.startsWith(href + "/");
+
+const linkClass = (href: string) =>
+  isActive(href)
+    ? "text-primary-700 bg-primary-50"
+    : "text-slate-600 hover:text-primary-700 hover:bg-slate-50";
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/75"
+>
+  <nav
+    class="container-page flex h-16 items-center justify-between"
+    aria-label="Primary"
+  >
+    <a href="/" class="group flex items-center gap-2.5">
+      <img
+        src="/icon-512.png"
+        alt=""
+        width="32"
+        height="32"
+        class="h-8 w-8 rounded"
+      />
+      <span
+        class="font-serif text-lg font-semibold text-slate-900 group-hover:text-primary-700"
+      >
+        {site.shortName}
+      </span>
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="hidden items-center gap-1 md:flex">
+      {
+        site.nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              aria-current={isActive(item.href) ? "page" : undefined}
+              class:list={[
+                "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                linkClass(item.href),
+              ]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- Mobile toggle -->
+    <button
+      type="button"
+      id="nav-toggle"
+      class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 hover:bg-slate-100 md:hidden"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Toggle navigation menu</span>
+      <svg
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"></path>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="hidden border-t border-slate-200 bg-white md:hidden"
+  >
+    <ul class="container-page space-y-1 py-3">
+      {
+        site.nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              aria-current={isActive(item.href) ? "page" : undefined}
+              class:list={[
+                "block rounded-md px-3 py-2 text-base font-medium transition-colors",
+                linkClass(item.href),
+              ]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("nav-toggle");
+  const menu = document.getElementById("mobile-menu");
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!open));
+    menu?.classList.toggle("hidden");
+  });
+</script>

@@ -1,1 +1,77 @@
 @import "tailwindcss";
+
+/*
+  Cohen Lab brand theme — Tailwind v4, CSS-first (@theme).
+  Palette taken from the lab's brain motif: an ocean-blue base that
+  transitions to magenta-pink. Primary = ocean blue, accent = pink.
+  Serif (Newsreader) headings + Inter body. Light-first; dark-mode
+  tokens are stubbed below but do not gate launch.
+*/
+@theme {
+  /* ---- Ocean-blue primary (brand) ---- */
+  --color-primary-50: #eef6fc;
+  --color-primary-100: #d6e9f7;
+  --color-primary-200: #aed3ef;
+  --color-primary-300: #79b5e2;
+  --color-primary-400: #4090d1;
+  --color-primary-500: #1f73b8;
+  --color-primary-600: #155e9c;
+  --color-primary-700: #124d80;
+  --color-primary-800: #103f68;
+  --color-primary-900: #0d3252;
+  --color-primary-950: #08213a;
+
+  /* ---- Brain-motif pink / magenta accent ---- */
+  --color-accent-50: #fdeff8;
+  --color-accent-100: #fbdcef;
+  --color-accent-200: #f6b9df;
+  --color-accent-300: #ef8bc8;
+  --color-accent-400: #e65bad;
+  --color-accent-500: #d6409f;
+  --color-accent-600: #b92d85;
+  --color-accent-700: #97226b;
+  --color-accent-800: #7c1f59;
+  --color-accent-900: #681d4b;
+
+  /* ---- Typography (loaded via @fontsource-variable in BaseLayout) ---- */
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: "Newsreader Variable", ui-serif, Georgia, Cambria,
+    "Times New Roman", serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-slate-800 bg-white antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif text-slate-900;
+    text-wrap: balance;
+  }
+
+  /* Body-content links are colored; nav/footer style their own links. */
+  .prose-content a {
+    @apply text-primary-700 underline underline-offset-2 decoration-primary-300;
+  }
+  .prose-content a:hover {
+    @apply text-primary-800 decoration-primary-500;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary-500;
+  }
+}
+
+/* Reusable layout helper: centered content column. */
+@utility container-page {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+}
