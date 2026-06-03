@@ -1,0 +1,23 @@
+---
+import PersonCard from "./PersonCard.astro";
+import type { Person } from "../lib/content";
+
+interface Props {
+  title: string;
+  people: Person[];
+}
+const { title, people } = Astro.props;
+---
+
+<section class="mb-14">
+  <h2
+    class="mb-8 border-b border-slate-200 pb-2 font-serif text-2xl text-slate-900"
+  >
+    {title}
+  </h2>
+  <div
+    class="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+  >
+    {people.map((p) => <PersonCard person={p} />)}
+  </div>
+</section>

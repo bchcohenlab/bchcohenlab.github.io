@@ -1,0 +1,85 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "./BaseLayout.astro";
+import type { Person } from "../lib/content";
+
+interface Props {
+  person: Person;
+}
+const { person } = Astro.props;
+const { name, role, title, headshot, links } = person.data;
+
+const initials = name
+  .split(",")[0]
+  .split(/\s+/)
+  .map((t) => t[0])
+  .filter(Boolean)
+  .slice(0, 2)
+  .join("")
+  .toUpperCase();
+
+const linkItems = [
+  links.email && { label: "Email", href: `mailto:${links.email}` },
+  links.website && { label: "Website", href: links.website },
+  links.scholar && { label: "Google Scholar", href: links.scholar },
+  links.orcid && { label: "ORCID", href: links.orcid },
+  links.twitter && { label: "X / Twitter", href: links.twitter },
+  links.linkedin && { label: "LinkedIn", href: links.linkedin },
+].filter(Boolean) as { label: string; href: string }[];
+---
+
+<BaseLayout title={name} description={`${role} — ${name}`}>
+  <div class="container-page py-12">
+    <a
+      href="/people"
+      class="text-sm text-primary-700 hover:underline">&larr; All people</a
+    >
+    <div class="mt-6 grid gap-8 sm:grid-cols-[12rem_1fr] sm:items-start">
+      <div class="mx-auto h-44 w-44 overflow-hidden rounded-full ring-1 ring-slate-200 sm:mx-0">
+        {
+          headshot ? (
+            <Image
+              src={headshot}
+              alt={name}
+              width={352}
+              height={352}
+              class="h-full w-full object-cover"
+            />
+          ) : (
+            <div class="flex h-full w-full items-center justify-center bg-primary-100 text-4xl font-semibold text-primary-700">
+              {initials}
+            </div>
+          )
+        }
+      </div>
+
+      <div>
+        <h1 class="font-serif text-3xl text-slate-900">{name}</h1>
+        <p class="mt-1 text-lg text-primary-700">{role}</p>
+        {title && <p class="mt-1 text-slate-600">{title}</p>}
+        {
+          linkItems.length > 0 && (
+            <ul class="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+              {linkItems.map((l) => (
+                <li>
+                  <a
+                    href={l.href}
+                    target={l.href.startsWith("mailto:") ? undefined : "_blank"}
+                    rel="noopener noreferrer"
+                    class="text-primary-700 hover:underline"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+    </div>
+
+    <div class="mt-10 max-w-3xl">
+      <slot />
+    </div>
+  </div>
+</BaseLayout>

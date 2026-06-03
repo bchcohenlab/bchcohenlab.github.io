@@ -1,75 +1,148 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../components/BaseLayout.astro";
 import { site } from "../data/site";
+import {
+  getConfirmedFigures,
+  getPublications,
+  getGroupedPeople,
+  personKey,
+} from "../lib/content";
+import PubList from "../components/PubList.astro";
+import brainMotif from "../assets/brain-motif.png";
 
-const sections = [
+const figures = await getConfirmedFigures();
+const strip = figures.slice(0, 4);
+
+const pubs = await getPublications();
+const recent = pubs.filter((p) => p.data.featured).slice(0, 5);
+const highlight = (await getGroupedPeople())
+  .flatMap((g) => g.people)
+  .map((p) => personKey(p.data.name));
+
+const themes = [
   {
-    href: "/research",
-    title: "Research",
-    body: "Lesion network mapping, ADHD, and neuroimaging methods development.",
+    title: "Lesion Network Mapping",
+    body: "Linking focal brain lesions and tubers — in tuberous sclerosis complex and perinatal stroke — to common brain networks underlying specific symptoms.",
   },
   {
-    href: "/people",
-    title: "People",
-    body: "Faculty, researchers, and alumni of the lab.",
+    title: "ADHD",
+    body: "Coordinate and lesion network mapping of attention, with pharmaco-fMRI and real-time fMRI neurofeedback approaches to modulating the circuits involved.",
   },
   {
-    href: "/publications",
-    title: "Publications",
-    body: "Peer-reviewed papers, with mentee-led work highlighted.",
-  },
-  {
-    href: "/figures",
-    title: "Figures",
-    body: "Selected figures from the lab's published work.",
+    title: "Methods development",
+    body: "Open, reproducible neuroimaging tools — preprocessing, normalization, and the connectome resources that make network mapping possible.",
   },
 ];
 ---
 
 <BaseLayout>
+  <!-- Hero -->
   <section class="bg-gradient-to-b from-primary-50 to-white">
-    <div class="container-page py-20 sm:py-28">
-      <p class="text-sm font-semibold tracking-wide text-accent-600 uppercase">
-        {site.institution} · {site.university}
-      </p>
-      <h1
-        class="mt-4 max-w-3xl text-4xl leading-tight font-semibold text-slate-900 sm:text-5xl"
-      >
-        {site.name}
-      </h1>
-      <p class="mt-6 max-w-2xl text-lg text-slate-600">{site.description}</p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a
-          href="/research"
-          class="rounded-md bg-primary-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-800"
+    <div
+      class="container-page grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-2"
+    >
+      <div>
+        <p class="text-sm font-semibold tracking-wide text-accent-600 uppercase">
+          {site.institution} · {site.university}
+        </p>
+        <h1
+          class="mt-4 text-4xl leading-tight font-semibold text-slate-900 sm:text-5xl"
         >
-          Explore our research
-        </a>
-        <a
-          href="/people"
-          class="rounded-md border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
-        >
-          Meet the team
-        </a>
+          {site.name}
+        </h1>
+        <p class="mt-6 max-w-xl text-lg text-slate-600">{site.description}</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="/research"
+            class="rounded-md bg-primary-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-800"
+            >Explore our research</a
+          >
+          <a
+            href="/people"
+            class="rounded-md border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+            >Meet the team</a
+          >
+        </div>
+      </div>
+      <div class="justify-self-center">
+        <Image
+          src={brainMotif}
+          alt="Stylized brain with an ocean-blue to magenta gradient"
+          widths={[400, 640, 800]}
+          sizes="(min-width: 1024px) 32rem, 80vw"
+          class="w-full max-w-lg rounded-2xl shadow-lg"
+        />
       </div>
     </div>
   </section>
 
+  <!-- Featured figures strip -->
+  {
+    strip.length > 0 && (
+      <section class="border-y border-slate-200 bg-slate-50">
+        <div class="container-page py-12">
+          <div class="mb-6 flex items-end justify-between">
+            <h2 class="font-serif text-2xl text-slate-900">From our work</h2>
+            <a href="/figures" class="text-sm text-primary-700 hover:underline">
+              All figures &rarr;
+            </a>
+          </div>
+          <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {strip.map((f) => (
+              <a
+                href="/figures"
+                class="group overflow-hidden rounded-lg border border-slate-200 bg-white"
+              >
+                <Image
+                  src={f.data.image}
+                  alt={f.data.caption}
+                  widths={[300, 600]}
+                  sizes="(min-width: 1024px) 22vw, 45vw"
+                  class="aspect-square w-full bg-slate-900/5 object-contain transition group-hover:scale-[1.02]"
+                />
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Research themes -->
   <section class="container-page py-16">
-    <div class="grid gap-6 sm:grid-cols-2">
+    <h2 class="mb-8 font-serif text-2xl text-slate-900">Research themes</h2>
+    <div class="grid gap-6 sm:grid-cols-3">
       {
-        sections.map((s) => (
+        themes.map((t) => (
           <a
-            href={s.href}
+            href="/research"
             class="group rounded-xl border border-slate-200 p-6 transition-colors hover:border-primary-300 hover:bg-primary-50/40"
           >
-            <h2 class="font-serif text-xl text-slate-900 group-hover:text-primary-700">
-              {s.title}
-            </h2>
-            <p class="mt-2 text-sm text-slate-600">{s.body}</p>
+            <h3 class="font-serif text-xl text-slate-900 group-hover:text-primary-700">
+              {t.title}
+            </h3>
+            <p class="mt-2 text-sm text-slate-600">{t.body}</p>
           </a>
         ))
       }
     </div>
   </section>
+
+  <!-- Recent featured publications -->
+  {
+    recent.length > 0 && (
+      <section class="border-t border-slate-200 bg-slate-50">
+        <div class="container-page py-16">
+          <div class="mb-6 flex items-end justify-between">
+            <h2 class="font-serif text-2xl text-slate-900">Recent work</h2>
+            <a href="/publications" class="text-sm text-primary-700 hover:underline">
+              All publications &rarr;
+            </a>
+          </div>
+          <PubList pubs={recent} highlight={highlight} />
+        </div>
+      </section>
+    )
+  }
 </BaseLayout>

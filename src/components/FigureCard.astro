@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import type { Figure } from "../lib/content";
+
+interface Props {
+  figure: Figure;
+}
+const { figure } = Astro.props;
+const d = figure.data;
+---
+
+<figure class="overflow-hidden rounded-xl border border-slate-200 bg-white">
+  <div class="bg-slate-900/5">
+    <Image
+      src={d.image}
+      alt={d.caption}
+      widths={[400, 800, 1200]}
+      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+      class="mx-auto max-h-80 w-full object-contain"
+    />
+  </div>
+  <figcaption class="p-4">
+    <p class="text-sm text-slate-700">{d.caption}</p>
+    <p class="mt-2 text-xs text-slate-500">{d.citation}</p>
+    <div class="mt-2 flex flex-wrap items-center gap-2 text-xs">
+      <a
+        href={d.licenseUrl ?? "https://creativecommons.org/licenses/by/4.0/"}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded bg-emerald-100 px-1.5 py-0.5 font-medium text-emerald-800 hover:bg-emerald-200"
+      >
+        {d.license}
+      </a>
+      {
+        d.doi && (
+          <a
+            href={`https://doi.org/${d.doi}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-primary-700 hover:underline"
+          >
+            DOI
+          </a>
+        )
+      }
+    </div>
+  </figcaption>
+</figure>

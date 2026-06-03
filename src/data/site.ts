@@ -18,6 +18,8 @@ export interface SiteConfig {
   description: string;
   email: string;
   phone: string;
+  address: string[];
+  mapQuery: string;
   social: {
     scholar?: string;
     twitter?: string;
@@ -40,6 +42,13 @@ export const site: SiteConfig = {
     "psychiatric disorders.",
   email: "CohenLab@childrens.harvard.edu",
   phone: "617-355-6388",
+  address: [
+    "Cohen Laboratory of Translational Neuroimaging",
+    "Boston Children's Hospital",
+    "Two Brookline Place, BC525.5",
+    "Brookline, MA 02445",
+  ],
+  mapQuery: "Two Brookline Place, Brookline, MA 02445",
   social: {
     scholar: "https://scholar.google.com/citations?user=P9Z-BEcAAAAJ&hl=en",
     twitter: "https://twitter.com/DrDrXanderli",

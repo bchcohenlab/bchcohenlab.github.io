@@ -1,0 +1,83 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import { site } from "../data/site";
+
+const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&output=embed`;
+const socials = [
+  { label: "Google Scholar", href: site.social.scholar },
+  { label: "X / Twitter", href: site.social.twitter },
+  { label: "GitHub", href: site.social.github },
+].filter((s): s is { label: string; href: string } => Boolean(s.href));
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact the Cohen Laboratory of Translational Neuroimaging at Boston Children's Hospital."
+>
+  <PageHeader
+    eyebrow="Get in touch"
+    title="Contact"
+    lead="We welcome inquiries from prospective trainees, collaborators, and research participants' families."
+  />
+  <div class="container-page py-12">
+    <div class="grid gap-10 lg:grid-cols-2">
+      <div>
+        <h2 class="font-serif text-xl text-slate-900">Cohen Lab</h2>
+        <address class="mt-3 text-slate-600 not-italic">
+          {site.address.map((line) => <p>{line}</p>)}
+        </address>
+
+        <dl class="mt-6 space-y-2 text-sm">
+          <div class="flex gap-2">
+            <dt class="font-medium text-slate-500">Email</dt>
+            <dd>
+              <a
+                href={`mailto:${site.email}`}
+                class="text-primary-700 hover:underline">{site.email}</a
+              >
+            </dd>
+          </div>
+          <div class="flex gap-2">
+            <dt class="font-medium text-slate-500">Phone</dt>
+            <dd>
+              <a
+                href={`tel:${site.phone.replace(/[^0-9+]/g, "")}`}
+                class="text-primary-700 hover:underline">{site.phone}</a
+              >
+            </dd>
+          </div>
+        </dl>
+
+        <h3 class="mt-8 text-sm font-semibold tracking-wide text-slate-500 uppercase">
+          Elsewhere
+        </h3>
+        <ul class="mt-2 space-y-1 text-sm">
+          {
+            socials.map((s) => (
+              <li>
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-primary-700 hover:underline"
+                >
+                  {s.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="overflow-hidden rounded-xl border border-slate-200">
+        <iframe
+          title="Map to Two Brookline Place"
+          src={mapSrc}
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="h-80 w-full"></iframe>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

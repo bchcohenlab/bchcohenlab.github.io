@@ -1,0 +1,44 @@
+---
+import { getCollection, render } from "astro:content";
+import ProfileLayout from "../../components/ProfileLayout.astro";
+import PubList from "../../components/PubList.astro";
+import {
+  getPublications,
+  publicationsForPerson,
+  personKey,
+} from "../../lib/content";
+
+export async function getStaticPaths() {
+  const people = await getCollection("people");
+  return people.map((person) => ({ params: { slug: person.id }, props: { person } }));
+}
+
+const { person } = Astro.props;
+const { Content } = await render(person);
+const hasBio = (person.body ?? "").trim().length > 0;
+
+const pubs = await getPublications();
+const mine = publicationsForPerson(person, pubs).slice(0, 15);
+const highlight = [personKey(person.data.name)];
+---
+
+<ProfileLayout person={person}>
+  {
+    hasBio && (
+      <div class="prose-content space-y-4 leading-relaxed text-slate-700">
+        <Content />
+      </div>
+    )
+  }
+
+  {
+    mine.length > 0 && (
+      <section class:list={[hasBio && "mt-10"]}>
+        <h2 class="mb-1 font-serif text-xl text-slate-900">
+          Selected publications
+        </h2>
+        <PubList pubs={mine} highlight={highlight} />
+      </section>
+    )
+  }
+</ProfileLayout>

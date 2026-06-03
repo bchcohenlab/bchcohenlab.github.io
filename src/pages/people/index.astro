@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../components/BaseLayout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import PersonGroup from "../../components/PersonGroup.astro";
+import { getGroupedPeople } from "../../lib/content";
+
+const groups = await getGroupedPeople();
+---
+
+<BaseLayout
+  title="People"
+  description="Faculty, researchers, and alumni of the Cohen Laboratory of Translational Neuroimaging."
+>
+  <PageHeader
+    eyebrow="The team"
+    title="People"
+    lead="The faculty, researchers, and alumni who make up the Cohen Lab."
+  />
+  <div class="container-page py-12">
+    {groups.map((g) => <PersonGroup title={g.group} people={g.people} />)}
+  </div>
+</BaseLayout>

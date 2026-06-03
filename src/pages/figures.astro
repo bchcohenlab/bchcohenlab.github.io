@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import FigureCard from "../components/FigureCard.astro";
+import { getConfirmedFigures } from "../lib/content";
+
+// Only rights-confirmed figures are ever queried (hard gate in getConfirmedFigures).
+const figures = await getConfirmedFigures();
+---
+
+<BaseLayout
+  title="Figures"
+  description="Selected figures from the lab's published work, shown with attribution and license."
+>
+  <PageHeader
+    eyebrow="Selected figures"
+    title="Figures"
+    lead="Figures from the lab's published papers, each shown with its citation and license."
+  />
+  <div class="container-page py-12">
+    {
+      figures.length > 0 ? (
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {figures.map((f) => (
+            <FigureCard figure={f} />
+          ))}
+        </div>
+      ) : (
+        <p class="py-10 text-center text-slate-500">Figures coming soon.</p>
+      )
+    }
+  </div>
+</BaseLayout>

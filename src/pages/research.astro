@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import PubList from "../components/PubList.astro";
+import { getPublications, getGroupedPeople, personKey } from "../lib/content";
+
+const pubs = await getPublications();
+const bySlug = new Map(pubs.map((p) => [p.id, p]));
+const pick = (slugs: string[]) => slugs.map((s) => bySlug.get(s)).filter(Boolean) as typeof pubs;
+
+const highlight = (await getGroupedPeople())
+  .flatMap((g) => g.people)
+  .map((p) => personKey(p.data.name));
+
+const themes = [
+  {
+    title: "Lesion Network Mapping",
+    body: "When focal brain lesions — or the cortical tubers of tuberous sclerosis complex, and the injuries of perinatal stroke — cause a specific symptom, the damaged sites often share connectivity to a common brain network. We use lesion and tuber network mapping to localize the circuits behind symptoms such as epilepsy, autism features, prosopagnosia, and more, pointing toward targets for neuromodulation.",
+    slugs: [
+      "cohen-2021-tsc",
+      "cohen-2023-tubers",
+      "herman-2025-lesions",
+      "cohen-2019-looking",
+      "miller-2025-comparison",
+    ],
+  },
+  {
+    title: "ADHD",
+    body: "We map the brain circuits implicated in attention and ADHD using coordinate and lesion network mapping, and study how those circuits can be modulated — including with pharmaco-fMRI and real-time fMRI neurofeedback.",
+    slugs: ["wall-2025-coordinate", "guler-2021-matched"],
+  },
+  {
+    title: "Methods development",
+    body: "Network mapping depends on open, reproducible neuroimaging tooling. We build and benchmark preprocessing, spatial-normalization, and connectome resources, and contribute to community standards for sharing and analyzing neuroimaging data.",
+    slugs: [
+      "gorgolewski-2017-bids",
+      "poldrack-2024-past",
+      "balachandrasekaran-2022-reducing",
+      "cohen-2008-defining",
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Research"
+  description="Lesion network mapping, ADHD, and neuroimaging methods development in the Cohen Lab."
+>
+  <PageHeader
+    eyebrow="What we do"
+    title="Research"
+    lead="We use network neuroimaging to understand which brain circuits produce specific neurological and psychiatric symptoms — and how to modulate them."
+  />
+  <div class="container-page py-12">
+    {
+      themes.map((t) => (
+        <section class="mb-16">
+          <SectionHeading title={t.title}>
+            <p class="mt-3 max-w-3xl text-slate-600">{t.body}</p>
+          </SectionHeading>
+          <PubList pubs={pick(t.slugs)} highlight={highlight} />
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>

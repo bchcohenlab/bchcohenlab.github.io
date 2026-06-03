@@ -1,0 +1,102 @@
+---
+import type { Publication } from "../lib/content";
+import { authorIsPerson, type PersonKey } from "../lib/content";
+
+interface Props {
+  pubs: Publication[];
+  /** Author keys to bold (PI + lab members). */
+  highlight?: PersonKey[];
+}
+const { pubs, highlight = [] } = Astro.props;
+
+const isHighlighted = (author: string) =>
+  highlight.some((k) => authorIsPerson(author, k));
+---
+
+<ol class="divide-y divide-slate-100" id="pub-list">
+  {
+    pubs.map((p) => {
+      const d = p.data;
+      const link = d.doi ? `https://doi.org/${d.doi}` : d.url;
+      const search = `${d.title} ${d.authors.join(" ")} ${d.journal ?? ""}`.toLowerCase();
+      return (
+        <li
+          class="py-5"
+          data-pub
+          data-year={d.year}
+          data-featured={d.featured}
+          data-mentee={d.menteeFirstAuthor}
+          data-search={search}
+        >
+          <p class="font-medium text-slate-900">
+            {link ? (
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-primary-700 hover:underline"
+              >
+                {d.title}
+              </a>
+            ) : (
+              d.title
+            )}
+          </p>
+          <p class="mt-1 text-sm text-slate-600">
+            {d.authors.map((a, i) => (
+              <>
+                {i > 0 && ", "}
+                {isHighlighted(a) ? <strong class="text-slate-900">{a}</strong> : a}
+              </>
+            ))}
+          </p>
+          <p class="mt-0.5 text-sm text-slate-500">
+            {d.journal && <em>{d.journal}</em>}
+            {d.journal && " · "}
+            {d.year}
+          </p>
+          <div class="mt-2 flex flex-wrap items-center gap-2 text-xs">
+            {d.menteeFirstAuthor && (
+              <span class="rounded-full bg-accent-100 px-2 py-0.5 font-medium text-accent-700">
+                Mentee-led
+              </span>
+            )}
+            {d.cohenFirstOrSenior && !d.menteeFirstAuthor && (
+              <span class="rounded-full bg-primary-100 px-2 py-0.5 font-medium text-primary-700">
+                Cohen first/senior
+              </span>
+            )}
+            {d.openAccess && (
+              <span class="rounded-full bg-emerald-100 px-2 py-0.5 font-medium text-emerald-700">
+                Open access
+              </span>
+            )}
+            {typeof d.citations === "number" && (
+              <span class="text-slate-500">Cited by {d.citations}</span>
+            )}
+            {d.doi && (
+              <a
+                href={`https://doi.org/${d.doi}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-primary-700 hover:underline"
+              >
+                DOI
+              </a>
+            )}
+            {d.scholarUrl && (
+              <a
+                href={d.scholarUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-primary-700 hover:underline"
+              >
+                Scholar
+              </a>
+            )}
+          </div>
+        </li>
+      );
+    })
+  }
+</ol>

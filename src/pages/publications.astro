@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import PubList from "../components/PubList.astro";
+import { getPublications, getGroupedPeople, personKey } from "../lib/content";
+
+const pubs = await getPublications();
+const highlight = (await getGroupedPeople())
+  .flatMap((g) => g.people)
+  .map((p) => personKey(p.data.name));
+
+const featuredCount = pubs.filter((p) => p.data.featured).length;
+const menteeCount = pubs.filter((p) => p.data.menteeFirstAuthor).length;
+
+const chip =
+  "rounded-full border border-slate-300 px-3 py-1 text-sm font-medium text-slate-600 hover:bg-slate-50 data-[active]:border-primary-600 data-[active]:bg-primary-600 data-[active]:text-white";
+---
+
+<BaseLayout
+  title="Publications"
+  description="Peer-reviewed publications from the Cohen Lab, with mentee-led and Cohen first/senior work highlighted."
+>
+  <PageHeader
+    eyebrow="Research output"
+    title="Publications"
+    lead="Peer-reviewed work from the lab and its collaborators. Mentee-led papers and Cohen first/senior-author papers are flagged; citation counts are from Google Scholar."
+  />
+  <div class="container-page py-12">
+    <div class="mb-8 flex flex-wrap items-center gap-3">
+      <div class="flex flex-wrap gap-2">
+        <button class={chip} data-filter="all" data-active>All ({pubs.length})</button>
+        <button class={chip} data-filter="featured">Featured ({featuredCount})</button>
+        <button class={chip} data-filter="mentee">Mentee-led ({menteeCount})</button>
+      </div>
+      <input
+        type="search"
+        id="pub-search"
+        placeholder="Search title or author…"
+        class="min-w-56 flex-1 rounded-md border border-slate-300 px-3 py-1.5 text-sm focus:border-primary-500 focus:outline-none"
+      />
+      <span id="pub-count" class="text-sm text-slate-500"></span>
+    </div>
+
+    <PubList pubs={pubs} highlight={highlight} />
+
+    <p id="pub-empty" class="hidden py-10 text-center text-slate-500">
+      No publications match your filters.
+    </p>
+  </div>
+
+  <script>
+    const list = document.getElementById("pub-list");
+    const items = list ? [...list.querySelectorAll<HTMLElement>("[data-pub]")] : [];
+    const search = document.getElementById("pub-search") as HTMLInputElement | null;
+    const countEl = document.getElementById("pub-count");
+    const emptyEl = document.getElementById("pub-empty");
+    const buttons = [...document.querySelectorAll<HTMLElement>("[data-filter]")];
+    let filter = "all";
+
+    function apply() {
+      const q = (search?.value ?? "").trim().toLowerCase();
+      let n = 0;
+      for (const li of items) {
+        const okFilter =
+          filter === "all" ||
+          (filter === "featured" && li.dataset.featured === "true") ||
+          (filter === "mentee" && li.dataset.mentee === "true");
+        const okSearch = !q || (li.dataset.search ?? "").includes(q);
+        const show = okFilter && okSearch;
+        li.hidden = !show;
+        if (show) n++;
+      }
+      if (countEl) countEl.textContent = `${n} of ${items.length}`;
+      if (emptyEl) emptyEl.classList.toggle("hidden", n !== 0);
+    }
+
+    for (const b of buttons) {
+      b.addEventListener("click", () => {
+        filter = b.dataset.filter ?? "all";
+        for (const x of buttons) {
+          if (x === b) x.setAttribute("data-active", "");
+          else x.removeAttribute("data-active");
+        }
+        apply();
+      });
+    }
+    search?.addEventListener("input", apply);
+    apply();
+  </script>
+</BaseLayout>
