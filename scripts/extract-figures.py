@@ -39,7 +39,9 @@ PUBS = ROOT / "src/content/publications"
 
 CC_BY = "https://creativecommons.org/licenses/by/4.0/"
 
-# Confirmed CC-BY featured papers (slug == publication slug == cache PDF name).
+# Featured papers with a figure. CC-BY (open-access) venues carry a licenseUrl;
+# subscription-journal figures are shown under author reuse rights and tagged
+# "publisher-permission" (the PI, as author, confirmed display rights).
 FIGURES = {
     "wall-2025-coordinate": {
         "order": 1, "license": "CC-BY", "licenseUrl": CC_BY,
@@ -66,6 +68,65 @@ FIGURES = {
         "order": 5, "license": "CC-BY", "licenseUrl": CC_BY,
         "caption": "Overlap (Jaccard coefficient) of deformed and target lesion "
                    "masks across normalization algorithms, by lesion severity.",
+    },
+    "tripathy-2025-network": {
+        "order": 6, "license": "CC-BY", "licenseUrl": CC_BY,
+        "caption": "Lesions causing altered auditory and somatosensory sensitivity "
+                   "map to a common brain network.",
+    },
+    "miller-2026-lesion": {
+        "order": 7, "license": "CC-BY", "licenseUrl": CC_BY,
+        "caption": "Functional connectivity of focal injury-related aggression "
+                   "lesions to two distinct cluster networks (ACC and vmPFC).",
+    },
+    # --- subscription journals, shown under author reuse rights ---
+    "cohen-2019-looking": {
+        "order": 8, "license": "publisher-permission",
+        "caption": "Lesion network mapping of acquired prosopagnosia: lesions "
+                   "causing face blindness map to a common brain network.",
+    },
+    "cohen-2021-tsc": {
+        "order": 9, "license": "publisher-permission",
+        "caption": "Tuber locations associated with infantile spasms in tuberous "
+                   "sclerosis complex map to a common brain network.",
+    },
+    "cohen-2023-tubers": {
+        "order": 10, "license": "publisher-permission",
+        "caption": "Tubers affecting the fusiform face area are associated with "
+                   "autism diagnosis in tuberous sclerosis complex.",
+    },
+    "kletenik-2021-network": {
+        "order": 11, "license": "publisher-permission",
+        "caption": "Network localization of unconscious visual perception "
+                   "(blindsight) from focal brain lesions.",
+    },
+    "kletenik-2023-network": {
+        "order": 12, "license": "publisher-permission",
+        "caption": "Network localization of awareness in visual and motor "
+                   "anosognosia.",
+    },
+    "kletenik-2023-multiple": {
+        "order": 13, "license": "publisher-permission",
+        "caption": "Multiple sclerosis lesions that impair memory map to a "
+                   "connected memory circuit.",
+    },
+    "jiang-2023-lesion": {
+        "order": 14, "license": "publisher-permission",
+        "caption": "A lesion-derived brain network for emotion regulation.",
+    },
+    "peng-2024-mapping": {
+        "order": 15, "license": "publisher-permission",
+        "caption": "Lesion-related human aggression maps to a common brain network.",
+    },
+    "guler-2021-matched": {
+        "order": 16, "license": "publisher-permission",
+        "caption": "Matched neurofeedback during fMRI differentially activates "
+                   "reward-related circuits in active versus sham groups.",
+    },
+    "zagurlyorly-2021-bfrt": {
+        "order": 17, "license": "publisher-permission",
+        "caption": "Face-processing performance independently predicts social "
+                   "affect (ADOS) across large-scale autism datasets.",
     },
 }
 
@@ -117,7 +178,10 @@ def main():
             skipped.append(f"{slug}: no suitable embedded image found")
             continue
         pix = fitz.Pixmap(doc, xref)
-        if pix.n >= 5 or pix.alpha:  # CMYK / alpha -> RGB
+        # Normalize to RGB: PNG can't hold CMYK/alpha/separation colorspaces.
+        if pix.alpha or pix.colorspace is None or pix.colorspace.name not in (
+            "DeviceRGB", "DeviceGray",
+        ):
             pix = fitz.Pixmap(fitz.csRGB, pix)
         img_path = ASSETS / f"{slug}-fig1.png"
         pix.save(img_path)
@@ -136,14 +200,15 @@ def main():
         if pub["journal"]:
             fm.append(f"journal: {yaml_str(pub['journal'])}")
         fm.append(f"license: {meta['license']}")
-        fm.append(f"licenseUrl: {yaml_str(meta['licenseUrl'])}")
+        if meta.get("licenseUrl"):
+            fm.append(f"licenseUrl: {yaml_str(meta['licenseUrl'])}")
         fm.append("rightsConfirmed: true")
         fm.append(f"order: {meta['order']}")
         fm.append("---")
         (OUT / f"{slug}.md").write_text("\n".join(fm) + "\n")
         emitted.append(f"{slug} ({pix.width}x{pix.height})")
 
-    print(f"\nEmitted {len(emitted)} CC-BY figures:")
+    print(f"\nEmitted {len(emitted)} figures:")
     for e in emitted:
         print(f"  - {e}")
     if skipped:
