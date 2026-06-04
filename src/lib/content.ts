@@ -90,3 +90,25 @@ export function menteeMatcher(people: Person[]) {
     return !!d && !NON_MENTEE_SLUGS.has(d.slug);
   };
 }
+
+const menteeLed = (p: Publication, isMentee: (a: string) => boolean) =>
+  isMentee(p.data.authors[0] ?? "");
+
+/**
+ * Featured predicate: a mentee-led paper, or a Cohen first/senior paper from
+ * 2019 on. Mentee status is membership-derived (see menteeMatcher).
+ */
+export function featuredMatcher(people: Person[]) {
+  const isMentee = menteeMatcher(people);
+  return (p: Publication) =>
+    menteeLed(p, isMentee) || (p.data.cohenFirstOrSenior && p.data.year >= 2019);
+}
+
+/** Sort featured papers: mentee-led first, then most recent. */
+export function featuredSorter(people: Person[]) {
+  const isMentee = menteeMatcher(people);
+  return (a: Publication, b: Publication) => {
+    const diff = Number(menteeLed(b, isMentee)) - Number(menteeLed(a, isMentee));
+    return diff || b.data.year - a.data.year;
+  };
+}

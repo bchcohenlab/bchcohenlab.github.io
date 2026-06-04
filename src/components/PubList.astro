@@ -81,13 +81,14 @@ const anyMarks = pubs.some(
       const search = `${d.title} ${d.authors.join(" ")} ${d.journal ?? ""}`.toLowerCase();
       const stars = starsFor(p);
       const menteeLed = isMentee(d.authors[0] ?? "");
+      const featured = menteeLed || (d.cohenFirstOrSenior && d.year >= 2019);
       const labPeople = labPeopleFor(p);
       return (
         <li
           class="py-5"
           data-pub
           data-year={d.year}
-          data-featured={d.featured}
+          data-featured={featured}
           data-mentee={menteeLed}
           data-search={search}
         >

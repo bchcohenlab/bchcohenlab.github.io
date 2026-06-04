@@ -2,15 +2,27 @@
 import { Image } from "astro:assets";
 import BaseLayout from "../components/BaseLayout.astro";
 import { site } from "../data/site";
-import { getConfirmedFigures, getPublications } from "../lib/content";
+import { getCollection } from "astro:content";
+import {
+  getConfirmedFigures,
+  getPublications,
+  featuredMatcher,
+  featuredSorter,
+} from "../lib/content";
 import PubList from "../components/PubList.astro";
 import brainMotif from "../assets/brain-motif.png";
 
 const figures = await getConfirmedFigures();
 const strip = figures.slice(0, 4);
 
+const people = await getCollection("people");
 const pubs = await getPublications();
-const recent = pubs.filter((p) => p.data.featured).slice(0, 5);
+// Featured = mentee-led or Cohen first/senior (>=2019), prioritized mentee-led
+// first then most recent.
+const recent = pubs
+  .filter(featuredMatcher(people))
+  .sort(featuredSorter(people))
+  .slice(0, 5);
 
 const themes = [
   {
