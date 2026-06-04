@@ -3,33 +3,57 @@ import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import type { Publication } from "../lib/content";
 import { authorIsPerson, personKey } from "../lib/content";
+// Per-author markers (CV convention: * = co-first/-senior author, ** = mentee).
+// Read straight from the CV-parsed source, keyed by DOI/title, so the content
+// files (and their live citations) stay untouched.
+import cvPubs from "../../scripts/data/cv-publications.json";
 
 interface Props {
   pubs: Publication[];
 }
 const { pubs } = Astro.props;
 
-// Directory of lab people, for linking author names + showing mentee headshots.
+const norm = (s: string) =>
+  s.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]/g, "");
+
+// CV records -> marker sets, looked up by DOI then normalized title.
+type Marks = { star: Set<string>; mentee: Set<string> };
+const cvByDoi = new Map<string, Marks>();
+const cvByTitle = new Map<string, Marks>();
+for (const rec of cvPubs as any[]) {
+  const marks: Marks = {
+    star: new Set(rec.authors.filter((a: any) => a.coFirstSenior).map((a: any) => a.name)),
+    mentee: new Set(rec.authors.filter((a: any) => a.mentee).map((a: any) => a.name)),
+  };
+  if (rec.doi) cvByDoi.set(rec.doi.toLowerCase(), marks);
+  if (rec.title) cvByTitle.set(norm(rec.title), marks);
+}
+const EMPTY: Marks = { star: new Set(), mentee: new Set() };
+const marksFor = (p: Publication): Marks =>
+  (p.data.doi && cvByDoi.get(p.data.doi.toLowerCase())) ||
+  cvByTitle.get(norm(p.data.title)) ||
+  EMPTY;
+
+// Directory of lab people, for linking author names + mentee headshots.
 const people = await getCollection("people");
 const dir = people.map((p) => ({
   slug: p.id,
   name: p.data.name,
-  group: p.data.group,
   headshot: p.data.headshot,
   key: personKey(p.data.name),
 }));
-
 const findPerson = (author: string) =>
   dir.find((d) => authorIsPerson(author, d.key)) ?? null;
 
-// Mentees shown as headshots = matched lab authors who aren't faculty (excludes
-// the PI and other faculty) and have a headshot.
-const menteesFor = (pub: Publication) => {
+// Headshots for the actual ** mentee authors who are in the people collection.
+const menteePeopleFor = (p: Publication) => {
+  const m = marksFor(p).mentee;
   const seen = new Set<string>();
   const out: typeof dir = [];
-  for (const a of pub.data.authors) {
+  for (const a of p.data.authors) {
+    if (!m.has(a)) continue;
     const d = findPerson(a);
-    if (d && d.group !== "Faculty" && d.headshot && !seen.has(d.slug)) {
+    if (d && d.headshot && !seen.has(d.slug)) {
       seen.add(d.slug);
       out.push(d);
     }
@@ -38,6 +62,10 @@ const menteesFor = (pub: Publication) => {
 };
 
 const shortName = (name: string) => name.split(",")[0].trim();
+const anyMarks = pubs.some((p) => {
+  const m = marksFor(p);
+  return m.star.size > 0 || m.mentee.size > 0;
+});
 ---
 
 <ol class="divide-y divide-slate-100" id="pub-list">
@@ -46,7 +74,8 @@ const shortName = (name: string) => name.split(",")[0].trim();
       const d = p.data;
       const link = d.doi ? `https://doi.org/${d.doi}` : d.url;
       const search = `${d.title} ${d.authors.join(" ")} ${d.journal ?? ""}`.toLowerCase();
-      const mentees = d.isMenteePaper ? menteesFor(p) : [];
+      const marks = marksFor(p);
+      const mentees = menteePeopleFor(p);
       return (
         <li
           class="py-5"
@@ -74,6 +103,7 @@ const shortName = (name: string) => name.split(",")[0].trim();
           <p class="mt-1 text-sm text-slate-600">
             {d.authors.map((a, i) => {
               const person = findPerson(a);
+              const mark = marks.mentee.has(a) ? "**" : marks.star.has(a) ? "*" : "";
               return (
                 <>
                   {i > 0 && ", "}
@@ -86,6 +116,9 @@ const shortName = (name: string) => name.split(",")[0].trim();
                     </a>
                   ) : (
                     a
+                  )}
+                  {mark && (
+                    <sup class:list={["font-semibold", marks.mentee.has(a) ? "text-accent-600" : "text-slate-500"]}>{mark}</sup>
                   )}
                 </>
               );
@@ -168,3 +201,13 @@ const shortName = (name: string) => name.split(",")[0].trim();
     })
   }
 </ol>
+
+{
+  anyMarks && (
+    <p class="mt-4 text-xs text-slate-500">
+      <sup class="font-semibold text-slate-500">*</sup> co-first / co-senior author
+      <span class="mx-1">·</span>
+      <sup class="font-semibold text-accent-600">**</sup> mentee
+    </p>
+  )
+}
