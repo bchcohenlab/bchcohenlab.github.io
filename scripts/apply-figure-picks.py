@@ -27,6 +27,7 @@ import sys
 from pathlib import Path
 
 import fitz
+from figure_extract import render_region
 
 ROOT = Path(__file__).resolve().parent.parent
 CACHE = ROOT / "scripts/.cache/figpdfs"
@@ -53,12 +54,19 @@ def field(text: str, key: str):
     return json.loads(v) if v.startswith('"') else v
 
 
-def extract(doc, xref: int, out: Path):
-    pix = fitz.Pixmap(doc, xref)
-    if pix.alpha or pix.colorspace is None or pix.colorspace.name not in (
-        "DeviceRGB", "DeviceGray",
-    ):
-        pix = fitz.Pixmap(fitz.csRGB, pix)
+def extract(doc, ch: dict, out: Path):
+    """Render the chosen figure region (whole figure, multi-panel kept together).
+    Falls back to a raw image xref for picks made by an older picker."""
+    if "x0" in ch:
+        pix = render_region(
+            doc, ch["page0"], fitz.Rect(ch["x0"], ch["y0"], ch["x1"], ch["y1"]), zoom=3.0
+        )
+    else:
+        pix = fitz.Pixmap(doc, ch["xref"])
+        if pix.alpha or pix.colorspace is None or pix.colorspace.name not in (
+            "DeviceRGB", "DeviceGray",
+        ):
+            pix = fitz.Pixmap(fitz.csRGB, pix)
     pix.save(out)
 
 
@@ -129,7 +137,7 @@ def main():
         meta = base_meta(slug)
         for i, ch in enumerate(chosen, start=1):
             img_name = f"{slug}-fig{i}.png"
-            extract(doc, ch["xref"], ASSETS / img_name)
+            extract(doc, ch, ASSETS / img_name)
             if i == 1:
                 rec = FIGS / f"{slug}.md"
                 caption = meta["caption"]
@@ -139,7 +147,7 @@ def main():
                 caption = f"{meta['caption']} (panel {i})"
                 order = meta["order"]  # same block; refine if needed
             write_record(rec, slug, img_name, meta, order, caption)
-            applied.append(f"{slug} fig{i} (xref {ch['xref']}, {ch['w']}x{ch['h']})")
+            applied.append(f"{slug} fig{i} ({ch.get('panels', 1)} panel(s), {ch['w']}x{ch['h']})")
     print(f"Applied {len(applied)} figure(s):")
     for a in applied:
         print(f"  - {a}")

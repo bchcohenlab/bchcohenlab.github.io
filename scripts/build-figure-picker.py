@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 """Build a self-contained HTML figure picker.
 
-For every cached reprint PDF (scripts/.cache/figpdfs/<slug>.pdf), extract ALL
-embedded raster figures and lay them out grouped by paper in one HTML file. Click
-to select one or more figures per paper; "Export picks.json" downloads your
-choices. Hand picks.json back to the agent (or run apply-figure-picks) to write
-the chosen image(s) into the site.
+For every cached reprint PDF (scripts/.cache/figpdfs/<slug>.pdf), detect each
+whole figure (multi-panel figures are kept together — see figure_extract) and lay
+them out grouped by paper in one HTML file. Click to select one or more figures
+per paper; "Export picks.json" downloads your choices. Hand picks.json to the
+agent (or run apply-figure-picks.py) to write the chosen figure(s) into the site.
 
 Thumbnails are base64-inlined, so the HTML works by double-clicking (no server).
-The figure currently on the site (the largest image) is badged "on site".
 
 Requires PyMuPDF. Run: python3 scripts/build-figure-picker.py
 Open:  open scripts/.cache/figure-picker.html
@@ -22,15 +21,15 @@ import re
 from pathlib import Path
 
 import fitz  # PyMuPDF
+from figure_extract import figure_clusters, render_region
 
 ROOT = Path(__file__).resolve().parent.parent
 CACHE = ROOT / "scripts/.cache/figpdfs"
 PUBS = ROOT / "src/content/publications"
 OUT = ROOT / "scripts/.cache/figure-picker.html"
 
-MIN_DIM = 200          # skip logos / rules / icons
 THUMB_MAX = 460        # px, longest side of the inlined thumbnail
-MAX_PER_PAPER = 40     # safety cap on candidates shown per paper
+MAX_PER_PAPER = 40     # safety cap on figures shown per paper
 
 
 def title_for(slug: str) -> str:
@@ -41,25 +40,17 @@ def title_for(slug: str) -> str:
     return json.loads(m.group(1)) if m else slug
 
 
-def thumb_b64(doc, xref: int) -> str | None:
-    """Return a base64 JPEG thumbnail for an image xref, or None if unusable."""
+def thumb_b64(doc, page_no: int, rect: fitz.Rect) -> str | None:
     try:
-        pix = fitz.Pixmap(doc, xref)
+        pix = render_region(doc, page_no, rect, zoom=1.6)
     except Exception:
         return None
-    if pix.alpha or pix.colorspace is None or pix.colorspace.name not in (
-        "DeviceRGB", "DeviceGray",
-    ):
-        try:
-            pix = fitz.Pixmap(fitz.csRGB, pix)
-        except Exception:
-            return None
     longest = max(pix.width, pix.height)
     k = 0
     while longest >> k > THUMB_MAX:
         k += 1
     if k:
-        pix.shrink(k)  # integer (1/2^k) downscale
+        pix.shrink(k)
     try:
         data = pix.tobytes("jpeg", jpg_quality=72)
     except Exception:
@@ -68,58 +59,57 @@ def thumb_b64(doc, xref: int) -> str | None:
 
 
 def candidates(pdf: Path):
-    """All embedded raster images >= MIN_DIM, deduped by xref, largest first."""
     doc = fitz.open(pdf)
-    seen = {}
-    for pno in range(doc.page_count):
-        for img in doc.get_page_images(pno):
-            xref, w, h = img[0], img[2], img[3]
-            if w < MIN_DIM or h < MIN_DIM:
-                continue
-            if xref not in seen:
-                seen[xref] = {"xref": xref, "page": pno + 1, "w": w, "h": h}
-    items = sorted(seen.values(), key=lambda d: d["w"] * d["h"], reverse=True)[:MAX_PER_PAPER]
-    largest_xref = items[0]["xref"] if items else None
-    for it in items:
-        it["thumb"] = thumb_b64(doc, it["xref"])
-        it["onSite"] = it["xref"] == largest_xref
-    return [it for it in items if it["thumb"]]
+    out = []
+    for i, c in enumerate(figure_clusters(doc)[:MAX_PER_PAPER]):
+        r = c["rect"]
+        thumb = thumb_b64(doc, c["page"], r)
+        if not thumb:
+            continue
+        out.append({
+            "page0": c["page"], "x0": round(r.x0, 1), "y0": round(r.y0, 1),
+            "x1": round(r.x1, 1), "y1": round(r.y1, 1), "panels": c["panels"],
+            "w": int(r.width * 3), "h": int(r.height * 3),
+            "thumb": thumb, "largest": i == 0,
+        })
+    return out
 
 
 def build():
     papers = []
     for pdf in sorted(CACHE.glob("*.pdf")):
-        slug = pdf.stem
-        cands = candidates(pdf)
-        if cands:
-            papers.append({"slug": slug, "title": title_for(slug), "figures": cands})
+        figs = candidates(pdf)
+        if figs:
+            papers.append({"slug": pdf.stem, "title": title_for(pdf.stem), "figures": figs})
 
-    cells_by_paper = []
+    sections = []
     for p in papers:
         cells = []
         for it in p["figures"]:
-            badge = '<span class="badge">on site</span>' if it["onSite"] else ""
+            badge = '<span class="badge">largest</span>' if it["largest"] else ""
+            panels = f'{it["panels"]} panels' if it["panels"] > 1 else "1 panel"
             cells.append(
-                f'<div class="cell" data-slug="{p["slug"]}" data-xref="{it["xref"]}" '
-                f'data-page="{it["page"]}" data-w="{it["w"]}" data-h="{it["h"]}" onclick="toggle(this)">'
+                f'<div class="cell" data-slug="{p["slug"]}" data-page0="{it["page0"]}" '
+                f'data-x0="{it["x0"]}" data-y0="{it["y0"]}" data-x1="{it["x1"]}" data-y1="{it["y1"]}" '
+                f'data-panels="{it["panels"]}" data-w="{it["w"]}" data-h="{it["h"]}" onclick="toggle(this)">'
                 f'{badge}'
                 f'<img loading="lazy" src="data:image/jpeg;base64,{it["thumb"]}">'
-                f'<div class="meta">p{it["page"]} · {it["w"]}×{it["h"]}</div>'
+                f'<div class="meta">p{it["page0"] + 1} · {panels} · {it["w"]}×{it["h"]}</div>'
                 f'<span class="check">✓</span>'
                 f"</div>"
             )
-        cells_by_paper.append(
+        sections.append(
             f'<section class="paper"><h2>{p["title"]}</h2>'
             f'<div class="slug">{p["slug"]} · {len(p["figures"])} figures</div>'
             f'<div class="grid">{"".join(cells)}</div></section>'
         )
 
     total = sum(len(p["figures"]) for p in papers)
-    html = HTML_TEMPLATE.replace("__BODY__", "\n".join(cells_by_paper)) \
-        .replace("__N_PAPERS__", str(len(papers))).replace("__N_FIGS__", str(total))
+    html = (HTML_TEMPLATE.replace("__BODY__", "\n".join(sections))
+            .replace("__N_PAPERS__", str(len(papers))).replace("__N_FIGS__", str(total)))
     OUT.write_text(html)
     print(f"Wrote {OUT}")
-    print(f"  {len(papers)} papers, {total} candidate figures")
+    print(f"  {len(papers)} papers, {total} candidate figures (multi-panel kept whole)")
     print(f"Open it:  open {OUT.relative_to(ROOT)}")
 
 
@@ -144,12 +134,12 @@ HTML_TEMPLATE = """<!doctype html>
   .paper { margin-bottom: 28px; }
   .paper h2 { font-size:16px; margin:0 0 2px; }
   .paper .slug { color:#94a3b8; font-size:12px; margin-bottom:10px; }
-  .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap:12px; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap:12px; }
   .cell { position:relative; border:2px solid #e2e8f0; border-radius:8px; overflow:hidden;
           background:#fff; cursor:pointer; transition:border-color .1s; }
   .cell:hover { border-color:#cbd5e1; }
   .cell.sel { border-color:var(--acc); box-shadow:0 0 0 2px rgba(214,64,159,.25); }
-  .cell img { display:block; width:100%; height:170px; object-fit:contain; background:#0f172a08; }
+  .cell img { display:block; width:100%; height:190px; object-fit:contain; background:#0f172a08; }
   .cell .meta { font-size:11px; color:#64748b; padding:4px 6px; border-top:1px solid #f1f5f9; }
   .cell .check { position:absolute; top:6px; left:6px; width:22px; height:22px; border-radius:50%;
                  background:var(--acc); color:#fff; display:none; align-items:center; justify-content:center;
@@ -169,7 +159,7 @@ HTML_TEMPLATE = """<!doctype html>
 <div class="wrap">__BODY__</div>
 <script>
   const KEY = "cohenlab-figure-picks";
-  const id = (c) => c.dataset.slug + "::" + c.dataset.xref;
+  const id = (c) => [c.dataset.slug, c.dataset.page0, c.dataset.x0, c.dataset.y0, c.dataset.x1, c.dataset.y1].join(":");
   let picks = new Set(JSON.parse(localStorage.getItem(KEY) || "[]"));
 
   function paint() {
@@ -185,7 +175,9 @@ HTML_TEMPLATE = """<!doctype html>
     document.querySelectorAll(".cell").forEach(c => {
       if (!picks.has(id(c))) return;
       (out[c.dataset.slug] ||= []).push({
-        xref: +c.dataset.xref, page: +c.dataset.page, w: +c.dataset.w, h: +c.dataset.h,
+        page0: +c.dataset.page0, x0: +c.dataset.x0, y0: +c.dataset.y0,
+        x1: +c.dataset.x1, y1: +c.dataset.y1, panels: +c.dataset.panels,
+        w: +c.dataset.w, h: +c.dataset.h,
       });
     });
     const blob = new Blob([JSON.stringify(out, null, 2)], { type: "application/json" });

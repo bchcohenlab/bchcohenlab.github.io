@@ -25,7 +25,8 @@ import sys
 from pathlib import Path
 
 try:
-    import fitz  # PyMuPDF
+    import fitz  # PyMuPDF  # noqa: F401 (used via figure_extract)
+    from figure_extract import figure_clusters, render_region
 except ImportError:
     print("PyMuPDF not installed (`pip install pymupdf`); skipping figure "
           "extraction. Build proceeds with no figures.", file=sys.stderr)
@@ -150,16 +151,10 @@ def read_pub(slug: str) -> dict:
     }
 
 
-def largest_image(doc):
-    best = None  # (area, xref)
-    for pno in range(doc.page_count):
-        for img in doc.get_page_images(pno):
-            xref, w, h = img[0], img[2], img[3]
-            if w < 300 or h < 300:  # skip logos / icons / rules
-                continue
-            if best is None or w * h > best[0]:
-                best = (w * h, xref)
-    return best[1] if best else None
+def largest_cluster(doc):
+    """Largest whole figure region (multi-panel figures kept together)."""
+    clusters = figure_clusters(doc)
+    return clusters[0] if clusters else None
 
 
 def main():
@@ -173,16 +168,11 @@ def main():
             skipped.append(f"{slug}: PDF not in cache ({pdf.name})")
             continue
         doc = fitz.open(pdf)
-        xref = largest_image(doc)
-        if xref is None:
-            skipped.append(f"{slug}: no suitable embedded image found")
+        cluster = largest_cluster(doc)
+        if cluster is None:
+            skipped.append(f"{slug}: no figure region found")
             continue
-        pix = fitz.Pixmap(doc, xref)
-        # Normalize to RGB: PNG can't hold CMYK/alpha/separation colorspaces.
-        if pix.alpha or pix.colorspace is None or pix.colorspace.name not in (
-            "DeviceRGB", "DeviceGray",
-        ):
-            pix = fitz.Pixmap(fitz.csRGB, pix)
+        pix = render_region(doc, cluster["page"], cluster["rect"], zoom=3.0)
         img_path = ASSETS / f"{slug}-fig1.png"
         pix.save(img_path)
 
