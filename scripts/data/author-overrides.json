@@ -1,0 +1,9 @@
+{
+  "_comment": "Manual author-marker corrections, merged over cv-publications.json by DOI (lowercase). coFirstSenior = names to mark with * (co-first / co-senior). Survives CV re-parsing. Mentee (**) status is derived from lab membership, so it is not listed here.",
+  "10.1002/ana.26015": {
+    "coFirstSenior": ["Fox MD", "Peters J"]
+  },
+  "10.1002/ana.26551": {
+    "coFirstSenior": ["Cohen AL", "Kroeck MR"]
+  }
+}

@@ -2,11 +2,11 @@
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import type { Publication } from "../lib/content";
-import { authorIsPerson, personKey } from "../lib/content";
-// Per-author markers (CV convention: * = co-first/-senior author, ** = mentee).
-// Read straight from the CV-parsed source, keyed by DOI/title, so the content
-// files (and their live citations) stay untouched.
+import { authorIsPerson, personKey, menteeMatcher } from "../lib/content";
+// Author markers: ** = mentee (derived from lab membership, see menteeMatcher)
+// and * = co-first/-senior author (from the CV, scripts/data, by DOI/title).
 import cvPubs from "../../scripts/data/cv-publications.json";
+import authorOverrides from "../../scripts/data/author-overrides.json";
 
 interface Props {
   pubs: Publication[];
@@ -16,23 +16,27 @@ const { pubs } = Astro.props;
 const norm = (s: string) =>
   s.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]/g, "");
 
-// CV records -> marker sets, looked up by DOI then normalized title.
-type Marks = { star: Set<string>; mentee: Set<string> };
-const cvByDoi = new Map<string, Marks>();
-const cvByTitle = new Map<string, Marks>();
+// Co-first/-senior (*) author name sets from the CV, keyed by DOI then title.
+const starByDoi = new Map<string, Set<string>>();
+const starByTitle = new Map<string, Set<string>>();
 for (const rec of cvPubs as any[]) {
-  const marks: Marks = {
-    star: new Set(rec.authors.filter((a: any) => a.coFirstSenior).map((a: any) => a.name)),
-    mentee: new Set(rec.authors.filter((a: any) => a.mentee).map((a: any) => a.name)),
-  };
-  if (rec.doi) cvByDoi.set(rec.doi.toLowerCase(), marks);
-  if (rec.title) cvByTitle.set(norm(rec.title), marks);
+  const star = new Set<string>(
+    rec.authors.filter((a: any) => a.coFirstSenior).map((a: any) => a.name),
+  );
+  if (rec.doi) starByDoi.set(rec.doi.toLowerCase(), star);
+  if (rec.title) starByTitle.set(norm(rec.title), star);
 }
-const EMPTY: Marks = { star: new Set(), mentee: new Set() };
-const marksFor = (p: Publication): Marks =>
-  (p.data.doi && cvByDoi.get(p.data.doi.toLowerCase())) ||
-  cvByTitle.get(norm(p.data.title)) ||
-  EMPTY;
+// Merge manual corrections (scripts/data/author-overrides.json) by DOI.
+for (const [doi, ov] of Object.entries(authorOverrides as Record<string, any>)) {
+  if (doi.startsWith("_")) continue;
+  const set = starByDoi.get(doi.toLowerCase()) ?? new Set<string>();
+  for (const n of ov.coFirstSenior ?? []) set.add(n);
+  starByDoi.set(doi.toLowerCase(), set);
+}
+const starsFor = (p: Publication): Set<string> =>
+  (p.data.doi && starByDoi.get(p.data.doi.toLowerCase())) ||
+  starByTitle.get(norm(p.data.title)) ||
+  new Set<string>();
 
 // Directory of lab people, for linking author names + mentee headshots.
 const people = await getCollection("people");
@@ -44,6 +48,7 @@ const dir = people.map((p) => ({
 }));
 const findPerson = (author: string) =>
   dir.find((d) => authorIsPerson(author, d.key)) ?? null;
+const isMentee = menteeMatcher(people);
 
 // Headshots for the lab members on a paper (in the people collection, with a
 // headshot), in author order. The PI's own headshot only appears when he is
@@ -63,10 +68,9 @@ const labPeopleFor = (p: Publication) => {
 };
 
 const shortName = (name: string) => name.split(",")[0].trim();
-const anyMarks = pubs.some((p) => {
-  const m = marksFor(p);
-  return m.star.size > 0 || m.mentee.size > 0;
-});
+const anyMarks = pubs.some(
+  (p) => starsFor(p).size > 0 || p.data.authors.some(isMentee),
+);
 ---
 
 <ol class="divide-y divide-slate-100" id="pub-list">
@@ -75,7 +79,8 @@ const anyMarks = pubs.some((p) => {
       const d = p.data;
       const link = d.doi ? `https://doi.org/${d.doi}` : d.url;
       const search = `${d.title} ${d.authors.join(" ")} ${d.journal ?? ""}`.toLowerCase();
-      const marks = marksFor(p);
+      const stars = starsFor(p);
+      const menteeLed = isMentee(d.authors[0] ?? "");
       const labPeople = labPeopleFor(p);
       return (
         <li
@@ -83,7 +88,7 @@ const anyMarks = pubs.some((p) => {
           data-pub
           data-year={d.year}
           data-featured={d.featured}
-          data-mentee={d.menteeFirstAuthor}
+          data-mentee={menteeLed}
           data-search={search}
         >
           <p class="font-medium text-slate-900">
@@ -104,7 +109,8 @@ const anyMarks = pubs.some((p) => {
           <p class="mt-1 text-sm text-slate-600">
             {d.authors.map((a, i) => {
               const person = findPerson(a);
-              const mark = marks.mentee.has(a) ? "**" : marks.star.has(a) ? "*" : "";
+              // Co-first/-senior (*) takes byline precedence; mentee (**) otherwise.
+              const mark = stars.has(a) ? "*" : isMentee(a) ? "**" : "";
               return (
                 <>
                   {i > 0 && ", "}
@@ -119,7 +125,7 @@ const anyMarks = pubs.some((p) => {
                     a
                   )}
                   {mark && (
-                    <sup class:list={["font-semibold", marks.mentee.has(a) ? "text-accent-600" : "text-slate-500"]}>{mark}</sup>
+                    <sup class:list={["font-semibold", mark === "**" ? "text-accent-600" : "text-slate-500"]}>{mark}</sup>
                   )}
                 </>
               );
@@ -158,12 +164,17 @@ const anyMarks = pubs.some((p) => {
           )}
 
           <div class="mt-2 flex flex-wrap items-center gap-2 text-xs">
-            {d.menteeFirstAuthor && (
+            {typeof d.citations === "number" && (
+              <span class="rounded-full bg-amber-100 px-2 py-0.5 font-medium text-amber-800">
+                Cited by {d.citations}
+              </span>
+            )}
+            {menteeLed && (
               <span class="rounded-full bg-accent-100 px-2 py-0.5 font-medium text-accent-700">
                 Mentee-led
               </span>
             )}
-            {d.cohenFirstOrSenior && !d.menteeFirstAuthor && (
+            {d.cohenFirstOrSenior && !menteeLed && (
               <span class="rounded-full bg-primary-100 px-2 py-0.5 font-medium text-primary-700">
                 Cohen first/senior
               </span>
@@ -172,9 +183,6 @@ const anyMarks = pubs.some((p) => {
               <span class="rounded-full bg-emerald-100 px-2 py-0.5 font-medium text-emerald-700">
                 Open access
               </span>
-            )}
-            {typeof d.citations === "number" && (
-              <span class="text-slate-500">Cited by {d.citations}</span>
             )}
             {d.doi && (
               <a

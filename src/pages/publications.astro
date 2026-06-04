@@ -2,12 +2,16 @@
 import BaseLayout from "../components/BaseLayout.astro";
 import PageHeader from "../components/PageHeader.astro";
 import PubList from "../components/PubList.astro";
-import { getPublications } from "../lib/content";
+import { getCollection } from "astro:content";
+import { getPublications, menteeMatcher } from "../lib/content";
 
 const pubs = await getPublications();
 
+// Mentee-led = first author is a profiled lab member (per the membership rule),
+// matching the badge/marker logic in PubList.
+const isMentee = menteeMatcher(await getCollection("people"));
 const featuredCount = pubs.filter((p) => p.data.featured).length;
-const menteeCount = pubs.filter((p) => p.data.menteeFirstAuthor).length;
+const menteeCount = pubs.filter((p) => isMentee(p.data.authors[0] ?? "")).length;
 
 const chip =
   "rounded-full border border-slate-300 px-3 py-1 text-sm font-medium text-slate-600 hover:bg-slate-50 data-[active]:border-primary-600 data-[active]:bg-primary-600 data-[active]:text-white";

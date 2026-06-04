@@ -76,3 +76,17 @@ export function publicationsForPerson(person: Person, pubs: Publication[]) {
   const pk = personKey(person.data.name);
   return pubs.filter((p) => p.data.authors.some((a) => authorIsPerson(a, pk)));
 }
+
+// Per the PI: every profiled lab member EXCEPT the PI and faculty is a mentee.
+// Deriving mentee status from membership (not CV ** tags) keeps it correct even
+// when the CV's tagging drifts.
+export const NON_MENTEE_SLUGS = new Set(["a-cohen", "j-peters"]);
+
+/** Build an `isMentee(authorString)` predicate from the people collection. */
+export function menteeMatcher(people: Person[]) {
+  const dir = people.map((p) => ({ slug: p.id, key: personKey(p.data.name) }));
+  return (author: string) => {
+    const d = dir.find((x) => authorIsPerson(author, x.key));
+    return !!d && !NON_MENTEE_SLUGS.has(d.slug);
+  };
+}
