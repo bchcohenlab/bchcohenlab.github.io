@@ -31,8 +31,20 @@ const AUTHOR_ID = process.env.SCHOLAR_AUTHOR_ID || "P9Z-BEcAAAAJ";
 const KEY = process.env.SERPAPI_KEY;
 const FIXTURE = process.env.SERPAPI_FIXTURE;
 
+// Greek letters appear as symbols in some Scholar titles (e.g. "α-dystrobrevin")
+// but spelled out in ours ("alpha-dystrobrevin"); transliterate so they match.
+const GREEK = {
+  α: "alpha", β: "beta", γ: "gamma", δ: "delta", ε: "epsilon", ζ: "zeta",
+  η: "eta", θ: "theta", ι: "iota", κ: "kappa", λ: "lambda", μ: "mu", ν: "nu",
+  ξ: "xi", ο: "omicron", π: "pi", ρ: "rho", σ: "sigma", ς: "sigma", τ: "tau",
+  υ: "upsilon", φ: "phi", χ: "chi", ψ: "psi", ω: "omega",
+};
 const norm = (s) =>
-  s.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]/g, "");
+  s
+    .toLowerCase()
+    .replace(/[α-ω]/g, (c) => GREEK[c] ?? "")
+    .normalize("NFKD")
+    .replace(/[^a-z0-9]/g, "");
 
 async function getArticles() {
   if (FIXTURE) {
