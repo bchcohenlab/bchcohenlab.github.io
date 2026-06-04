@@ -20,7 +20,7 @@
 //   Output: src/content/publications/<slug>.md
 //   Run: node scripts/migrate-publications.mjs
 
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -30,7 +30,14 @@ const OUT_DIR = join(ROOT, "src/content/publications");
 
 const cvPubs = JSON.parse(readFileSync(join(__dirname, "data/cv-publications.json"), "utf8"));
 const pubmed = JSON.parse(readFileSync(join(__dirname, "data/pubmed.json"), "utf8"));
-const indexJson = JSON.parse(readFileSync(join(ROOT, "index.json"), "utf8"));
+// Legacy index.json (old Hugo site) was only used to reuse old slugs for inbound
+// links during the initial migration; it's removed after cutover. Optional now.
+let indexJson = [];
+try {
+  indexJson = JSON.parse(readFileSync(join(ROOT, "index.json"), "utf8"));
+} catch {
+  /* legacy index.json gone — slug reuse no longer needed for new papers */
+}
 // Optional Scholar enrichment (citations + scholarUrl). Absent => skipped.
 let scholar = {};
 try {
@@ -73,8 +80,25 @@ const titleKeyword = (title) => {
 // --- build records ----------------------------------------------------------
 mkdirSync(OUT_DIR, { recursive: true });
 
-const used = new Set();
-const log = { reused: [], generated: [], dropped: [], featured: [], mentee: [] };
+// Additive mode: scan publications already in the collection so a re-run ADDS
+// only genuinely-new papers and never overwrites existing files (which carry
+// live Scholar citations + scholarUrl from refresh-citations.mjs, plus any hand
+// edits). This is the "add from the CV" path used when new papers are published.
+const normTitle = (s) => s.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]/g, "");
+const existingFiles = readdirSync(OUT_DIR).filter((f) => f.endsWith(".md"));
+const existingSlugs = new Set(existingFiles.map((f) => f.replace(/\.md$/, "")));
+const existingDois = new Set();
+const existingTitles = new Set();
+for (const f of existingFiles) {
+  const t = readFileSync(join(OUT_DIR, f), "utf8");
+  const d = /^doi: "(.*)"$/m.exec(t);
+  if (d) existingDois.add(d[1].toLowerCase());
+  const ti = /^title: (.+)$/m.exec(t);
+  if (ti) existingTitles.add(normTitle(JSON.parse(ti[1])));
+}
+
+const used = new Set(existingSlugs);
+const log = { added: [], skipped: [], dropped: [], featured: [], mentee: [] };
 
 const records = [];
 for (const p of cvPubs) {
@@ -93,17 +117,26 @@ for (const p of cvPubs) {
     p.authors.some((a) => a.coFirstSenior && isCohen(a.name));
   const featured = menteeFirstAuthor || (cohenFirstOrSenior && p.year >= 2019);
 
-  // slug: reuse legacy slug by DOI, else generate <lastname>-<year>-<keyword>
+  // Skip papers already in the collection (don't clobber live citations / edits).
+  if (
+    (p.doi && existingDois.has(p.doi.toLowerCase())) ||
+    existingTitles.has(normTitle(title))
+  ) {
+    log.skipped.push(title.slice(0, 50));
+    continue;
+  }
+
+  // slug: reuse legacy slug by DOI (initial migration), else generate
+  // <lastname>-<year>-<keyword>; ensure no collision with existing/new slugs.
   let slug = (p.doi && legacySlugByDoi[p.doi.toLowerCase()]) || null;
-  const reused = !!slug;
-  if (!slug) {
+  if (!slug || used.has(slug)) {
     const base = `${slugify(lastName(authorNames[0]))}-${p.year}-${titleKeyword(title)}`;
     slug = base;
     let n = 2;
     while (used.has(slug)) slug = `${base}-${n++}`;
   }
   used.add(slug);
-  (reused ? log.reused : log.generated).push(slug);
+  log.added.push(slug);
   if (featured) log.featured.push(slug);
   if (isMenteePaper) log.mentee.push(slug);
 
@@ -143,24 +176,23 @@ const emit = (r) => {
 records.forEach(emit);
 
 // --- report -----------------------------------------------------------------
-console.log(`\nEmitted ${records.length} publications`);
-console.log(`  slugs reused from old site: ${log.reused.length}`);
-console.log(`  new slugs generated:        ${log.generated.length}`);
-console.log(`  featured:                   ${log.featured.length}`);
-console.log(`  mentee-authored:            ${log.mentee.length}`);
-console.log(`  open access (PMCID):        ${records.filter((r) => r.openAccess).length}`);
-console.log(`  with citations (Scholar):   ${records.filter((r) => r.citations != null).length}`);
+console.log(
+  `\nAdded ${records.length} new publication(s); skipped ${log.skipped.length} already present.`,
+);
+if (log.added.length) console.log(`  added: ${log.added.join(", ")}`);
+console.log(`  (of added) featured: ${log.featured.length}, mentee-authored: ${log.mentee.length}`);
 
 if (log.dropped.length) {
   console.log(`\nDropped (${log.dropped.length}):`);
   for (const d of log.dropped) console.log(`  - ${d}`);
 }
 
-// Legacy index.json publications not carried over (not in the CV's peer-reviewed
-// record). Logged so the PI can re-add or add a redirect if desired.
-const carried = new Set(log.reused);
-const orphaned = legacyPubSlugs.filter((s) => !carried.has(s));
-if (orphaned.length) {
-  console.log(`\nOld /publication/ slugs NOT carried over (${orphaned.length}) — review:`);
-  for (const s of orphaned) console.log(`  - ${s}`);
+// During the initial migration (index.json present), report old /publication/
+// slugs not carried over so the PI can review.
+if (legacyPubSlugs.length) {
+  const orphaned = legacyPubSlugs.filter((s) => !existingSlugs.has(s) && !log.added.includes(s));
+  if (orphaned.length) {
+    console.log(`\nOld /publication/ slugs NOT carried over (${orphaned.length}) — review:`);
+    for (const s of orphaned) console.log(`  - ${s}`);
+  }
 }
