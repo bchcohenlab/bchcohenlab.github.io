@@ -1,5 +1,5 @@
 ---
-name: "Ivry Zagurly-Orly"
+name: "Ivry Zagury-Orly"
 status: alumni
 group: Alumni
 role: "Medical Student"
