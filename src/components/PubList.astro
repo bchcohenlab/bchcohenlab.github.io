@@ -45,17 +45,19 @@ const dir = people.map((p) => ({
 const findPerson = (author: string) =>
   dir.find((d) => authorIsPerson(author, d.key)) ?? null;
 
-// Headshots for every lab member on the paper (PI, faculty, and mentees) who is
-// in the people collection and has a headshot, in author order.
+// Headshots for the lab members on a paper (in the people collection, with a
+// headshot), in author order. The PI's own headshot only appears when he is
+// first/last/co-first/co-senior — not when he's a middle author.
+const PI_SLUG = "a-cohen";
 const labPeopleFor = (p: Publication) => {
   const seen = new Set<string>();
   const out: typeof dir = [];
   for (const a of p.data.authors) {
     const d = findPerson(a);
-    if (d && d.headshot && !seen.has(d.slug)) {
-      seen.add(d.slug);
-      out.push(d);
-    }
+    if (!d || !d.headshot || seen.has(d.slug)) continue;
+    if (d.slug === PI_SLUG && !p.data.cohenFirstOrSenior) continue;
+    seen.add(d.slug);
+    out.push(d);
   }
   return out;
 };
