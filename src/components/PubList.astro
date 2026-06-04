@@ -68,9 +68,7 @@ const labPeopleFor = (p: Publication) => {
 };
 
 const shortName = (name: string) => name.split(",")[0].trim();
-const anyMarks = pubs.some(
-  (p) => starsFor(p).size > 0 || p.data.authors.some(isMentee),
-);
+const anyMarks = pubs.some((p) => starsFor(p).size > 0);
 ---
 
 <ol class="divide-y divide-slate-100" id="pub-list">
@@ -110,8 +108,9 @@ const anyMarks = pubs.some(
           <p class="mt-1 text-sm text-slate-600">
             {d.authors.map((a, i) => {
               const person = findPerson(a);
-              // Co-first/-senior (*) takes byline precedence; mentee (**) otherwise.
-              const mark = stars.has(a) ? "*" : isMentee(a) ? "**" : "";
+              // Only a co-first/-senior (*) marker. Mentees are already conveyed
+              // by their bolded name links + headshots, so they get no marker.
+              const mark = stars.has(a) ? "*" : "";
               return (
                 <>
                   {i > 0 && ", "}
@@ -126,7 +125,7 @@ const anyMarks = pubs.some(
                     a
                   )}
                   {mark && (
-                    <sup class:list={["font-semibold", mark === "**" ? "text-accent-600" : "text-slate-500"]}>{mark}</sup>
+                    <sup class="font-semibold text-slate-500">{mark}</sup>
                   )}
                 </>
               );
@@ -216,8 +215,6 @@ const anyMarks = pubs.some(
   anyMarks && (
     <p class="mt-4 text-xs text-slate-500">
       <sup class="font-semibold text-slate-500">*</sup> co-first / co-senior author
-      <span class="mx-1">·</span>
-      <sup class="font-semibold text-accent-600">**</sup> mentee
     </p>
   )
 }
