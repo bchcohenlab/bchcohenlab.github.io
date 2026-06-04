@@ -2,12 +2,9 @@
 import BaseLayout from "../components/BaseLayout.astro";
 import PageHeader from "../components/PageHeader.astro";
 import PubList from "../components/PubList.astro";
-import { getPublications, getGroupedPeople, personKey } from "../lib/content";
+import { getPublications } from "../lib/content";
 
 const pubs = await getPublications();
-const highlight = (await getGroupedPeople())
-  .flatMap((g) => g.people)
-  .map((p) => personKey(p.data.name));
 
 const featuredCount = pubs.filter((p) => p.data.featured).length;
 const menteeCount = pubs.filter((p) => p.data.menteeFirstAuthor).length;
@@ -41,7 +38,7 @@ const chip =
       <span id="pub-count" class="text-sm text-slate-500"></span>
     </div>
 
-    <PubList pubs={pubs} highlight={highlight} />
+    <PubList pubs={pubs} />
 
     <p id="pub-empty" class="hidden py-10 text-center text-slate-500">
       No publications match your filters.

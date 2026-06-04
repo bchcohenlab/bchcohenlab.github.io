@@ -2,12 +2,7 @@
 import { Image } from "astro:assets";
 import BaseLayout from "../components/BaseLayout.astro";
 import { site } from "../data/site";
-import {
-  getConfirmedFigures,
-  getPublications,
-  getGroupedPeople,
-  personKey,
-} from "../lib/content";
+import { getConfirmedFigures, getPublications } from "../lib/content";
 import PubList from "../components/PubList.astro";
 import brainMotif from "../assets/brain-motif.png";
 
@@ -16,9 +11,6 @@ const strip = figures.slice(0, 4);
 
 const pubs = await getPublications();
 const recent = pubs.filter((p) => p.data.featured).slice(0, 5);
-const highlight = (await getGroupedPeople())
-  .flatMap((g) => g.people)
-  .map((p) => personKey(p.data.name));
 
 const themes = [
   {
@@ -140,7 +132,7 @@ const themes = [
               All publications &rarr;
             </a>
           </div>
-          <PubList pubs={recent} highlight={highlight} />
+          <PubList pubs={recent} />
         </div>
       </section>
     )

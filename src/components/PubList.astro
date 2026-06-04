@@ -1,16 +1,43 @@
 ---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import type { Publication } from "../lib/content";
-import { authorIsPerson, type PersonKey } from "../lib/content";
+import { authorIsPerson, personKey } from "../lib/content";
 
 interface Props {
   pubs: Publication[];
-  /** Author keys to bold (PI + lab members). */
-  highlight?: PersonKey[];
 }
-const { pubs, highlight = [] } = Astro.props;
+const { pubs } = Astro.props;
 
-const isHighlighted = (author: string) =>
-  highlight.some((k) => authorIsPerson(author, k));
+// Directory of lab people, for linking author names + showing mentee headshots.
+const people = await getCollection("people");
+const dir = people.map((p) => ({
+  slug: p.id,
+  name: p.data.name,
+  group: p.data.group,
+  headshot: p.data.headshot,
+  key: personKey(p.data.name),
+}));
+
+const findPerson = (author: string) =>
+  dir.find((d) => authorIsPerson(author, d.key)) ?? null;
+
+// Mentees shown as headshots = matched lab authors who aren't faculty (excludes
+// the PI and other faculty) and have a headshot.
+const menteesFor = (pub: Publication) => {
+  const seen = new Set<string>();
+  const out: typeof dir = [];
+  for (const a of pub.data.authors) {
+    const d = findPerson(a);
+    if (d && d.group !== "Faculty" && d.headshot && !seen.has(d.slug)) {
+      seen.add(d.slug);
+      out.push(d);
+    }
+  }
+  return out;
+};
+
+const shortName = (name: string) => name.split(",")[0].trim();
 ---
 
 <ol class="divide-y divide-slate-100" id="pub-list">
@@ -19,6 +46,7 @@ const isHighlighted = (author: string) =>
       const d = p.data;
       const link = d.doi ? `https://doi.org/${d.doi}` : d.url;
       const search = `${d.title} ${d.authors.join(" ")} ${d.journal ?? ""}`.toLowerCase();
+      const mentees = d.isMenteePaper ? menteesFor(p) : [];
       return (
         <li
           class="py-5"
@@ -42,19 +70,59 @@ const isHighlighted = (author: string) =>
               d.title
             )}
           </p>
+
           <p class="mt-1 text-sm text-slate-600">
-            {d.authors.map((a, i) => (
-              <>
-                {i > 0 && ", "}
-                {isHighlighted(a) ? <strong class="text-slate-900">{a}</strong> : a}
-              </>
-            ))}
+            {d.authors.map((a, i) => {
+              const person = findPerson(a);
+              return (
+                <>
+                  {i > 0 && ", "}
+                  {person ? (
+                    <a
+                      href={`/people/${person.slug}`}
+                      class="font-medium text-slate-900 hover:text-primary-700 hover:underline"
+                    >
+                      {a}
+                    </a>
+                  ) : (
+                    a
+                  )}
+                </>
+              );
+            })}
           </p>
+
           <p class="mt-0.5 text-sm text-slate-500">
             {d.journal && <em>{d.journal}</em>}
             {d.journal && " · "}
             {d.year}
           </p>
+
+          {mentees.length > 0 && (
+            <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+              {mentees.map((m) => (
+                <a
+                  href={`/people/${m.slug}`}
+                  class="group flex items-center gap-2"
+                  title={m.name}
+                >
+                  {m.headshot && (
+                    <Image
+                      src={m.headshot}
+                      alt={m.name}
+                      width={64}
+                      height={64}
+                      class="h-8 w-8 rounded-full object-cover ring-1 ring-slate-200 group-hover:ring-primary-300"
+                    />
+                  )}
+                  <span class="text-xs text-slate-600 group-hover:text-primary-700">
+                    {shortName(m.name)}
+                  </span>
+                </a>
+              ))}
+            </div>
+          )}
+
           <div class="mt-2 flex flex-wrap items-center gap-2 text-xs">
             {d.menteeFirstAuthor && (
               <span class="rounded-full bg-accent-100 px-2 py-0.5 font-medium text-accent-700">
