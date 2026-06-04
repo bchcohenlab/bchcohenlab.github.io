@@ -21,6 +21,7 @@ authors:
   - "Warfield SK"
   - "Peters J"
 year: 2025
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:ye4kPcJQO24C"
 journal: "Epilepsia"
 doi: "10.1111/epi.70007"
 pmid: "41258699"

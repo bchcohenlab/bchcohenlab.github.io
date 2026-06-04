@@ -10,6 +10,7 @@ authors:
   - "Schlaggar BL"
   - "Petersen SE"
 year: 2008
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:IjCSPb-OGe4C"
 journal: "NeuroImage"
 doi: "10.1016/j.neuroimage.2008.01.066"
 pmid: "18367410"

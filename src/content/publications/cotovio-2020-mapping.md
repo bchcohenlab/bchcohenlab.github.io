@@ -16,6 +16,7 @@ authors:
   - "Oliveira-Maia AJ"
   - "Fox MD"
 year: 2020
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:YFjsv_pBGBYC"
 journal: "The Journal of Clinical Investigation"
 doi: "10.1172/JCI136096"
 pmid: "32831292"

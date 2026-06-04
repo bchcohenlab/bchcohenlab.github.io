@@ -46,6 +46,7 @@ authors:
   - "Wang K"
   - "Schaper FLWVJ"
 year: 2025
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:tkaPQYYpVKoC"
 journal: "Nature Communications"
 doi: "10.1038/s41467-025-57392-7"
 pmid: "40128186"

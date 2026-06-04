@@ -16,6 +16,7 @@ authors:
   - "Kletenik I"
   - "Fox MD"
 year: 2025
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:AXPGKjj_ei8C"
 journal: "JAMA Network Open"
 doi: "10.1001/jamanetworkopen.2024.59297"
 pmid: "39946133"

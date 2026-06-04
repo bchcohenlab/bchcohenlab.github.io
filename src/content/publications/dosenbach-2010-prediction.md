@@ -20,6 +20,7 @@ authors:
   - "Petersen SE"
   - "Schlaggar BL"
 year: 2010
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:qjMakFHDy7sC"
 journal: "Science"
 doi: "10.1126/science.1194144"
 pmid: "20829489"

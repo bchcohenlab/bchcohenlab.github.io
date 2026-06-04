@@ -13,6 +13,7 @@ authors:
   - "Schlaggar BL"
   - "Petersen SE"
 year: 2011
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:eQOLeE2rZwMC"
 journal: "Neuron"
 doi: "10.1016/j.neuron.2011.09.006"
 pmid: "22099467"

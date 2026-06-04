@@ -10,6 +10,7 @@ authors:
   - "Fox MD"
   - "Joutsa J"
 year: 2024
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:kRWSkSYxWN8C"
 journal: "Brain"
 doi: "10.1093/brain/awae059"
 pmid: "38797521"

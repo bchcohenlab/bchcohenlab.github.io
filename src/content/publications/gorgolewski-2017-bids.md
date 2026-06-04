@@ -31,6 +31,7 @@ authors:
   - "Yarkoni T"
   - "Poldrack RA"
 year: 2017
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:ZeXyd9-uunAC"
 journal: "PLoS Computational Biology"
 doi: "10.1371/journal.pcbi.1005209"
 pmid: "28278228"

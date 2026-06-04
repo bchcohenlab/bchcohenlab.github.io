@@ -16,6 +16,7 @@ authors:
   - "Libenson M"
   - "Harini C"
 year: 2024
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:VOx2b1Wkg3QC"
 journal: "Epilepsia"
 doi: "10.1111/epi.17900"
 pmid: "38317356"

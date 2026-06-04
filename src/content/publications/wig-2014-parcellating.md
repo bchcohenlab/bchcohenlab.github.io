@@ -12,6 +12,7 @@ authors:
   - "Schlaggar BL"
   - "Petersen SE"
 year: 2014
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:Se3iqnhoufwC"
 journal: "Cerebral Cortex"
 doi: "10.1093/cercor/bht056"
 pmid: "23476025"

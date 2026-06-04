@@ -9,6 +9,7 @@ authors:
   - "Cohen AL"
   - "Peters J"
 year: 2026
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:uLbwQdceFCQC"
 journal: "Progress in Neuro-Psychopharmacology & Biological Psychiatry"
 doi: "10.1016/j.pnpbp.2026.111639"
 pmid: "41672269"

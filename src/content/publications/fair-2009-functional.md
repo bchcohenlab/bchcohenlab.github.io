@@ -10,6 +10,7 @@ authors:
   - "Schlaggar BL"
   - "Petersen SE"
 year: 2009
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:9yKSN-GCB0IC"
 journal: "PLoS Computational Biology"
 doi: "10.1371/journal.pcbi.1000381"
 pmid: "19412534"

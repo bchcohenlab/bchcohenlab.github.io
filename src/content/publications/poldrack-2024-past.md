@@ -5,6 +5,7 @@ authors:
   - "Cohen AL"
   - "Gorgolewski KJ"
 year: 2024
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:WbkHhVStYXYC"
 journal: "Imaging Neuroscience"
 doi: "10.1162/imag_a_00103"
 pmid: "39308505"

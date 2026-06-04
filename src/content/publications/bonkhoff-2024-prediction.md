@@ -24,6 +24,7 @@ authors:
   - "Rost NS"
   - "Fox MD"
 year: 2024
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:5ugPr518TE4C"
 journal: "Annals of Clinical and Translational Neurology"
 doi: "10.1002/acn3.52215"
 pmid: "39394714"

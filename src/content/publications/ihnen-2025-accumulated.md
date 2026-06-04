@@ -12,6 +12,7 @@ authors:
   - "Krueger DA"
   - "TACERN Study Group"
 year: 2025
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:bnK-pcrLprsC"
 journal: "Epilepsia"
 doi: "10.1111/epi.18172"
 pmid: "39470995"

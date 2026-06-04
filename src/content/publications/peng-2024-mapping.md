@@ -13,6 +13,7 @@ authors:
   - "Fox MD"
   - "Cohen AL"
 year: 2024
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:1qzjygNMrQYC"
 journal: "Biological Psychiatry"
 doi: "10.1016/j.biopsych.2024.09.022"
 pmid: "39369761"

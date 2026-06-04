@@ -12,6 +12,7 @@ authors:
   - "Fabbro F"
   - "Fox MD"
 year: 2021
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:J_g5lzvAfSwC"
 journal: "Biological Psychiatry"
 doi: "10.1016/j.biopsych.2021.06.016"
 pmid: "34454698"

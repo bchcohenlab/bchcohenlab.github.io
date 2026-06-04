@@ -10,6 +10,7 @@ authors:
   - "Petersen SE"
   - "Schlaggar BL"
 year: 2010
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:WF5omc3nYNoC"
 journal: "Frontiers in Systems Neuroscience"
 doi: "10.3389/fnsys.2010.00018"
 pmid: "20589235"

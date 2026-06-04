@@ -6,6 +6,7 @@ authors:
   - "Castro Palacin A"
   - "Cohen AL"
 year: 2026
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:Fu2w8maKXqMC"
 journal: "Imaging Neuroscience"
 doi: "10.1162/IMAG.a.1209"
 pmid: "41970694"

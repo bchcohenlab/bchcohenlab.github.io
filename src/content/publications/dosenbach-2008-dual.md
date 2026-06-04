@@ -7,6 +7,7 @@ authors:
   - "Schlaggar BL"
   - "Petersen SE"
 year: 2008
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:2osOgNQ5qMEC"
 journal: "Trends in Cognitive Sciences"
 doi: "10.1016/j.tics.2008.01.001"
 pmid: "18262825"

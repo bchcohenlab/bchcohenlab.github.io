@@ -11,6 +11,7 @@ authors:
   - "Petersen SE"
   - "Schlaggar BL"
 year: 2008
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:u-x6o8ySG0sC"
 journal: "Proceedings of the National Academy of Sciences"
 doi: "10.1073/pnas.0800376105"
 pmid: "18322013"

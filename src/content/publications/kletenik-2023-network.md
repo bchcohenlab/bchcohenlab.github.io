@@ -7,6 +7,7 @@ authors:
   - "Cohen AL"
   - "Fox MD"
 year: 2023
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:uWQEDVKXjbEC"
 journal: "Annals of Neurology"
 doi: "10.1002/ana.26709"
 pmid: "37289520"

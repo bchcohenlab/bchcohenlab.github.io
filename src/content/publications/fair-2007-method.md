@@ -12,6 +12,7 @@ authors:
   - "Raichle ME"
   - "Petersen SE"
 year: 2007
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:UeHWp8X0CEIC"
 journal: "NeuroImage"
 doi: "10.1016/j.neuroimage.2006.11.051"
 pmid: "17239622"

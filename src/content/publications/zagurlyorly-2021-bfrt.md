@@ -6,6 +6,7 @@ authors:
   - "Soussand L"
   - "Cohen AL"
 year: 2021
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:O3NaXMp0MMsC"
 journal: "Journal of Autism and Developmental Disorders"
 doi: "10.1007/s10803-021-04971-4"
 pmid: "33743118"

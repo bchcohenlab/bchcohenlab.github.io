@@ -12,6 +12,7 @@ authors:
   - "Bevers MB"
   - "Lee JW"
 year: 2022
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:NaGl4SEjCO4C"
 journal: "Neurology"
 doi: "10.1212/WNL.0000000000013301"
 pmid: "35017304"

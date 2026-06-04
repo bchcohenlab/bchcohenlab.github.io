@@ -12,6 +12,7 @@ authors:
   - "Sato M"
   - "Boes AD"
 year: 2019
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:isC4tDSrTZIC"
 journal: "Neurology"
 doi: "10.1212/WNL.0000000000008326"
 pmid: "31527284"

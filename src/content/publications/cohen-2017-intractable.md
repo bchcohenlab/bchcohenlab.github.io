@@ -6,6 +6,7 @@ authors:
   - "Parisi JE"
   - "Klaas JP"
 year: 2017
+scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:IWHjjKOFINEC"
 journal: "JAMA Neurology"
 doi: "10.1001/jamaneurol.2016.3195"
 pmid: "28384730"
