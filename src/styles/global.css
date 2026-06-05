@@ -75,3 +75,8 @@
 @utility container-page {
   @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
 }
+
+/* Clamp long author lists to the first 12 (toggle reveals the rest). */
+.authors.clamped .au:nth-child(n + 13) {
+  display: none;
+}

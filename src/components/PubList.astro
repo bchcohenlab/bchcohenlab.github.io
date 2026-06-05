@@ -114,30 +114,40 @@ const anyMarks = pubs.some((p) => starsFor(p).size > 0);
           </p>
 
           <p class="mt-1 text-sm text-slate-600">
-            {d.authors.map((a, i) => {
-              const person = findPerson(a);
-              // Only a co-first/-senior (*) marker. Mentees are already conveyed
-              // by their bolded name links + headshots, so they get no marker.
-              const mark = stars.has(a) ? "*" : "";
-              return (
-                <>
-                  {i > 0 && ", "}
-                  {person ? (
-                    <a
-                      href={`/people/${person.slug}`}
-                      class="font-medium text-slate-900 hover:text-primary-700 hover:underline"
-                    >
-                      {a}
-                    </a>
-                  ) : (
-                    a
-                  )}
-                  {mark && (
-                    <sup class="font-semibold text-slate-500">{mark}</sup>
-                  )}
-                </>
-              );
-            })}
+            <span class:list={["authors", d.authors.length > 14 && "clamped"]}>
+              {d.authors.map((a, i) => {
+                const person = findPerson(a);
+                // Only a co-first/-senior (*) marker. Mentees are conveyed by
+                // bolded name links + headshots, so they get no marker.
+                const mark = stars.has(a) ? "*" : "";
+                return (
+                  <span class="au">
+                    {i > 0 && ", "}
+                    {person ? (
+                      <a
+                        href={`/people/${person.slug}`}
+                        class="font-medium text-slate-900 hover:text-primary-700 hover:underline"
+                      >
+                        {a}
+                      </a>
+                    ) : (
+                      a
+                    )}
+                    {mark && <sup class="font-semibold text-slate-500">{mark}</sup>}
+                  </span>
+                );
+              })}
+            </span>
+            {d.authors.length > 14 && (
+              <button
+                type="button"
+                data-authors-toggle
+                data-more={`… +${d.authors.length - 12} more`}
+                class="ml-1 whitespace-nowrap text-primary-700 hover:underline"
+              >
+                … +{d.authors.length - 12} more
+              </button>
+            )}
           </p>
 
           <p class="mt-0.5 text-sm text-slate-500">
@@ -231,3 +241,15 @@ const anyMarks = pubs.some((p) => starsFor(p).size > 0);
     </p>
   )
 }
+
+<script>
+  // Expand/collapse clamped author lists.
+  document.querySelectorAll<HTMLButtonElement>("[data-authors-toggle]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const authors = btn.parentElement?.querySelector(".authors");
+      if (!authors) return;
+      const clamped = authors.classList.toggle("clamped");
+      btn.textContent = clamped ? (btn.dataset.more ?? "more") : "show fewer";
+    });
+  });
+</script>
