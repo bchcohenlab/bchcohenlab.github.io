@@ -41,6 +41,24 @@ export async function getConfirmedFigures() {
     .sort((a, b) => a.data.order - b.data.order);
 }
 
+/** Rights-confirmed figures grouped by their publication, ordered for display. */
+export async function getFiguresByPaper() {
+  const figs = await getConfirmedFigures();
+  const pubById = new Map((await getCollection("publications")).map((p) => [p.id, p]));
+  const groups = new Map<string, { paper: Publication; figures: Figure[]; order: number }>();
+  for (const f of figs) {
+    const id = f.data.paper.id;
+    const paper = pubById.get(id);
+    if (!paper) continue;
+    if (!groups.has(id)) groups.set(id, { paper, figures: [], order: f.data.order });
+    groups.get(id)!.figures.push(f);
+  }
+  const arr = [...groups.values()];
+  for (const g of arr) g.figures.sort((a, b) => a.id.localeCompare(b.id));
+  arr.sort((a, b) => a.order - b.order || b.paper.data.year - a.paper.data.year);
+  return arr;
+}
+
 // --- author <-> person matching (best-effort, for profile pages) -----------
 
 const normAlpha = (s: string) =>

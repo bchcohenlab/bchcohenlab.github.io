@@ -1,33 +1,229 @@
 ---
 import BaseLayout from "../components/BaseLayout.astro";
 import PageHeader from "../components/PageHeader.astro";
-import FigureCard from "../components/FigureCard.astro";
-import { getConfirmedFigures } from "../lib/content";
+import FigureCarousel from "../components/FigureCarousel.astro";
+import { getFiguresByPaper } from "../lib/content";
 
-// Only rights-confirmed figures are ever queried (hard gate in getConfirmedFigures).
-const figures = await getConfirmedFigures();
+// Only rights-confirmed figures are queried (hard gate in getFiguresByPaper).
+const groups = await getFiguresByPaper();
 ---
 
 <BaseLayout
   title="Figures"
-  description="Selected figures from the lab's published work, shown with attribution and license."
+  description="Selected figures from the lab's published work, grouped by article, shown with citation and license."
 >
   <PageHeader
     eyebrow="Selected figures"
     title="Figures"
-    lead="Figures from the lab's published papers, each shown with its citation and license."
+    lead="Figures from the lab's published papers, grouped by article. Swipe or use the arrows; click any figure to enlarge."
   />
   <div class="container-page py-12">
     {
-      figures.length > 0 ? (
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {figures.map((f) => (
-            <FigureCard figure={f} />
-          ))}
+      groups.length > 0 ? (
+        <div class="space-y-14">
+          {groups.map((g) => <FigureCarousel paper={g.paper} figures={g.figures} />)}
         </div>
       ) : (
         <p class="py-10 text-center text-slate-500">Figures coming soon.</p>
       )
     }
   </div>
+
+  {/* Lightbox */}
+  <div
+    id="lightbox"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/85 p-4 opacity-0 transition-opacity duration-200"
+    aria-hidden="true"
+  >
+    <button
+      id="lb-close"
+      type="button"
+      aria-label="Close"
+      class="absolute top-4 right-4 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
+    >
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+        ><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg
+      >
+    </button>
+    <button
+      id="lb-prev"
+      type="button"
+      aria-label="Previous"
+      class="absolute left-2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 sm:left-4"
+    >
+      <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+        ><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg
+      >
+    </button>
+    <figure class="flex max-h-full max-w-5xl flex-col items-center">
+      <img id="lb-img" class="max-h-[80vh] w-auto rounded-lg bg-white" alt="" />
+      <figcaption id="lb-cap" class="mt-3 max-w-3xl text-center text-sm text-slate-200"></figcaption>
+    </figure>
+    <button
+      id="lb-next"
+      type="button"
+      aria-label="Next"
+      class="absolute right-2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 sm:right-4"
+    >
+      <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+        ><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg
+      >
+    </button>
+  </div>
 </BaseLayout>
+
+<style is:global>
+  @media (prefers-reduced-motion: no-preference) {
+    [data-reveal] {
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+    }
+    .reveal-pending {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+  }
+</style>
+
+<script>
+  // --- Scroll reveal (no-op without JS, so content is never hidden) ---
+  const reveals = [...document.querySelectorAll<HTMLElement>("[data-reveal]")];
+  reveals.forEach((el) => el.classList.add("reveal-pending"));
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.remove("reveal-pending");
+          io.unobserve(e.target);
+        }
+      }
+    },
+    { threshold: 0.1 },
+  );
+  reveals.forEach((el) => io.observe(el));
+
+  // --- Carousels: arrows + dot indicators ---
+  document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((car) => {
+    const gid = car.getAttribute("data-carousel");
+    const wrap = car.closest(".carousel-wrap");
+    const items = [...car.children] as HTMLElement[];
+    const step = () => (items[0]?.getBoundingClientRect().width ?? 300) + 16;
+    wrap?.querySelector("[data-car-prev]")?.addEventListener("click", () =>
+      car.scrollBy({ left: -step(), behavior: "smooth" }),
+    );
+    wrap?.querySelector("[data-car-next]")?.addEventListener("click", () =>
+      car.scrollBy({ left: step(), behavior: "smooth" }),
+    );
+
+    const dots = [
+      ...(document.querySelector(`[data-dots="${gid}"]`)?.children ?? []),
+    ] as HTMLElement[];
+    const setActive = (idx: number) =>
+      dots.forEach((dt, i) => {
+        dt.classList.toggle("bg-primary-600", i === idx);
+        dt.classList.toggle("bg-slate-300", i !== idx);
+      });
+    dots.forEach((dt, i) =>
+      dt.addEventListener("click", () => {
+        const it = items[i];
+        const left =
+          it.getBoundingClientRect().left -
+          car.getBoundingClientRect().left +
+          car.scrollLeft -
+          (car.clientWidth - it.offsetWidth) / 2;
+        car.scrollTo({ left, behavior: "smooth" });
+      }),
+    );
+    let raf = 0;
+    car.addEventListener("scroll", () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const c = car.getBoundingClientRect().left + car.clientWidth / 2;
+        let best = 0,
+          bd = Infinity;
+        items.forEach((it, i) => {
+          const r = it.getBoundingClientRect();
+          const dd = Math.abs(r.left + r.width / 2 - c);
+          if (dd < bd) {
+            bd = dd;
+            best = i;
+          }
+        });
+        setActive(best);
+      });
+    });
+    setActive(0);
+  });
+
+  // --- Lightbox ---
+  const lb = document.getElementById("lightbox")!;
+  const lbImg = document.getElementById("lb-img") as HTMLImageElement;
+  const lbCap = document.getElementById("lb-cap")!;
+  const lbPrev = document.getElementById("lb-prev")!;
+  const lbNext = document.getElementById("lb-next")!;
+  const groups: Record<string, { src: string; cap: string }[]> = {};
+  document.querySelectorAll<HTMLElement>("[data-lb]").forEach((b) => {
+    (groups[b.dataset.group!] ||= []).push({
+      src: b.dataset.full!,
+      cap: b.dataset.caption!,
+    });
+  });
+  let curG = "",
+    curI = 0;
+  const render = () => {
+    const arr = groups[curG];
+    lbImg.src = arr[curI].src;
+    lbImg.alt = arr[curI].cap;
+    lbCap.textContent = arr[curI].cap;
+    const many = arr.length > 1;
+    lbPrev.style.display = many ? "" : "none";
+    lbNext.style.display = many ? "" : "none";
+  };
+  const open = (g: string, i: number) => {
+    curG = g;
+    curI = i;
+    render();
+    lb.classList.remove("hidden");
+    lb.classList.add("flex");
+    requestAnimationFrame(() => lb.classList.remove("opacity-0"));
+    lb.setAttribute("aria-hidden", "false");
+    document.documentElement.style.overflow = "hidden";
+  };
+  const close = () => {
+    lb.classList.add("opacity-0");
+    lb.setAttribute("aria-hidden", "true");
+    document.documentElement.style.overflow = "";
+    setTimeout(() => {
+      lb.classList.add("hidden");
+      lb.classList.remove("flex");
+      lbImg.src = "";
+    }, 200);
+  };
+  const nav = (d: number) => {
+    const arr = groups[curG];
+    curI = (curI + d + arr.length) % arr.length;
+    render();
+  };
+  document.querySelectorAll<HTMLElement>("[data-lb]").forEach((b) =>
+    b.addEventListener("click", () => open(b.dataset.group!, Number(b.dataset.index))),
+  );
+  lbPrev.addEventListener("click", (e) => {
+    e.stopPropagation();
+    nav(-1);
+  });
+  lbNext.addEventListener("click", (e) => {
+    e.stopPropagation();
+    nav(1);
+  });
+  document.getElementById("lb-close")!.addEventListener("click", close);
+  lb.addEventListener("click", (e) => {
+    if (e.target === lb) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (lb.classList.contains("hidden")) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowLeft") nav(-1);
+    else if (e.key === "ArrowRight") nav(1);
+  });
+</script>

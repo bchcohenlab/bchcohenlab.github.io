@@ -1,0 +1,147 @@
+---
+import { Image, getImage } from "astro:assets";
+import type { Figure, Publication } from "../lib/content";
+
+interface Props {
+  paper: Publication;
+  figures: Figure[];
+}
+const { paper, figures } = Astro.props;
+const d = paper.data;
+const link = d.doi ? `https://doi.org/${d.doi}` : d.url;
+const citation = figures[0]?.data.citation ?? "";
+const license = figures[0]?.data.license ?? "";
+const licenseUrl =
+  figures[0]?.data.licenseUrl ?? "https://creativecommons.org/licenses/by/4.0/";
+const multi = figures.length > 1;
+const gid = paper.id;
+
+// Large webp for the lightbox (loaded only when a figure is opened).
+const items = await Promise.all(
+  figures.map(async (f) => ({
+    fig: f,
+    full: (
+      await getImage({
+        src: f.data.image,
+        width: Math.min(1400, f.data.image.width),
+        format: "webp",
+      })
+    ).src,
+  })),
+);
+---
+
+<section class="fig-article scroll-mt-24" data-reveal>
+  <header class="mb-3">
+    <h2 class="font-serif text-xl text-slate-900">{d.title}</h2>
+    <p class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-500">
+      <span>{citation}</span>
+      {
+        license && (
+          <a
+            href={licenseUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded bg-emerald-100 px-1.5 py-0.5 text-xs font-medium text-emerald-800 hover:bg-emerald-200"
+          >
+            {license}
+          </a>
+        )
+      }
+      {
+        link && (
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-primary-700 hover:underline"
+          >
+            DOI
+          </a>
+        )
+      }
+    </p>
+  </header>
+
+  <div class="carousel-wrap relative">
+    {
+      multi && (
+        <button
+          type="button"
+          data-car-prev
+          aria-label="Previous figure"
+          class="absolute top-1/2 left-1 z-10 hidden -translate-y-1/2 rounded-full bg-white/90 p-2 text-slate-700 shadow ring-1 ring-slate-200 hover:bg-white sm:flex"
+        >
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+      )
+    }
+
+    <ul
+      data-carousel={gid}
+      class="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    >
+      {
+        items.map((it, i) => (
+          <li class="w-[86%] flex-none snap-center sm:w-80 lg:w-96">
+            <figure class="overflow-hidden rounded-xl border border-slate-200 bg-white">
+              <button
+                type="button"
+                data-lb
+                data-group={gid}
+                data-index={i}
+                data-full={it.full}
+                data-caption={it.fig.data.caption}
+                class="block w-full cursor-zoom-in bg-slate-900/5"
+                aria-label="Enlarge figure"
+              >
+                <Image
+                  src={it.fig.data.image}
+                  alt={it.fig.data.caption}
+                  widths={[400, 800]}
+                  sizes="(min-width: 1024px) 24rem, 86vw"
+                  class="mx-auto max-h-80 w-full object-contain"
+                />
+              </button>
+              <figcaption class="p-4 text-sm text-slate-700">
+                {it.fig.data.caption}
+              </figcaption>
+            </figure>
+          </li>
+        ))
+      }
+    </ul>
+
+    {
+      multi && (
+        <button
+          type="button"
+          data-car-next
+          aria-label="Next figure"
+          class="absolute top-1/2 right-1 z-10 hidden -translate-y-1/2 rounded-full bg-white/90 p-2 text-slate-700 shadow ring-1 ring-slate-200 hover:bg-white sm:flex"
+        >
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+      )
+    }
+  </div>
+
+  {
+    multi && (
+      <div class="mt-3 flex justify-center gap-2" data-dots={gid}>
+        {figures.map((_, i) => (
+          <button
+            type="button"
+            data-dot={i}
+            aria-label={`Go to figure ${i + 1}`}
+            class="h-2 w-2 rounded-full bg-slate-300 transition-colors"
+          />
+        ))}
+      </div>
+    )
+  }
+</section>
