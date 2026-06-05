@@ -35,6 +35,7 @@ LIGATURES = {
 def clean(t: str) -> str:
     for k, v in LIGATURES.items():
         t = t.replace(k, v)
+    t = re.sub(r"[      ]", " ", t)  # unicode spaces -> space
     t = re.sub(r"-\n(\w)", r"\1", t)        # de-hyphenate hard hyphen at line break
     t = re.sub(r"­\s*", "", t)         # soft hyphen (+ any space) -> join word
     t = re.sub(r"\s*\n\s*", " ", t)         # newlines -> spaces

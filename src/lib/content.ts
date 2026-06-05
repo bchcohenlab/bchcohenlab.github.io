@@ -53,9 +53,18 @@ export async function getFiguresByPaper() {
     if (!groups.has(id)) groups.set(id, { paper, figures: [], order: f.data.order });
     groups.get(id)!.figures.push(f);
   }
+  // Order a paper's figures by figure number parsed from the legend (Figure 2,
+  // 5, 9, …); a graphical abstract (no number) leads, anything unparsed trails.
+  const figNum = (caption: string) => {
+    const m = /^\s*fig(?:ure)?\.?\s*(\d+)/i.exec(caption);
+    if (m) return Number(m[1]);
+    if (/graphical abstract/i.test(caption)) return 0;
+    return Number.POSITIVE_INFINITY;
+  };
   const arr = [...groups.values()];
-  for (const g of arr) g.figures.sort((a, b) => a.id.localeCompare(b.id));
-  arr.sort((a, b) => a.order - b.order || b.paper.data.year - a.paper.data.year);
+  for (const g of arr) g.figures.sort((a, b) => figNum(a.data.caption) - figNum(b.data.caption));
+  // Papers chronological, most recent first.
+  arr.sort((a, b) => b.paper.data.year - a.paper.data.year || a.order - b.order);
   return arr;
 }
 
