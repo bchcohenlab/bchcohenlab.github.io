@@ -78,13 +78,24 @@ const anyMarks = pubs.some((p) => starsFor(p).size > 0);
       const menteeLed = isMentee(d.authors[0] ?? "");
       const featured = menteeLed || (d.cohenFirstOrSenior && d.year >= 2019);
       const labPeople = labPeopleFor(p);
+      // Collaboration unless Cohen is the SOLE first or SOLE last author —
+      // co-first / co-last (he shares the lead) and middle authorship all count.
+      const piAt = (a: string) => findPerson(a)?.slug === "a-cohen";
+      const cohenStar = d.authors.some((a) => piAt(a) && stars.has(a));
+      const soleFirst = piAt(d.authors[0] ?? "") && !cohenStar;
+      const soleLast = piAt(d.authors[d.authors.length - 1] ?? "") && !cohenStar;
+      const collaboration = !soleFirst && !soleLast;
       return (
         <li
           class="py-5"
           data-pub
           data-year={d.year}
+          data-citations={typeof d.citations === "number" ? d.citations : -1}
           data-featured={featured}
           data-mentee={menteeLed}
+          data-cohen-senior={d.cohenFirstOrSenior}
+          data-collaboration={collaboration}
+          data-openaccess={d.openAccess}
           data-search={search}
         >
           <p class="font-medium text-slate-900">
@@ -176,7 +187,7 @@ const anyMarks = pubs.some((p) => starsFor(p).size > 0);
                 Cohen first/senior
               </span>
             )}
-            {!d.cohenFirstOrSenior && (
+            {collaboration && (
               <span class="rounded-full bg-slate-200 px-2 py-0.5 font-medium text-slate-600">
                 Collaboration
               </span>
