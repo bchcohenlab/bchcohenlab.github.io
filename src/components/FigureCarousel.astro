@@ -10,9 +10,6 @@ const { paper, figures } = Astro.props;
 const d = paper.data;
 const link = d.doi ? `https://doi.org/${d.doi}` : d.url;
 const citation = figures[0]?.data.citation ?? "";
-const license = figures[0]?.data.license ?? "";
-const licenseUrl =
-  figures[0]?.data.licenseUrl ?? "https://creativecommons.org/licenses/by/4.0/";
 const multi = figures.length > 1;
 const gid = paper.id;
 
@@ -36,18 +33,6 @@ const items = await Promise.all(
     <h2 class="font-serif text-xl text-slate-900">{d.title}</h2>
     <p class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-500">
       <span>{citation}</span>
-      {
-        license && (
-          <a
-            href={licenseUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="rounded bg-emerald-100 px-1.5 py-0.5 text-xs font-medium text-emerald-800 hover:bg-emerald-200"
-          >
-            {license}
-          </a>
-        )
-      }
       {
         link && (
           <a
@@ -105,7 +90,7 @@ const items = await Promise.all(
                   class="mx-auto max-h-80 w-full object-contain"
                 />
               </button>
-              <figcaption class="p-4 text-sm text-slate-700">
+              <figcaption class="line-clamp-4 p-4 text-sm text-slate-700">
                 {it.fig.data.caption}
               </figcaption>
             </figure>
