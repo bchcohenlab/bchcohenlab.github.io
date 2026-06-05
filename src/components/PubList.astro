@@ -50,17 +50,14 @@ const findPerson = (author: string) =>
   dir.find((d) => authorIsPerson(author, d.key)) ?? null;
 const isMentee = menteeMatcher(people);
 
-// Headshots for the lab members on a paper (in the people collection, with a
-// headshot), in author order. The PI's own headshot only appears when he is
-// first/last/co-first/co-senior — not when he's a middle author.
-const PI_SLUG = "a-cohen";
+// Headshots for every lab member on a paper (in the people collection, with a
+// headshot), in author order — including the PI on any paper he co-authored.
 const labPeopleFor = (p: Publication) => {
   const seen = new Set<string>();
   const out: typeof dir = [];
   for (const a of p.data.authors) {
     const d = findPerson(a);
     if (!d || !d.headshot || seen.has(d.slug)) continue;
-    if (d.slug === PI_SLUG && !p.data.cohenFirstOrSenior) continue;
     seen.add(d.slug);
     out.push(d);
   }
@@ -177,6 +174,11 @@ const anyMarks = pubs.some((p) => starsFor(p).size > 0);
             {d.cohenFirstOrSenior && !menteeLed && (
               <span class="rounded-full bg-primary-100 px-2 py-0.5 font-medium text-primary-700">
                 Cohen first/senior
+              </span>
+            )}
+            {!d.cohenFirstOrSenior && !menteeLed && (
+              <span class="rounded-full bg-slate-200 px-2 py-0.5 font-medium text-slate-600">
+                Collaboration
               </span>
             )}
             {d.openAccess && (
