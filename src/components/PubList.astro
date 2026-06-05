@@ -171,12 +171,12 @@ const anyMarks = pubs.some((p) => starsFor(p).size > 0);
                 Mentee-led
               </span>
             )}
-            {d.cohenFirstOrSenior && !menteeLed && (
+            {d.cohenFirstOrSenior && (
               <span class="rounded-full bg-primary-100 px-2 py-0.5 font-medium text-primary-700">
                 Cohen first/senior
               </span>
             )}
-            {!d.cohenFirstOrSenior && !menteeLed && (
+            {!d.cohenFirstOrSenior && (
               <span class="rounded-full bg-slate-200 px-2 py-0.5 font-medium text-slate-600">
                 Collaboration
               </span>
