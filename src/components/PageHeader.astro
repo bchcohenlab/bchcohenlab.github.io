@@ -16,7 +16,10 @@ const { eyebrow, title, lead } = Astro.props;
         </p>
       )
     }
-    <h1 class="mt-2 text-4xl font-semibold text-slate-900 sm:text-5xl">{title}</h1>
+    <div
+      class:list={["h-0.5 w-12 rounded-full bg-accent-500", eyebrow ? "mt-4" : ""]}
+    />
+    <h1 class="mt-4 text-4xl font-semibold text-slate-900 sm:text-5xl">{title}</h1>
     {lead && <p class="mt-5 max-w-2xl text-lg text-slate-600">{lead}</p>}
   </div>
 </header>

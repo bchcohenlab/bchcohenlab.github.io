@@ -1,0 +1,466 @@
+---
+/*
+  Hero — the lab's "bedside-to-bedside" pipeline (Cohen, J Neurodev Disord 2022),
+  five line-art steps on a real brain glyph (Lucide `brain`, ISC), brand-recoloured:
+
+    1 MAP      TWO causal-neuroimaging paths — a focal lesion AND pharmaco-fMRI —
+               converge on a brain network (nodes + edges) = the symptom circuit.
+    2 VALIDATE the circuit confirmed across developing ASD/ADHD cohorts.
+    3 MODULATE a figure-8 TMS coil + a closed rt-fMRI neurofeedback loop (MRI scanner).
+    4 ASSESS   the change, measured at the human level (behaviour / symptoms).
+    5 TRIALS   symptom-targeted therapy → clinical trials.
+
+  A connecting rail + a curved return arrow carry the iterative loop back to the
+  bedside. Each step animates. Hand-authored inline SVG, no external assets.
+*/
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+
+// Lucide `brain` (two hemispheres) — stroke-only, brand-recoloured, scaled per icon.
+const BRAIN = [
+  "M12 18V5",
+  "M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4",
+  "M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5",
+  "M17.997 5.125a4 4 0 0 1 2.526 5.77",
+  "M18 18a4 4 0 0 0 2-7.464",
+  "M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517",
+  "M6 18a4 4 0 0 1-2-7.464",
+  "M6.003 5.125a4 4 0 0 0-2.526 5.77",
+];
+
+// MAP — a small connectome (the symptom circuit) over the brain, placed in the
+// open interior (clear of the brain's outline + gyri strokes).
+const MAP_NODES: [number, number][] = [[47, 33], [50, 46], [64, 32], [66, 45]];
+const MAP_EDGES: [number, number][] = [[0, 1], [2, 3], [0, 2], [1, 3], [0, 3]];
+
+const steps = [
+  { n: 1, title: "Map", cap: "lesions & pharmaco-fMRI" },
+  { n: 2, title: "Validate", cap: "in non-lesional patients" },
+  { n: 3, title: "Modulate", cap: "TMS & neurofeedback" },
+  { n: 4, title: "Assess", cap: "change in behavior" },
+  { n: 5, title: "Translate", cap: "rapid clinical trials" },
+] as const;
+---
+
+<div class:list={["pipeline", className]}>
+  <ol class="steps grid grid-cols-1 gap-y-3 sm:grid-cols-3 sm:gap-x-2 sm:gap-y-8 lg:grid-cols-5">
+    {steps.map((s) => (
+      <li class={`step step-${s.n} relative`}>
+        <a
+          href="/research"
+          class="group flex items-center gap-4 text-left sm:flex-col sm:items-center sm:gap-0 sm:text-center"
+        >
+        <div class="icon shrink-0">
+          {s.n === 1 && (
+            /* MAP — two causal paths converge on a brain network */
+            <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
+              <g class="brain" transform="translate(33 16) scale(1.85)">
+                {BRAIN.map((d) => <path d={d} />)}
+              </g>
+              <g class="net">
+                {MAP_EDGES.map(([a, b]) => (
+                  <line x1={MAP_NODES[a][0]} y1={MAP_NODES[a][1]} x2={MAP_NODES[b][0]} y2={MAP_NODES[b][1]} />
+                ))}
+                {MAP_NODES.map(([x, y], i) => (
+                  <Fragment>
+                    <circle class="net-halo" cx={x} cy={y} r="3.6" />
+                    <circle class="net-node" style={`--i:${i}`} cx={x} cy={y} r="2.3" />
+                  </Fragment>
+                ))}
+              </g>
+              {/* source A — focal lesion */}
+              <path class="lesion" d="M11 19 c5 -1 7 3 5 7 c-1 3 -6 4 -8 1 c-2 -3 -1 -7 3 -8 Z" />
+              {/* source B — pharmaco-fMRI capsule */}
+              <g class="drug">
+                <rect x="4" y="50" width="18" height="9.5" rx="4.75" transform="rotate(-16 13 55)" />
+                <line class="pill-split" x1="13" y1="48.6" x2="15.6" y2="57.6" />
+              </g>
+              {/* the two paths merge → one arrow into the network */}
+              <path class="merge" d="M18 25 C25 29 26 36 31 38" />
+              <path class="merge" d="M20 53 C27 50 26 42 31 39" />
+              <path class="merge-arrow" d="M31 38.5 L38 38.5 M35 35.5 L38.6 38.6 L35 41.6" />
+            </svg>
+          )}
+          {s.n === 2 && (
+            /* VALIDATE — circuit confirmed across a developing cohort, badge check */
+            <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
+              <g class="brain cohort c-a" transform="translate(-1 26) scale(1.15)">
+                {BRAIN.map((d) => <path d={d} />)}
+              </g>
+              <g class="brain cohort c-b" transform="translate(7 19) scale(1.5)">
+                {BRAIN.map((d) => <path d={d} />)}
+              </g>
+              <g class="brain" transform="translate(26 13) scale(1.95)">
+                {BRAIN.map((d) => <path d={d} />)}
+              </g>
+              <circle class="badge" cx="62" cy="61" r="11" />
+              <path class="badge-check" d="M56.5 61 L60.5 65.5 L68 54.5" />
+            </svg>
+          )}
+          {s.n === 3 && (
+            /* MODULATE — figure-8 TMS coil + a closed rt-fMRI neurofeedback loop */
+            <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
+              <defs>
+                <marker
+                  id="fb-arrow"
+                  viewBox="0 0 10 10"
+                  refX="6.5"
+                  refY="5"
+                  markerWidth="7"
+                  markerHeight="7"
+                  markerUnits="userSpaceOnUse"
+                  orient="auto"
+                >
+                  <path class="mk" d="M1.5 2 L8 5 L1.5 8" />
+                </marker>
+              </defs>
+              <g class="brain" transform="translate(0 28) scale(1.4)">
+                {BRAIN.map((d) => <path d={d} />)}
+              </g>
+              {/* TMS figure-8 coil: figure-8 against the scalp, handle pointing away */}
+              <g class="coil">
+                <line x1="16.5" y1="15" x2="16.5" y2="6" />
+                <circle cx="11" cy="21" r="5.5" />
+                <circle cx="22" cy="21" r="5.5" />
+              </g>
+              <g class="pulse">
+                <path d="M9 28 Q16.5 30.5 24 28" />
+                <path d="M7.5 32 Q16.5 34.5 25.5 32" />
+              </g>
+              {/* MRI scanner (real-time fMRI): gantry + bore tunnel + patient bed */}
+              <g class="mri">
+                <rect x="55" y="32" width="21" height="29" rx="4" />
+                <circle class="bore" cx="65.5" cy="46" r="8" />
+                <circle class="bore" cx="65.5" cy="46" r="4.3" />
+                <line class="bed" x1="44" y1="52" x2="60" y2="52" />
+                <line class="bed" x1="46.5" y1="52" x2="46.5" y2="58" />
+              </g>
+              {/* closed neurofeedback loop: brain <-> scanner */}
+              <g class="fb">
+                <path d="M31 42 C37 37 41 38 44 43" marker-end="url(#fb-arrow)" />
+                <path d="M44 54 C41 59 35 59 31 53" marker-end="url(#fb-arrow)" />
+              </g>
+            </svg>
+          )}
+          {s.n === 4 && (
+            /* ASSESS — change measured at the human level (person + outcome rising) */
+            <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
+              <defs>
+                <marker
+                  id="assess-arrow"
+                  viewBox="0 0 10 10"
+                  refX="6.5"
+                  refY="5"
+                  markerWidth="8"
+                  markerHeight="8"
+                  markerUnits="userSpaceOnUse"
+                  orient="auto"
+                >
+                  <path class="mk" d="M1.5 2 L8 5 L1.5 8" />
+                </marker>
+              </defs>
+              <g class="person">
+                <circle cx="29" cy="24" r="10" />
+                <path d="M13 58 C13 45 21 39 29 39 C37 39 45 45 45 58" />
+              </g>
+              <g class="bars">
+                <line style="--i:0" x1="55" y1="57" x2="55" y2="49" />
+                <line style="--i:1" x1="62" y1="57" x2="62" y2="41" />
+                <line style="--i:2" x1="69" y1="57" x2="69" y2="31" />
+              </g>
+              <path class="rise" d="M53 51 L60 43 L66.5 28" marker-end="url(#assess-arrow)" />
+            </svg>
+          )}
+          {s.n === 5 && (
+            /* CLINICAL TRIALS — symptom-targeted treatment protocol, endpoints met */
+            <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
+              <g class="trial">
+                <rect x="22" y="17" width="36" height="49" rx="3.5" />
+                <rect class="clip" x="31" y="12" width="18" height="9" rx="2.5" />
+                <g class="rows">
+                  <path class="tick" style="--i:0" d="M28 31 l3 3 l5.5 -6.5" />
+                  <line x1="39" y1="31" x2="52" y2="31" />
+                  <path class="tick" style="--i:1" d="M28 43 l3 3 l5.5 -6.5" />
+                  <line x1="39" y1="43" x2="52" y2="43" />
+                  <path class="tick" style="--i:2" d="M28 55 l3 3 l5.5 -6.5" />
+                  <line x1="39" y1="55" x2="49" y2="55" />
+                </g>
+              </g>
+            </svg>
+          )}
+        </div>
+        <div class="sm:mt-3">
+          <p class="font-serif text-base text-slate-900 group-hover:text-primary-700">{s.title}</p>
+          <p class="mt-0.5 text-xs text-slate-600">{s.cap}</p>
+        </div>
+        </a>
+      </li>
+    ))}
+  </ol>
+
+  {/* Iterative return loop (desktop): curved arrow back from trials → map */}
+  <div class="loopback hidden lg:block">
+    <svg class="lb-arc" viewBox="0 0 1000 56" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <path class="lb-track" d="M900 14 C950 14 950 48 900 48 L135 48 C100 48 100 30 100 17" />
+      <path class="lb-head" d="M93 25 L100 14 L107 25" />
+    </svg>
+    <span class="lb-label">Refine the target &amp; repeat</span>
+  </div>
+
+  {/* Mobile / fallback loop note */}
+  <p class="loopnote mx-auto mt-7 flex w-fit items-center gap-2 rounded-full bg-primary-50 px-4 py-1.5 text-xs font-medium text-accent-700 lg:hidden">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="h-4 w-4">
+      <path d="M20 11a8 8 0 1 0-2.3 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      <path d="M20 5v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    An iterative loop — bedside to clinical trials, and back
+  </p>
+</div>
+
+<style>
+  .pipeline .icon svg {
+    width: 64px;
+    height: 64px;
+  }
+  @media (min-width: 640px) {
+    .pipeline .icon svg {
+      width: 90px;
+      height: 90px;
+    }
+  }
+  /* Mobile: stacked steps joined by a short vertical connector (in the gap). */
+  @media (max-width: 639px) {
+    .pipeline .step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      left: 31px;
+      top: 64px;
+      height: 12px;
+      width: 2px;
+      background: var(--color-primary-200);
+      transform: translateX(-1px);
+    }
+  }
+  /* Base line-art (cool / structural). */
+  .pipeline .icon :is(circle, line, path, polyline, rect, polygon) {
+    stroke: var(--color-primary-600);
+    stroke-width: 2.3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .pipeline .brain path {
+    vector-effect: non-scaling-stroke;
+    stroke-width: 1.7;
+    fill: none;
+  }
+  .pipeline .cohort path {
+    stroke: var(--color-primary-300);
+  }
+  .pipeline .person path,
+  .pipeline .screen rect {
+    fill: none;
+  }
+  /* Accent = circuit / perturbation / signal / outcome. */
+  .pipeline .lesion {
+    fill: var(--color-accent-500);
+    stroke: none;
+  }
+  .pipeline .net line {
+    stroke: var(--color-accent-400);
+    stroke-width: 1.5;
+  }
+  .pipeline .net-halo {
+    fill: #fff;
+    stroke: none;
+  }
+  .pipeline .net-node {
+    fill: var(--color-accent-500);
+    stroke: none;
+  }
+  .pipeline :is(.drug rect, .pill-split, .merge, .merge-arrow, .coil, .pulse path,
+    .fb path, .rise, .rise-tip, .bars line, .badge-check) {
+    stroke: var(--color-accent-500);
+  }
+  .pipeline .drug rect {
+    fill: var(--color-accent-50);
+  }
+  .pipeline :is(.pulse path, .merge, .fb path) {
+    stroke-width: 1.8;
+  }
+  .pipeline .badge {
+    fill: var(--color-accent-500);
+    stroke: none;
+  }
+  .pipeline .badge-check {
+    stroke: #fff;
+    stroke-width: 2.6;
+  }
+  .pipeline .icon marker .mk {
+    fill: none;
+    stroke: var(--color-accent-500);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .pipeline .mri rect {
+    fill: var(--color-primary-50);
+  }
+  .pipeline .mri .bore {
+    fill: #fff;
+  }
+  .pipeline .trial rect {
+    fill: var(--color-primary-50);
+  }
+  .pipeline .trial .clip {
+    fill: #fff;
+  }
+  .pipeline .trial .rows line {
+    stroke: var(--color-primary-400);
+    stroke-width: 2;
+  }
+  .pipeline .trial .tick {
+    stroke: var(--color-accent-500);
+    stroke-width: 2.4;
+  }
+
+  /* Forward connector chevrons between steps (desktop) — the linear pipeline. */
+  @media (min-width: 1024px) {
+    .pipeline .step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 42px;
+      right: -5px;
+      width: 9px;
+      height: 9px;
+      border-top: 2px solid var(--color-primary-300);
+      border-right: 2px solid var(--color-primary-300);
+      transform: rotate(45deg);
+    }
+  }
+
+  /* Return-loop arrow (desktop). */
+  .pipeline .loopback {
+    position: relative;
+    margin-top: 0.75rem;
+  }
+  .pipeline .lb-arc {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .pipeline .lb-track {
+    fill: none;
+    stroke: var(--color-primary-300);
+    stroke-width: 2;
+    stroke-dasharray: 5 6;
+  }
+  .pipeline .lb-head {
+    fill: none;
+    stroke: var(--color-accent-500);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .pipeline .lb-label {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 0 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-accent-700);
+  }
+
+  /* ---- Per-step animation ---- */
+  @media (prefers-reduced-motion: no-preference) {
+    /* 1 MAP — causal flow inward + the circuit lighting up */
+    .pipeline .merge {
+      stroke-dasharray: 4 5;
+      animation: ph-flow 1.4s linear infinite;
+    }
+    .pipeline .lesion {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: ph-blip 2.8s ease-in-out infinite;
+    }
+    .pipeline .net-node {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: ph-node 2.4s ease-in-out infinite;
+      animation-delay: calc(var(--i) * 0.3s);
+    }
+    /* 2 VALIDATE — the check draws in, badge pops */
+    .pipeline .badge {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: ph-pop 3.4s ease-in-out infinite;
+    }
+    .pipeline .badge-check {
+      --len: 22;
+      stroke-dasharray: 22;
+      animation: ph-draw 3.4s ease-in-out infinite;
+    }
+    /* 3 MODULATE — TMS pulses + signal travels the neurofeedback loop */
+    .pipeline .pulse path {
+      transform-box: fill-box;
+      transform-origin: 50% 100%;
+      animation: ph-pulse 2.4s ease-out infinite;
+    }
+    .pipeline .pulse path:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+    .pipeline .fb path:not(.fb-tip) {
+      stroke-dasharray: 4 6;
+      animation: ph-flow 1.5s linear infinite;
+    }
+    /* 4 ASSESS — bars grow, outcome line draws */
+    .pipeline .bars line {
+      transform-box: fill-box;
+      transform-origin: 50% 100%;
+      animation: ph-grow 2.8s ease-in-out infinite;
+      animation-delay: calc(var(--i) * 0.25s);
+    }
+    .pipeline .rise {
+      stroke-dasharray: 60;
+      animation: ph-draw 3s ease-in-out infinite;
+    }
+    /* 5 TRIALS — endpoints tick in, one by one */
+    .pipeline .tick {
+      --len: 16;
+      stroke-dasharray: 16;
+      animation: ph-draw 3.2s ease-in-out infinite;
+      animation-delay: calc(var(--i) * 0.45s);
+    }
+  }
+
+  @keyframes ph-flow { to { stroke-dashoffset: -18; } }
+  @keyframes ph-blip {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.78); }
+  }
+  @keyframes ph-node {
+    0%, 100% { opacity: 0.55; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+  @keyframes ph-pop {
+    0%, 70%, 100% { transform: scale(1); }
+    78% { transform: scale(1.12); }
+  }
+  @keyframes ph-draw {
+    0% { stroke-dashoffset: var(--len, 60); }
+    40%, 100% { stroke-dashoffset: 0; }
+  }
+  @keyframes ph-pulse {
+    0% { opacity: 0; transform: scale(0.7); }
+    35% { opacity: 0.9; }
+    100% { opacity: 0; transform: scale(1.12); }
+  }
+  @keyframes ph-grow {
+    0%, 100% { transform: scaleY(0.55); opacity: 0.7; }
+    50% { transform: scaleY(1); opacity: 1; }
+  }
+</style>

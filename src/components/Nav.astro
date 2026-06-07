@@ -7,10 +7,17 @@ const isActive = (href: string) =>
     ? pathname === "/"
     : pathname === href || pathname.startsWith(href + "/");
 
-const linkClass = (href: string) =>
-  isActive(href)
-    ? "text-primary-700 bg-primary-50"
-    : "text-slate-600 hover:text-primary-700 hover:bg-slate-50";
+const linkClass = (href: string, mobile = false) => {
+  const active = isActive(href);
+  const inactive = "text-slate-600 hover:text-primary-700 hover:bg-slate-50";
+  if (mobile)
+    return active
+      ? "border-l-2 border-accent-500 bg-primary-50 text-primary-800"
+      : inactive;
+  return active
+    ? "relative text-primary-800 after:absolute after:inset-x-3 after:bottom-1 after:h-0.5 after:rounded-full after:bg-accent-500"
+    : inactive;
+};
 ---
 
 <header
@@ -65,7 +72,7 @@ const linkClass = (href: string) =>
     >
       <span class="sr-only">Toggle navigation menu</span>
       <svg
-        class="h-6 w-6"
+        class="nav-icon-open h-6 w-6"
         fill="none"
         viewBox="0 0 24 24"
         stroke-width="1.5"
@@ -76,6 +83,16 @@ const linkClass = (href: string) =>
           stroke-linecap="round"
           stroke-linejoin="round"
           d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"></path>
+      </svg>
+      <svg
+        class="nav-icon-close h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
       </svg>
     </button>
   </nav>
@@ -94,7 +111,7 @@ const linkClass = (href: string) =>
               aria-current={isActive(item.href) ? "page" : undefined}
               class:list={[
                 "block rounded-md px-3 py-2 text-base font-medium transition-colors",
-                linkClass(item.href),
+                linkClass(item.href, true),
               ]}
             >
               {item.label}
@@ -115,3 +132,15 @@ const linkClass = (href: string) =>
     menu?.classList.toggle("hidden");
   });
 </script>
+
+<style>
+  #nav-toggle .nav-icon-close {
+    display: none;
+  }
+  #nav-toggle[aria-expanded="true"] .nav-icon-open {
+    display: none;
+  }
+  #nav-toggle[aria-expanded="true"] .nav-icon-close {
+    display: block;
+  }
+</style>

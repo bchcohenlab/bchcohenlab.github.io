@@ -25,3 +25,12 @@ pnpm-debug.log*
 
 # Local PDF cache for figure extraction (not committed)
 scripts/.cache/
+
+# Design-review screenshots (Playwright MCP) — kept locally, not committed.
+# All scratch shots live at the repo root; real assets are under public/ + src/assets/.
+.playwright-mcp/
+/*.png
+
+# Research-area tagger (generated tool + its export)
+tag-review.html
+tags.json

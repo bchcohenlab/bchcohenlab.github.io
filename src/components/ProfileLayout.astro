@@ -29,56 +29,63 @@ const linkItems = [
 ---
 
 <BaseLayout title={name} description={`${role} — ${name}`}>
-  <div class="container-page py-12">
-    <a
-      href="/people"
-      class="text-sm text-primary-700 hover:underline">&larr; All people</a
-    >
-    <div class="mt-6 grid gap-8 sm:grid-cols-[12rem_1fr] sm:items-start">
-      <div class="mx-auto h-44 w-44 overflow-hidden rounded-full ring-1 ring-slate-200 sm:mx-0">
-        {
-          headshot ? (
-            <Image
-              src={headshot}
-              alt={name}
-              width={352}
-              height={352}
-              class="h-full w-full object-cover"
-            />
-          ) : (
-            <div class="flex h-full w-full items-center justify-center bg-primary-100 text-4xl font-semibold text-primary-700">
-              {initials}
-            </div>
-          )
-        }
-      </div>
+  <header class="bg-gradient-to-b from-primary-50 to-white">
+    <div class="container-page py-10">
+      <a
+        href="/people"
+        class="group inline-flex items-center gap-1 text-sm font-medium text-primary-700 transition-colors hover:text-accent-600"
+      >
+        <span class="transition-transform group-hover:-translate-x-0.5" aria-hidden="true">&larr;</span>
+        All people
+      </a>
+      <div class="mt-6 grid gap-8 sm:grid-cols-[11rem_1fr] sm:items-center">
+        <div class="mx-auto h-44 w-44 overflow-hidden rounded-full shadow-sm ring-1 ring-slate-200 sm:mx-0">
+          {
+            headshot ? (
+              <Image
+                src={headshot}
+                alt={name}
+                width={352}
+                height={352}
+                class="h-full w-full object-cover"
+              />
+            ) : (
+              <div class="flex h-full w-full items-center justify-center bg-primary-100 text-4xl font-semibold text-primary-700">
+                {initials}
+              </div>
+            )
+          }
+        </div>
 
-      <div>
-        <h1 class="font-serif text-3xl text-slate-900">{name}</h1>
-        <p class="mt-1 text-lg text-primary-700">{role}</p>
-        {title && <p class="mt-1 text-slate-600">{title}</p>}
-        {
-          linkItems.length > 0 && (
-            <ul class="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm">
-              {linkItems.map((l) => (
-                <li>
-                  <a
-                    href={l.href}
-                    target={l.href.startsWith("mailto:") ? undefined : "_blank"}
-                    rel="noopener noreferrer"
-                    class="text-primary-700 hover:underline"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )
-        }
+        <div>
+          <h1 class="font-serif text-3xl text-slate-900 sm:text-4xl">{name}</h1>
+          <p class="mt-1 text-lg text-primary-700">{role}</p>
+          {title && <p class="mt-1 max-w-2xl text-slate-600">{title}</p>}
+          {
+            linkItems.length > 0 && (
+              <ul class="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                {linkItems.map((l) => (
+                  <li>
+                    <a
+                      href={l.href}
+                      target={l.href.startsWith("mailto:") ? undefined : "_blank"}
+                      rel="noopener noreferrer"
+                      class="text-primary-700 hover:underline"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+        </div>
       </div>
     </div>
+  </header>
 
-    <div class="mt-10 max-w-3xl">
+  <div class="container-page py-12">
+    <div class="max-w-3xl">
       <slot />
     </div>
   </div>

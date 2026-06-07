@@ -24,7 +24,7 @@ const groups = await getFiguresByPaper();
           {groups.map((g) => <FigureCarousel paper={g.paper} figures={g.figures} />)}
         </div>
       ) : (
-        <p class="py-10 text-center text-slate-500">Figures coming soon.</p>
+        <p class="py-10 text-center text-slate-600">Figures coming soon.</p>
       )
     }
   </div>

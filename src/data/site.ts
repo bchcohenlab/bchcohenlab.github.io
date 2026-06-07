@@ -36,10 +36,9 @@ export const site: SiteConfig = {
   university: "Harvard Medical School",
   url: "https://bchcohenlab.com",
   description:
-    "The Cohen Laboratory of Translational Neuroimaging at Boston Children's " +
-    "Hospital and Harvard Medical School uses lesion network mapping and " +
-    "functional neuroimaging to understand and treat neurological and " +
-    "psychiatric disorders.",
+    "We use causal neuroimaging — brain lesions and pharmaco-fMRI — to map the " +
+    "circuits behind autism and ADHD symptoms, then pilot non-invasive " +
+    "neuromodulation (TMS and real-time fMRI neurofeedback) to support rapid clinical trials.",
   email: "CohenLab@childrens.harvard.edu",
   phone: "617-355-6388",
   address: [
@@ -59,7 +58,6 @@ export const site: SiteConfig = {
     { label: "Research", href: "/research" },
     { label: "Publications", href: "/publications" },
     { label: "Figures", href: "/figures" },
-    { label: "Lab Life", href: "/lab-life" },
     { label: "Contact", href: "/contact" },
   ],
 };
