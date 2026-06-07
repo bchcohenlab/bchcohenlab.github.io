@@ -11,6 +11,7 @@ import {
 } from "../lib/content";
 import PubList from "../components/PubList.astro";
 import PipelineHero from "../components/PipelineHero.astro";
+import pumpkins from "../assets/gallery/2025-pumpkins.jpg";
 
 const figures = await getConfirmedFigures();
 
@@ -205,4 +206,43 @@ const themes = [
       </section>
     )
   }
+
+  <!-- Life in the lab -->
+  <section class="border-t border-slate-200 bg-white">
+    <div class="container-page py-16">
+      <div class="grid items-center gap-10 lg:grid-cols-2">
+        <div>
+          <div class="mb-3 h-0.5 w-10 rounded-full bg-accent-500"></div>
+          <h2 class="font-serif text-2xl text-slate-900">Life in the lab</h2>
+          <p class="mt-4 max-w-prose text-slate-600">
+            Science is a team sport. Beyond the bench, we celebrate milestones,
+            travel to conferences, and get out together &mdash; like this fall
+            trip to the pumpkin patch.
+          </p>
+          <a
+            href="/lab-life"
+            class="group mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary-700 transition-colors hover:text-accent-600"
+          >
+            Explore lab life
+            <span
+              class="transition-transform group-hover:translate-x-0.5"
+              aria-hidden="true">&rarr;</span
+            >
+          </a>
+        </div>
+        <a
+          href="/lab-life"
+          class="group block overflow-hidden rounded-2xl border border-slate-200 shadow-sm"
+        >
+          <Image
+            src={pumpkins}
+            alt="The Cohen Lab team at the pumpkin patch, fall 2025"
+            widths={[600, 1000]}
+            sizes="(min-width: 1024px) 45vw, 90vw"
+            class="aspect-[16/9] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          />
+        </a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
