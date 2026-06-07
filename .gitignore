@@ -23,6 +23,9 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# Claude Code local (personal) settings — permission grants, not shared
+.claude/settings.local.json
+
 # Local PDF cache for figure extraction (not committed)
 scripts/.cache/
 
