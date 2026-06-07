@@ -18,7 +18,7 @@ journal: "Neurology"
 doi: "10.1212/WNL.0000000000008326"
 pmid: "31527284"
 pmcid: "PMC6815203"
-citations: 96
+citations: 95
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

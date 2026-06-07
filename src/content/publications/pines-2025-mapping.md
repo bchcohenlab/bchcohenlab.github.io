@@ -33,7 +33,7 @@ journal: "JAMA Psychiatry"
 doi: "10.1001/jamapsychiatry.2024.4534"
 pmid: "39937525"
 pmcid: "PMC11822627"
-citations: 29
+citations: 28
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

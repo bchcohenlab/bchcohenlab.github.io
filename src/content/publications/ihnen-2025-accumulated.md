@@ -18,7 +18,7 @@ journal: "Epilepsia"
 doi: "10.1111/epi.18172"
 pmid: "39470995"
 pmcid: "PMC11742629"
-citations: 12
+citations: 11
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false
