@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
@@ -9,19 +9,36 @@ const { items } = Astro.props;
 
 const fmtDate = (d: Date) =>
   d.toLocaleDateString("en-US", { year: "numeric", month: "long" });
+
+// Pre-generate a large version of each photo for the full-size lightbox view.
+const full = await Promise.all(
+  items.map((item) =>
+    getImage({ src: item.data.image, width: 1600, format: "webp" }),
+  ),
+);
 ---
 
 <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
   {
-    items.map((item) => (
+    items.map((item, i) => (
       <figure class="overflow-hidden rounded-xl border border-slate-200 bg-white">
-        <Image
-          src={item.data.image}
-          alt={item.data.caption}
-          widths={[400, 800]}
-          sizes="(min-width: 640px) 50vw, 100vw"
-          class="aspect-[4/3] w-full object-cover"
-        />
+        <button
+          type="button"
+          class="group block w-full cursor-zoom-in"
+          data-lightbox
+          data-full={full[i].src}
+          data-caption={item.data.caption}
+          data-date={fmtDate(item.data.date)}
+          aria-label={`View full-size photo: ${item.data.caption}`}
+        >
+          <Image
+            src={item.data.image}
+            alt={item.data.caption}
+            widths={[400, 800]}
+            sizes="(min-width: 640px) 50vw, 100vw"
+            class="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-[1.03] group-hover:opacity-95"
+          />
+        </button>
         <figcaption class="p-4">
           <p class="text-sm text-slate-700">{item.data.caption}</p>
           <p class="mt-1 text-xs text-slate-600">{fmtDate(item.data.date)}</p>
@@ -30,3 +47,57 @@ const fmtDate = (d: Date) =>
     ))
   }
 </div>
+
+<dialog
+  id="lightbox"
+  class="m-auto w-full max-w-5xl bg-transparent p-0 backdrop:bg-slate-950/80"
+  aria-label="Photo viewer"
+>
+  <div class="relative overflow-hidden rounded-2xl">
+    <button
+      type="button"
+      id="lightbox-close"
+      class="absolute right-2 top-2 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-slate-900/60 text-white transition-colors hover:bg-slate-900/85"
+      aria-label="Close"
+    >
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" d="M6 6l12 12M18 6 6 18" />
+      </svg>
+    </button>
+    <img
+      id="lightbox-img"
+      src=""
+      alt=""
+      class="block max-h-[80vh] w-full bg-slate-950 object-contain"
+    />
+    <p id="lightbox-caption" class="bg-white px-4 py-3 text-sm text-slate-700"></p>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById("lightbox") as HTMLDialogElement | null;
+  if (dialog) {
+    const img = document.getElementById("lightbox-img") as HTMLImageElement;
+    const cap = document.getElementById("lightbox-caption") as HTMLElement;
+    const closeBtn = document.getElementById("lightbox-close");
+
+    document
+      .querySelectorAll<HTMLButtonElement>("[data-lightbox]")
+      .forEach((btn) => {
+        btn.addEventListener("click", () => {
+          img.src = btn.dataset.full ?? "";
+          img.alt = btn.dataset.caption ?? "";
+          const date = btn.dataset.date ? ` · ${btn.dataset.date}` : "";
+          cap.textContent = (btn.dataset.caption ?? "") + date;
+          dialog.showModal();
+        });
+      });
+
+    const close = () => dialog.close();
+    closeBtn?.addEventListener("click", close);
+    // Click on the backdrop (outside the image card) closes the viewer.
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) close();
+    });
+  }
+</script>

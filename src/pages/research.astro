@@ -22,13 +22,13 @@ const groups = await getResearchGroups(4);
     {
       groups.map((group) => (
         <section>
-          <div class="mb-3 h-0.5 w-10 rounded-full bg-accent-500"></div>
-          <h2 class="font-serif text-2xl text-slate-900">{group.title}</h2>
+          <div class="mb-3 h-1 w-12 rounded-full bg-accent-500"></div>
+          <h2 class="font-serif text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">{group.title}</h2>
           <div class="mt-8 space-y-12">
             {group.areas.map((area) => (
               <div id={area.slug} class="scroll-mt-24">
                 <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <h3 class="font-serif text-xl text-slate-900">{area.label}</h3>
+                  <h3 class="font-serif text-2xl font-semibold text-slate-900">{area.label}</h3>
                   {area.total > area.pubs.length && (
                     <a
                       href={`/publications#${area.slug}`}
