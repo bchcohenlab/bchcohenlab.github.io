@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Cohen Lab">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#155e9c" />
+      <stop offset="1" stop-color="#08213a" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#f06fbf" stop-opacity="0.65" />
+      <stop offset="1" stop-color="#f06fbf" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="13" fill="url(#bg)" />
+  <!-- brain silhouette backdrop (faded as one group) -->
+  <g transform="translate(8 9) scale(2)" opacity="0.4" fill="none" stroke="#ffffff"
+     stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke">
+    <path d="M12 18V5" />
+    <path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4" />
+    <path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5" />
+    <path d="M17.997 5.125a4 4 0 0 1 2.526 5.77" />
+    <path d="M18 18a4 4 0 0 0 2-7.464" />
+    <path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517" />
+    <path d="M6 18a4 4 0 0 1-2-7.464" />
+    <path d="M6.003 5.125a4 4 0 0 0-2.526 5.77" />
+  </g>
+  <!-- edge-connector data bus on the right edge (as one group, feed lead from the network) -->
+  <g opacity="0.9">
+    <g fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M44 41 H56" />
+      <path d="M56 22 V47" />
+      <path d="M56 22 H59" />
+      <path d="M56 30.3 H59" />
+      <path d="M56 38.6 H59" />
+      <path d="M56 47 H59" />
+    </g>
+    <g fill="#ffffff">
+      <rect x="59" y="20.1" width="3.7" height="3.7" rx="0.8" />
+      <rect x="59" y="28.4" width="3.7" height="3.7" rx="0.8" />
+      <rect x="59" y="36.7" width="3.7" height="3.7" rx="0.8" />
+      <rect x="59" y="45.1" width="3.7" height="3.7" rx="0.8" />
+    </g>
+  </g>
+  <!-- graph-theory network inside the brain (no node on the midline) -->
+  <g stroke="#ffffff" stroke-opacity="0.9" stroke-width="1.9" stroke-linecap="round">
+    <line x1="27" y1="31" x2="38" y2="29" />
+    <line x1="27" y1="31" x2="24" y2="43" />
+    <line x1="24" y1="43" x2="44" y2="41" />
+    <line x1="44" y1="41" x2="38" y2="29" />
+    <line x1="38" y1="29" x2="45" y2="24" />
+  </g>
+  <g fill="#ffffff">
+    <circle cx="27" cy="31" r="2.6" />
+    <circle cx="38" cy="29" r="2.6" />
+    <circle cx="24" cy="43" r="2.6" />
+    <circle cx="44" cy="41" r="2.6" />
+  </g>
+  <circle cx="45" cy="24" r="8" fill="url(#glow)" />
+  <circle cx="45" cy="24" r="3" fill="#ef5bb5" />
+</svg>
