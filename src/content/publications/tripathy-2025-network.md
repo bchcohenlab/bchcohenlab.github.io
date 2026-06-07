@@ -5,12 +5,12 @@ authors:
   - "Miller GN"
   - "Cohen AL"
 year: 2025
+areas: ["autism", "network-mapping", "lesion-derived"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:N5tVd3kTz84C"
 journal: "Brain Communications"
 doi: "10.1093/braincomms/fcaf463"
 pmid: "41357351"
 pmcid: "PMC12679709"
-url: "https://doi.org/10.1093/braincomms/fcaf463"
 isMenteePaper: true
 menteeFirstAuthor: true
 cohenFirstOrSenior: true

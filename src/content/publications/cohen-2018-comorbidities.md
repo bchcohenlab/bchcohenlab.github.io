@@ -7,12 +7,12 @@ authors:
   - "Silber MH"
   - "Kotagal S"
 year: 2018
+areas: []
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:-f6ydRqryjwC"
 journal: "Sleep Medicine"
 doi: "10.1016/j.sleep.2017.11.1125"
 pmid: "29482805"
 pmcid: "PMC5931205"
-url: "https://doi.org/10.1016/j.sleep.2017.11.1125"
 citations: 152
 isMenteePaper: false
 menteeFirstAuthor: false

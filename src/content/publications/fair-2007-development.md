@@ -12,12 +12,12 @@ authors:
   - "Petersen SE"
   - "Schlaggar BL"
 year: 2007
+areas: ["functional-connectivity"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:d1gkVwhDpl0C"
 journal: "Proceedings of the National Academy of Sciences"
 doi: "10.1073/pnas.0705843104"
 pmid: "17679691"
 pmcid: "PMC1940033"
-url: "https://doi.org/10.1073/pnas.0705843104"
 citations: 1590
 isMenteePaper: false
 menteeFirstAuthor: false

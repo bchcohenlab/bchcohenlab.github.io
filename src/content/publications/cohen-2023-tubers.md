@@ -15,12 +15,12 @@ authors:
   - "Peters J"
   - "Fox MD"
 year: 2023
+areas: ["autism", "tsc-epilepsy", "network-mapping", "lesion-derived"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:D03iK_w7-QYC"
 journal: "Annals of Neurology"
 doi: "10.1002/ana.26551"
 pmid: "36394118"
 pmcid: "PMC9974824"
-url: "https://doi.org/10.1002/ana.26551"
 citations: 13
 isMenteePaper: true
 menteeFirstAuthor: false

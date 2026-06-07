@@ -19,12 +19,12 @@ authors:
   - "Fox MD"
   - "Peters J"
 year: 2021
+areas: ["tsc-epilepsy", "network-mapping", "lesion-derived"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:GnPB-g6toBAC"
 journal: "Annals of Neurology"
 doi: "10.1002/ana.26015"
 pmid: "33410532"
 pmcid: "PMC7969435"
-url: "https://doi.org/10.1002/ana.26015"
 citations: 59
 isMenteePaper: false
 menteeFirstAuthor: false

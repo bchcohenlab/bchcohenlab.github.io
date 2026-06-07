@@ -12,12 +12,12 @@ authors:
   - "Krueger DA"
   - "TACERN Study Group"
 year: 2025
+areas: ["tsc-epilepsy"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:bnK-pcrLprsC"
 journal: "Epilepsia"
 doi: "10.1111/epi.18172"
 pmid: "39470995"
 pmcid: "PMC11742629"
-url: "https://doi.org/10.1111/epi.18172"
 citations: 12
 isMenteePaper: false
 menteeFirstAuthor: false

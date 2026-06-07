@@ -16,12 +16,12 @@ authors:
   - "Kletenik I"
   - "Fox MD"
 year: 2025
+areas: ["network-mapping", "lesion-derived"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:AXPGKjj_ei8C"
 journal: "JAMA Network Open"
 doi: "10.1001/jamanetworkopen.2024.59297"
 pmid: "39946133"
 pmcid: "PMC11826368"
-url: "https://doi.org/10.1001/jamanetworkopen.2024.59297"
 citations: 18
 isMenteePaper: false
 menteeFirstAuthor: false

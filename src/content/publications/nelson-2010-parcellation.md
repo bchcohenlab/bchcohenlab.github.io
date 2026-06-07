@@ -13,12 +13,12 @@ authors:
   - "Schlaggar BL"
   - "Petersen SE"
 year: 2010
+areas: ["methods", "functional-connectivity"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:Y0pCki6q_DkC"
 journal: "Neuron"
 doi: "10.1016/j.neuron.2010.05.025"
 pmid: "20624599"
 pmcid: "PMC2913443"
-url: "https://doi.org/10.1016/j.neuron.2010.05.025"
 citations: 427
 isMenteePaper: false
 menteeFirstAuthor: false

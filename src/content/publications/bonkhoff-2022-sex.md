@@ -60,12 +60,12 @@ authors:
   - "Wu O"
   - "Rost NS"
 year: 2022
+areas: ["network-mapping", "lesion-derived"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:HoB7MX3m0LUC"
 journal: "Brain Communications"
 doi: "10.1093/braincomms/fcac020"
 pmid: "35282166"
 pmcid: "PMC8914504"
-url: "https://doi.org/10.1093/braincomms/fcac020"
 citations: 16
 isMenteePaper: false
 menteeFirstAuthor: false

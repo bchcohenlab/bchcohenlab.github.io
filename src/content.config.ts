@@ -64,6 +64,25 @@ const publications = defineCollection({
     cohenFirstOrSenior: z.boolean().default(false),
     featured: z.boolean().default(false),
     openAccess: z.boolean().default(false),
+    // Research tags — disease/population AREAS (drive the Research page) plus
+    // cross-cutting METHOD facets (network-mapping, lesion-derived). One field;
+    // a paper may carry several. Vocabulary mirrored in src/lib/content.ts.
+    areas: z
+      .array(
+        z.enum([
+          "autism",
+          "adhd",
+          "tsc-epilepsy",
+          "perinatal-stroke",
+          "methods",
+          "functional-connectivity",
+          "network-mapping",
+          "lesion-derived",
+          "review",
+          "letter",
+        ]),
+      )
+      .default([]),
   }),
 });
 

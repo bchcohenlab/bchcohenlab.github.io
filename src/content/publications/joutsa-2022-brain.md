@@ -18,12 +18,12 @@ authors:
   - "Boes AD"
   - "Fox MD"
 year: 2022
+areas: ["network-mapping", "lesion-derived"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:u_35RYKgDlwC"
 journal: "Nature Medicine"
 doi: "10.1038/s41591-022-01834-y"
 pmid: "35697842"
 pmcid: "PMC9205767"
-url: "https://doi.org/10.1038/s41591-022-01834-y"
 citations: 240
 isMenteePaper: false
 menteeFirstAuthor: false

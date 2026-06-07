@@ -10,11 +10,11 @@ authors:
   - "Fox MD"
   - "Kletenik I"
 year: 2026
+areas: ["network-mapping", "lesion-derived"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:UHK10RUVsp4C"
 journal: "Cortex"
 doi: "10.1016/j.cortex.2026.01.009"
 pmid: "41712966"
-url: "https://doi.org/10.1016/j.cortex.2026.01.009"
 citations: 5
 isMenteePaper: true
 menteeFirstAuthor: false

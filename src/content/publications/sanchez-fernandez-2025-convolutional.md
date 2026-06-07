@@ -21,12 +21,12 @@ authors:
   - "Warfield SK"
   - "Peters J"
 year: 2025
+areas: ["tsc-epilepsy", "methods", "lesion-derived"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:ye4kPcJQO24C"
 journal: "Epilepsia"
 doi: "10.1111/epi.70007"
 pmid: "41258699"
 pmcid: "PMC12832091"
-url: "https://doi.org/10.1111/epi.70007"
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

@@ -16,12 +16,12 @@ authors:
   - "Libenson M"
   - "Harini C"
 year: 2024
+areas: ["tsc-epilepsy"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:VOx2b1Wkg3QC"
 journal: "Epilepsia"
 doi: "10.1111/epi.17900"
 pmid: "38317356"
 pmcid: "PMC11018499"
-url: "https://doi.org/10.1111/epi.17900"
 citations: 7
 isMenteePaper: false
 menteeFirstAuthor: false

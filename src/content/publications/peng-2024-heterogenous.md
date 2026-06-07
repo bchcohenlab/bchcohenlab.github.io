@@ -9,12 +9,12 @@ authors:
   - "Fox MD"
   - "Gong G"
 year: 2024
+areas: ["methods", "network-mapping"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:J-pR_7NvFogC"
 journal: "Communications Biology"
 doi: "10.1038/s42003-024-06969-x"
 pmid: "39369118"
 pmcid: "PMC11455857"
-url: "https://doi.org/10.1038/s42003-024-06969-x"
 citations: 7
 isMenteePaper: true
 menteeFirstAuthor: true

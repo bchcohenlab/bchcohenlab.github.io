@@ -117,12 +117,12 @@ authors:
   - "Yarkoni T"
   - "Gorgolewski KJ"
 year: 2024
+areas: ["methods", "review", "letter"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:WbkHhVStYXYC"
 journal: "Imaging Neuroscience"
 doi: "10.1162/imag_a_00103"
 pmid: "39308505"
 pmcid: "PMC11415029"
-url: "https://doi.org/10.1162/imag_a_00103"
 citations: 71
 isMenteePaper: false
 menteeFirstAuthor: false

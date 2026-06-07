@@ -12,12 +12,12 @@ authors:
   - "Raichle ME"
   - "Petersen SE"
 year: 2007
+areas: ["methods", "functional-connectivity"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:UeHWp8X0CEIC"
 journal: "NeuroImage"
 doi: "10.1016/j.neuroimage.2006.11.051"
 pmid: "17239622"
 pmcid: "PMC2563954"
-url: "https://doi.org/10.1016/j.neuroimage.2006.11.051"
 citations: 695
 isMenteePaper: false
 menteeFirstAuthor: false

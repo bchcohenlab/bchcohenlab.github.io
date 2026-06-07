@@ -96,6 +96,7 @@ const anyMarks = pubs.some((p) => starsFor(p).size > 0);
           data-cohen-senior={d.cohenFirstOrSenior}
           data-collaboration={collaboration}
           data-openaccess={d.openAccess}
+          data-areas={d.areas.join(" ")}
           data-search={search}
         >
           <p class="font-medium text-slate-900">
@@ -133,7 +134,7 @@ const anyMarks = pubs.some((p) => starsFor(p).size > 0);
                     ) : (
                       a
                     )}
-                    {mark && <sup class="font-semibold text-slate-500">{mark}</sup>}
+                    {mark && <sup class="font-semibold text-slate-600">{mark}</sup>}
                   </span>
                 );
               })}
@@ -150,7 +151,7 @@ const anyMarks = pubs.some((p) => starsFor(p).size > 0);
             )}
           </p>
 
-          <p class="mt-0.5 text-sm text-slate-500">
+          <p class="mt-0.5 text-sm text-slate-600">
             {d.journal && <em>{d.journal}</em>}
             {d.journal && " · "}
             {d.year}
@@ -236,8 +237,8 @@ const anyMarks = pubs.some((p) => starsFor(p).size > 0);
 
 {
   anyMarks && (
-    <p class="mt-4 text-xs text-slate-500">
-      <sup class="font-semibold text-slate-500">*</sup> co-first / co-senior author
+    <p class="mt-4 text-xs text-slate-600">
+      <sup class="font-semibold text-slate-600">*</sup> co-first / co-senior author
     </p>
   )
 }

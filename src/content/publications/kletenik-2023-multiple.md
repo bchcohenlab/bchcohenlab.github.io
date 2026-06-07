@@ -17,12 +17,12 @@ authors:
   - "Bakshi R"
   - "Fox MD"
 year: 2023
+areas: ["network-mapping", "lesion-derived"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:XiSMed-E-HIC"
 journal: "Journal of Neurology"
 doi: "10.1007/s00415-023-11907-8"
 pmid: "37532802"
 pmcid: "PMC10592111"
-url: "https://doi.org/10.1007/s00415-023-11907-8"
 citations: 19
 isMenteePaper: true
 menteeFirstAuthor: true

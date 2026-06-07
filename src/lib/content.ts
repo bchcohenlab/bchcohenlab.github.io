@@ -4,6 +4,83 @@ export type Person = CollectionEntry<"people">;
 export type Publication = CollectionEntry<"publications">;
 export type Figure = CollectionEntry<"figures">;
 
+// Tag vocabulary (must match the `areas` enum in content.config.ts). A paper may
+// carry several — disease/population, method/approach, and publication type.
+export type AreaSlug =
+  | "autism"
+  | "adhd"
+  | "tsc-epilepsy"
+  | "perinatal-stroke"
+  | "functional-connectivity"
+  | "network-mapping"
+  | "lesion-derived"
+  | "methods"
+  | "review"
+  | "letter";
+
+export const AREA_LABELS: Record<AreaSlug, string> = {
+  autism: "Autism",
+  adhd: "ADHD & attention",
+  "tsc-epilepsy": "Tuberous sclerosis & epilepsy",
+  "perinatal-stroke": "Perinatal stroke",
+  "functional-connectivity": "Functional connectivity",
+  "network-mapping": "Network mapping",
+  "lesion-derived": "Lesion-derived",
+  methods: "Methods & open tools",
+  review: "Review",
+  letter: "Letter / commentary",
+};
+
+// Research-page sections, grouped (conditions vs. approaches), with blurbs.
+export const RESEARCH_GROUPS: { title: string; areas: { slug: AreaSlug; blurb: string }[] }[] = [
+  {
+    title: "Conditions we study",
+    areas: [
+      { slug: "autism", blurb: "Localizing the circuits behind autism's core and associated symptoms — social communication, sensory differences, face processing — and how to modulate them." },
+      { slug: "adhd", blurb: "Coordinate and lesion network mapping of attention, with pharmaco-fMRI and real-time fMRI neurofeedback to probe and modulate the circuits involved." },
+      { slug: "tsc-epilepsy", blurb: "Tubers and epilepsy foci as natural experiments — focal anomalies that, when they share a symptom, reveal the responsible brain network." },
+      { slug: "perinatal-stroke", blurb: "Mapping how early focal injury reshapes developing brain networks and gives rise to specific cognitive and behavioral symptoms." },
+    ],
+  },
+  {
+    title: "Methods & approaches",
+    areas: [
+      { slug: "functional-connectivity", blurb: "Resting-state functional connectivity and functional parcellation of the brain — and how its network architecture develops from childhood to adulthood." },
+      { slug: "network-mapping", blurb: "Linking focal lesions, tubers, and coordinates to common brain networks, localizing the circuits that produce specific symptoms across disorders." },
+      { slug: "methods", blurb: "Reproducible, open neuroimaging tooling — preprocessing, normalization, BIDS-standard pipelines, and the connectome resources that make this work possible." },
+    ],
+  },
+];
+
+// Publications filter chips, grouped (slugs reference AREA_LABELS).
+export const FILTER_GROUPS: { title: string; slugs: AreaSlug[] }[] = [
+  { title: "Condition", slugs: ["autism", "adhd", "tsc-epilepsy", "perinatal-stroke"] },
+  { title: "Approach", slugs: ["functional-connectivity", "network-mapping", "lesion-derived", "methods"] },
+  { title: "Type", slugs: ["review", "letter"] },
+];
+
+/** Research-page groups → each area with its most-recent pubs (capped) + total count. */
+export async function getResearchGroups(limit = 4) {
+  const pubs = await getPublications();
+  return RESEARCH_GROUPS.map((g) => ({
+    title: g.title,
+    areas: g.areas
+      .map((a) => {
+        const all = pubs.filter((p) => p.data.areas.includes(a.slug));
+        return { slug: a.slug, label: AREA_LABELS[a.slug], blurb: a.blurb, pubs: all.slice(0, limit), total: all.length };
+      })
+      .filter((a) => a.total > 0),
+  })).filter((g) => g.areas.length > 0);
+}
+
+/** Count of publications per area slug (for filter-chip labels). */
+export async function getAreaCounts() {
+  const pubs = await getPublications();
+  const counts: Partial<Record<AreaSlug, number>> = {};
+  for (const p of pubs) for (const a of p.data.areas as AreaSlug[]) counts[a] = (counts[a] || 0) + 1;
+  return counts;
+}
+
 // Display order of groups within the People page.
 export const GROUP_ORDER = [
   "Faculty",
@@ -127,8 +204,11 @@ const menteeLed = (p: Publication, isMentee: (a: string) => boolean) =>
  */
 export function featuredMatcher(people: Person[]) {
   const isMentee = menteeMatcher(people);
-  return (p: Publication) =>
-    menteeLed(p, isMentee) || (p.data.cohenFirstOrSenior && p.data.year >= 2019);
+  return (p: Publication) => {
+    // Letters and reviews aren't "featured" primary research on the homepage.
+    if (p.data.areas.includes("letter") || p.data.areas.includes("review")) return false;
+    return menteeLed(p, isMentee) || (p.data.cohenFirstOrSenior && p.data.year >= 2019);
+  };
 }
 
 /** Sort featured papers: mentee-led first, then most recent. */

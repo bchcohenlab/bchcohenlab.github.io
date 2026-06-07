@@ -6,11 +6,11 @@ authors:
   - "Afacan O"
   - "Warfield SK"
 year: 2021
+areas: ["adhd", "methods"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:RGFaLdJalmkC"
 journal: "Journal of Neuroimaging"
 doi: "10.1111/jon.12899"
 pmid: "34101274"
-url: "https://doi.org/10.1111/jon.12899"
 citations: 3
 isMenteePaper: false
 menteeFirstAuthor: false

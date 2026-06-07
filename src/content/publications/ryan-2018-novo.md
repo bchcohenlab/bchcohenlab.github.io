@@ -14,11 +14,11 @@ authors:
   - "Chan DC"
   - "Payne ET"
 year: 2018
+areas: ["tsc-epilepsy", "review"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:R3hNpaxXUhUC"
 journal: "Journal of Child Neurology"
 doi: "10.1177/0883073818778203"
 pmid: "29877124"
-url: "https://doi.org/10.1177/0883073818778203"
 citations: 42
 isMenteePaper: false
 menteeFirstAuthor: false

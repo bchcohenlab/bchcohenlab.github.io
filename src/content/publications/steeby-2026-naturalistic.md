@@ -6,12 +6,12 @@ authors:
   - "Castro Palacin A"
   - "Cohen AL"
 year: 2026
+areas: ["autism", "methods"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:Fu2w8maKXqMC"
 journal: "Imaging Neuroscience"
 doi: "10.1162/IMAG.a.1209"
 pmid: "41970694"
 pmcid: "PMC13062985"
-url: "https://doi.org/10.1162/IMAG.a.1209"
 isMenteePaper: true
 menteeFirstAuthor: true
 cohenFirstOrSenior: true

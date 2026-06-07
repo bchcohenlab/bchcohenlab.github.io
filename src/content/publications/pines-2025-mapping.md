@@ -27,12 +27,12 @@ authors:
   - "Silbersweig D"
   - "Siddiqi SH"
 year: 2025
+areas: ["network-mapping", "lesion-derived"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:eMMeJKvmdy0C"
 journal: "JAMA Psychiatry"
 doi: "10.1001/jamapsychiatry.2024.4534"
 pmid: "39937525"
 pmcid: "PMC11822627"
-url: "https://doi.org/10.1001/jamapsychiatry.2024.4534"
 citations: 29
 isMenteePaper: false
 menteeFirstAuthor: false
