@@ -29,10 +29,11 @@ const ogImage = new URL(image, base).href;
 <link rel="canonical" href={canonical} />
 <meta name="theme-color" content="#155e9c" />
 
-<link rel="icon" href="/favicon.ico" sizes="any" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<!-- ?v=2 busts stale favicons cached from the old site (Safari especially). -->
+<link rel="icon" href="/favicon.ico?v=2" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
