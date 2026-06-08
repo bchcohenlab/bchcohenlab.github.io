@@ -40,6 +40,7 @@ jobs:
         run: node scripts/refresh-citations.mjs
 
       - name: Commit refreshed counts (if any changed)
+        id: commit
         run: |
           if [ -n "$(git status --porcelain src/content/publications)" ]; then
             git config user.name "github-actions[bot]"
@@ -47,15 +48,21 @@ jobs:
             git add src/content/publications
             git commit -m "chore: refresh Google Scholar citation counts [skip ci]"
             git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           else
-            echo "No citation changes."
+            echo "No citation changes — skipping rebuild/deploy."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
 
+      # Only rebuild + redeploy when counts actually changed, so a no-change
+      # week is a clean no-op instead of a pointless redeploy.
       - name: Build with Astro
+        if: steps.commit.outputs.changed == 'true'
         uses: withastro/action@v6
         with:
           node-version: 22
 
       - name: Deploy to GitHub Pages
+        if: steps.commit.outputs.changed == 'true'
         id: deployment
         uses: actions/deploy-pages@v5
