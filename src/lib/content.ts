@@ -93,12 +93,23 @@ export const GROUP_ORDER = [
 
 const byOrder = (a: Person, b: Person) => a.data.order - b.data.order;
 
+// Surname for alphabetizing: slugs are "<first-initial>-<surname>", so drop the
+// leading initial. localeCompare keeps it accent-aware; byOrder breaks ties.
+const surname = (p: Person) => p.id.replace(/^[^-]+-/, "");
+const bySurname = (a: Person, b: Person) =>
+  surname(a).localeCompare(surname(b)) || byOrder(a, b);
+
+// These groups are listed alphabetically by last name; the rest use manual order.
+const ALPHA_GROUPS = new Set<string>(["Researchers", "Alumni"]);
+
 /** People grouped and ordered: current groups first, then Alumni. */
 export async function getGroupedPeople() {
   const people = await getCollection("people");
   return GROUP_ORDER.map((group) => ({
     group,
-    people: people.filter((p) => p.data.group === group).sort(byOrder),
+    people: people
+      .filter((p) => p.data.group === group)
+      .sort(ALPHA_GROUPS.has(group) ? bySurname : byOrder),
   })).filter((g) => g.people.length > 0);
 }
 
