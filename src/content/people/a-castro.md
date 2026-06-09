@@ -4,6 +4,9 @@ status: current
 group: Researchers
 role: "Biomedical Informatics Research Data Scientist I"
 headshot: ../../assets/people/a-castro.jpg
+links:
+  orcid: "https://orcid.org/0000-0001-6898-7401"
+  linkedin: "https://www.linkedin.com/in/alberto-castro-965286bb/"
 order: 9
 featured: false
 ---

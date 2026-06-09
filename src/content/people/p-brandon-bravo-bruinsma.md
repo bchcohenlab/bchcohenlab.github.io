@@ -4,6 +4,9 @@ status: alumni
 group: Alumni
 role: "Graduate Research Intern"
 headshot: ../../assets/people/p-brandon-bravo-bruinsma.jpg
+links:
+  orcid: "https://orcid.org/0009-0005-0237-1598"
+  linkedin: "https://www.linkedin.com/in/pauline-brandon-bravo-bruinsma-48669017b/"
 order: 28
 featured: false
 ---

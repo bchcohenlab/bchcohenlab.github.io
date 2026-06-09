@@ -4,6 +4,8 @@ status: current
 group: Researchers
 role: "Medical Student"
 headshot: ../../assets/people/s-tripathy.jpg
+links:
+  orcid: "https://orcid.org/0009-0005-0195-8039"
 order: 5
 featured: false
 ---

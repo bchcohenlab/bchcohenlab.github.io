@@ -4,6 +4,8 @@ status: alumni
 group: Alumni
 role: "Undergraduate COACH Intern"
 headshot: ../../assets/people/k-warner.jpg
+links:
+  linkedin: "https://www.linkedin.com/in/keturah-warner-8b3368190"
 order: 25
 featured: false
 ---

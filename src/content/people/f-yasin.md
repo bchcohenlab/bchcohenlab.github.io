@@ -4,6 +4,8 @@ status: alumni
 group: Alumni
 role: "Undergraduate COACH Intern"
 headshot: ../../assets/people/f-yasin.jpg
+links:
+  linkedin: "https://www.linkedin.com/in/faiza-yasin-2b40031b3"
 order: 22
 featured: false
 ---

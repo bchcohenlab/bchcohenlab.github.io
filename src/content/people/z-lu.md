@@ -4,6 +4,8 @@ status: alumni
 group: Alumni
 role: "Clinical Research Assistant"
 headshot: ../../assets/people/z-lu.jpg
+links:
+  linkedin: "https://www.linkedin.com/in/zexialu/"
 order: 14
 featured: false
 ---

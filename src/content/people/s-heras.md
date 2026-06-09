@@ -4,6 +4,8 @@ status: current
 group: Researchers
 role: "Clinical Research Assistant"
 headshot: ../../assets/people/s-heras.jpg
+links:
+  linkedin: "https://www.linkedin.com/in/sofia-heras-5a557622b/"
 order: 6
 featured: false
 ---

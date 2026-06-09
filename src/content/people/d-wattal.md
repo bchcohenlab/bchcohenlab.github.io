@@ -4,6 +4,8 @@ status: current
 group: Researchers
 role: "Research Intern"
 headshot: ../../assets/people/d-wattal.jpg
+links:
+  linkedin: "https://www.linkedin.com/in/diyawattal/"
 order: 10
 featured: false
 ---

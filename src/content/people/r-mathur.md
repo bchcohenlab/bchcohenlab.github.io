@@ -4,6 +4,8 @@ status: alumni
 group: Alumni
 role: "Undergraduate Research Intern"
 headshot: ../../assets/people/r-mathur.jpg
+links:
+  linkedin: "https://www.linkedin.com/in/roshan-mathur/"
 order: 30
 featured: false
 ---

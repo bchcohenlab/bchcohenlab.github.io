@@ -4,6 +4,9 @@ status: current
 group: Researchers
 role: "Biomedical Informatics Research Data Scientist I"
 headshot: ../../assets/people/j-ortega-marquez.jpg
+links:
+  orcid: "https://orcid.org/0009-0000-7534-384X"
+  linkedin: "https://www.linkedin.com/in/jorge-mqz/"
 order: 7
 featured: false
 ---

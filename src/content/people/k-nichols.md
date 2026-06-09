@@ -4,6 +4,8 @@ status: alumni
 group: Alumni
 role: "Research Intern"
 headshot: ../../assets/people/k-nichols.jpg
+links:
+  linkedin: "https://www.linkedin.com/in/kaya-nichols-1753b4252/"
 order: 10
 featured: false
 ---

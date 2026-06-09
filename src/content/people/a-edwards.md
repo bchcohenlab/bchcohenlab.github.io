@@ -4,6 +4,8 @@ status: alumni
 group: Alumni
 role: "Medical Student"
 headshot: ../../assets/people/a-edwards.jpg
+links:
+  linkedin: "https://www.linkedin.com/in/edwards-alyssa/"
 order: 32
 featured: false
 ---

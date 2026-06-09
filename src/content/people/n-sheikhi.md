@@ -4,6 +4,9 @@ status: alumni
 group: Alumni
 role: "Co-Op Student"
 headshot: ../../assets/people/n-sheikhi.jpg
+links:
+  orcid: "https://orcid.org/0009-0007-1409-2363"
+  linkedin: "https://www.linkedin.com/in/nasimsheikhi"
 order: 16
 featured: false
 ---

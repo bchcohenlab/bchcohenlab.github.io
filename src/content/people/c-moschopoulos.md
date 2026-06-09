@@ -4,6 +4,8 @@ status: alumni
 group: Alumni
 role: "Child Neurology Resident"
 headshot: ../../assets/people/c-moschopoulos.jpg
+links:
+  linkedin: "https://www.linkedin.com/in/chariton-moschopoulos-607447127/"
 order: 20
 featured: false
 ---

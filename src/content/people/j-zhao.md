@@ -4,6 +4,8 @@ status: alumni
 group: Alumni
 role: "Clinical Research Assistant"
 headshot: ../../assets/people/j-zhao.jpg
+links:
+  linkedin: "https://www.linkedin.com/in/jiaqizhao1/"
 order: 13
 featured: false
 ---

@@ -4,6 +4,9 @@ status: alumni
 group: Alumni
 role: "Postdoctoral Fellow"
 headshot: ../../assets/people/s-peng.jpg
+links:
+  scholar: "https://scholar.google.com/citations?user=2d9TPXIAAAAJ&hl=en"
+  orcid: "https://orcid.org/0000-0003-3725-6811"
 order: 4
 featured: false
 ---

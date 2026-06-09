@@ -4,6 +4,8 @@ status: alumni
 group: Alumni
 role: "Intern"
 headshot: ../../assets/people/m-fray-witzer.jpg
+links:
+  linkedin: "https://www.linkedin.com/in/maya-fray-witzer-4992b1241/"
 order: 27
 featured: false
 ---

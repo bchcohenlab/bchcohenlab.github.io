@@ -4,6 +4,8 @@ status: current
 group: Researchers
 role: "Computational Health Informatics Data Manager II"
 headshot: ../../assets/people/s-gampala-sagar.jpg
+links:
+  linkedin: "https://www.linkedin.com/in/shannongampalasagar/"
 order: 8
 featured: false
 ---

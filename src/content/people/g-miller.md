@@ -4,6 +4,9 @@ status: alumni
 group: Alumni
 role: "Clinical Research Specialist"
 headshot: ../../assets/people/g-miller.jpeg
+links:
+  orcid: "https://orcid.org/0009-0001-6306-8163"
+  linkedin: "https://www.linkedin.com/in/gillian-miller-858506275/"
 order: 11
 featured: false
 ---

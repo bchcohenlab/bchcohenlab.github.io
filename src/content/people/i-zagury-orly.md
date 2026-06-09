@@ -3,7 +3,11 @@ name: "Ivry Zagury-Orly"
 status: alumni
 group: Alumni
 role: "Medical Student"
-headshot: ../../assets/people/i-zagurly-orly.jpg
+headshot: ../../assets/people/i-zagury-orly.jpg
+links:
+  scholar: "https://scholar.google.com/citations?user=tNSwlFAAAAAJ&hl=en"
+  orcid: "https://orcid.org/0000-0003-4869-1333"
+  linkedin: "https://www.linkedin.com/in/ivry-zagury-orly-52b55516b/"
 order: 23
 featured: false
 ---

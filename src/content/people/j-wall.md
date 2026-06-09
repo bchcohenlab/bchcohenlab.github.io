@@ -4,6 +4,9 @@ status: alumni
 group: Alumni
 role: "Clinical Research Assistant"
 headshot: ../../assets/people/j-wall.jpg
+links:
+  orcid: "https://orcid.org/0000-0003-4152-0793"
+  linkedin: "https://www.linkedin.com/in/julianawall/"
 order: 33
 featured: false
 ---

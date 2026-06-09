@@ -4,6 +4,8 @@ status: alumni
 group: Alumni
 role: "Clinical Research Specialist"
 headshot: ../../assets/people/c-steeby.jpg
+links:
+  orcid: "https://orcid.org/0009-0006-7020-5759"
 order: 12
 featured: false
 ---

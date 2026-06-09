@@ -4,6 +4,9 @@ status: alumni
 group: Alumni
 role: "Research Specialist"
 headshot: ../../assets/people/m-kroeck.jpg
+links:
+  orcid: "https://orcid.org/0000-0002-7016-8664"
+  linkedin: "https://www.linkedin.com/in/mallory-kroeck-9b64446a"
 order: 26
 featured: false
 ---

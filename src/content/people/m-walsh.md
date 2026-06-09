@@ -4,6 +4,8 @@ status: current
 group: Researchers
 role: "Clinical Research Assistant"
 headshot: ../../assets/people/m-walsh.jpg
+links:
+  linkedin: "https://www.linkedin.com/in/meghan-walsh-359789260/"
 order: 3
 featured: false
 ---

@@ -8,6 +8,8 @@ headshot: ../../assets/people/a-cohen.jpg
 links:
   twitter: "https://twitter.com/DrDrXanderli"
   scholar: "https://scholar.google.com/citations?user=P9Z-BEcAAAAJ&hl=en"
+  orcid: "https://orcid.org/0000-0001-6557-5866"
+  linkedin: "https://www.linkedin.com/in/alexanderlicohen/"
 order: 1
 featured: true
 ---

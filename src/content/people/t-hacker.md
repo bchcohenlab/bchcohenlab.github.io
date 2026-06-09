@@ -4,6 +4,8 @@ status: alumni
 group: Alumni
 role: "Clinical Research Assistant"
 headshot: ../../assets/people/t-hacker.jpg
+links:
+  linkedin: "https://www.linkedin.com/in/tabitha-hacker/"
 order: 31
 featured: false
 ---

@@ -4,6 +4,8 @@ status: alumni
 group: Alumni
 role: "High School Research Intern"
 headshot: ../../assets/people/e-leikikh.jpg
+links:
+  linkedin: "https://www.linkedin.com/in/eva-leikikh-5246a628b/"
 order: 21
 featured: false
 ---

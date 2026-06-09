@@ -4,6 +4,8 @@ status: alumni
 group: Alumni
 role: "Undergraduate Research Assistant"
 headshot: ../../assets/people/a-ovchinnikova.jpg
+links:
+  linkedin: "https://www.linkedin.com/in/arina-ovchinnikova/"
 order: 17
 featured: false
 ---

@@ -4,6 +4,9 @@ status: alumni
 group: Alumni
 role: "Child Neurology Resident"
 headshot: ../../assets/people/w-xiao-herman.jpg
+links:
+  orcid: "https://orcid.org/0000-0002-1643-5653"
+  linkedin: "https://www.linkedin.com/in/wendy-xiao-herman-852783a6/"
 order: 15
 featured: false
 ---
