@@ -15,7 +15,7 @@ journal: "Communications Biology"
 doi: "10.1038/s42003-024-06969-x"
 pmid: "39369118"
 pmcid: "PMC11455857"
-citations: 7
+citations: 9
 isMenteePaper: true
 menteeFirstAuthor: true
 cohenFirstOrSenior: false

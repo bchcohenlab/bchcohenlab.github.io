@@ -19,7 +19,7 @@ authors:
   - "Fox MD"
 year: 2026
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:W5xh706n7nkC"
-citations: 7
+citations: 10
 areas: ["methods", "network-mapping", "lesion-derived", "letter"]
 journal: "bioRxiv (preprint)"
 doi: "10.64898/2026.02.24.707529"

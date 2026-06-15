@@ -18,7 +18,7 @@ scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&us
 journal: "Annals of Neurology"
 doi: "10.1002/ana.26292"
 pmid: "34961965"
-citations: 33
+citations: 32
 isMenteePaper: true
 menteeFirstAuthor: true
 cohenFirstOrSenior: false

@@ -24,7 +24,7 @@ journal: "Nature Medicine"
 doi: "10.1038/s41591-022-01834-y"
 pmid: "35697842"
 pmcid: "PMC9205767"
-citations: 240
+citations: 244
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

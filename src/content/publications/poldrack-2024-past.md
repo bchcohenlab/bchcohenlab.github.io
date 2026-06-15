@@ -123,7 +123,7 @@ journal: "Imaging Neuroscience"
 doi: "10.1162/imag_a_00103"
 pmid: "39308505"
 pmcid: "PMC11415029"
-citations: 70
+citations: 71
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

@@ -52,7 +52,7 @@ journal: "Nature Communications"
 doi: "10.1038/s41467-025-57392-7"
 pmid: "40128186"
 pmcid: "PMC11933423"
-citations: 28
+citations: 31
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

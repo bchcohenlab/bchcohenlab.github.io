@@ -22,7 +22,7 @@ journal: "The Journal of Clinical Investigation"
 doi: "10.1172/JCI136096"
 pmid: "32831292"
 pmcid: "PMC7524493"
-citations: 74
+citations: 75
 isMenteePaper: true
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

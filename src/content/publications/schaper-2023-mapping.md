@@ -38,7 +38,7 @@ journal: "JAMA Neurology"
 doi: "10.1001/jamaneurol.2023.1988"
 pmid: "37399040"
 pmcid: "PMC10318550"
-citations: 119
+citations: 121
 isMenteePaper: true
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

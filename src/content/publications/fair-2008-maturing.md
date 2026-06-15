@@ -17,7 +17,7 @@ journal: "Proceedings of the National Academy of Sciences"
 doi: "10.1073/pnas.0800376105"
 pmid: "18322013"
 pmcid: "PMC2268790"
-citations: 1699
+citations: 1697
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

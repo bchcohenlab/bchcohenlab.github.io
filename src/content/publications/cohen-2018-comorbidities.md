@@ -13,7 +13,7 @@ journal: "Sleep Medicine"
 doi: "10.1016/j.sleep.2017.11.1125"
 pmid: "29482805"
 pmcid: "PMC5931205"
-citations: 154
+citations: 152
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: true

@@ -18,7 +18,7 @@ areas: ["network-mapping", "lesion-derived"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:738O_yMBCRsC"
 journal: "Nature Mental Health"
 doi: "10.1038/s44220-023-00128-7"
-citations: 33
+citations: 36
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false
