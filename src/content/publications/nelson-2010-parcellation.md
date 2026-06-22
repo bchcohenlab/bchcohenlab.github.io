@@ -19,7 +19,7 @@ journal: "Neuron"
 doi: "10.1016/j.neuron.2010.05.025"
 pmid: "20624599"
 pmcid: "PMC2913443"
-citations: 427
+citations: 426
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

@@ -15,7 +15,7 @@ scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&us
 journal: "Cortex"
 doi: "10.1016/j.cortex.2026.01.009"
 pmid: "41712966"
-citations: 6
+citations: 5
 isMenteePaper: true
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

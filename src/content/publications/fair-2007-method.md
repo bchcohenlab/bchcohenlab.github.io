@@ -18,7 +18,7 @@ journal: "NeuroImage"
 doi: "10.1016/j.neuroimage.2006.11.051"
 pmid: "17239622"
 pmcid: "PMC2563954"
-citations: 696
+citations: 698
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

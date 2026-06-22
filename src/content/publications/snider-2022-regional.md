@@ -17,7 +17,7 @@ scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&us
 journal: "Neurology"
 doi: "10.1212/WNL.0000000000013301"
 pmid: "35017304"
-citations: 35
+citations: 36
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false
