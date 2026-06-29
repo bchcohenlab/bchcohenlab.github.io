@@ -16,7 +16,7 @@ journal: "PLoS Computational Biology"
 doi: "10.1371/journal.pcbi.1000381"
 pmid: "19412534"
 pmcid: "PMC2671306"
-citations: 2060
+citations: 2069
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: true

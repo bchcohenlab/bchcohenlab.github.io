@@ -22,7 +22,7 @@ journal: "JAMA Network Open"
 doi: "10.1001/jamanetworkopen.2024.59297"
 pmid: "39946133"
 pmcid: "PMC11826368"
-citations: 20
+citations: 21
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false
