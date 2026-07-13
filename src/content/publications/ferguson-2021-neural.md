@@ -17,7 +17,7 @@ scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&us
 journal: "Biological Psychiatry"
 doi: "10.1016/j.biopsych.2021.06.016"
 pmid: "34454698"
-citations: 95
+citations: 97
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

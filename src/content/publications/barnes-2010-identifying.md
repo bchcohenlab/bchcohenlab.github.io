@@ -16,7 +16,7 @@ journal: "Frontiers in Systems Neuroscience"
 doi: "10.3389/fnsys.2010.00018"
 pmid: "20589235"
 pmcid: "PMC2892946"
-citations: 147
+citations: 148
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false
