@@ -15,7 +15,7 @@ scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&us
 journal: "Human Brain Mapping"
 doi: "10.1002/hbm.24892"
 pmid: "31904898"
-citations: 86
+citations: 87
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

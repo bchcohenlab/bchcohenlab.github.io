@@ -19,7 +19,7 @@ journal: "Cerebral Cortex"
 doi: "10.1093/cercor/bhr189"
 pmid: "21810781"
 pmcid: "PMC3328346"
-citations: 43
+citations: 42
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false
