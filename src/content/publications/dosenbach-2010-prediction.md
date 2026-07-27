@@ -26,7 +26,7 @@ journal: "Science"
 doi: "10.1126/science.1194144"
 pmid: "20829489"
 pmcid: "PMC3135376"
-citations: 2606
+citations: 2611
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false
