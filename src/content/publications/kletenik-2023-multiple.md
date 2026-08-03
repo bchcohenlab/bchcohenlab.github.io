@@ -23,7 +23,7 @@ journal: "Journal of Neurology"
 doi: "10.1007/s00415-023-11907-8"
 pmid: "37532802"
 pmcid: "PMC10592111"
-citations: 19
+citations: 20
 isMenteePaper: true
 menteeFirstAuthor: true
 cohenFirstOrSenior: false

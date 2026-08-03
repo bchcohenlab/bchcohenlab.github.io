@@ -14,7 +14,7 @@ journal: "The Journal of Cell Biology"
 doi: "10.1083/jcb.200209045"
 pmid: "12604589"
 pmcid: "PMC2173352"
-citations: 120
+citations: 118
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

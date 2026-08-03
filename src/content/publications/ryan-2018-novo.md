@@ -19,7 +19,7 @@ scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&us
 journal: "Journal of Child Neurology"
 doi: "10.1177/0883073818778203"
 pmid: "29877124"
-citations: 43
+citations: 45
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false
