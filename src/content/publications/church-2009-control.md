@@ -15,7 +15,7 @@ journal: "Brain"
 doi: "10.1093/brain/awn223"
 pmid: "18952678"
 pmcid: "PMC2638693"
-citations: 352
+citations: 354
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

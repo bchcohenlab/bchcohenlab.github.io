@@ -15,7 +15,7 @@ journal: "Molecular Psychiatry"
 doi: "10.1038/s41380-025-03076-z"
 pmid: "40500338"
 pmcid: "PMC12709597"
-citations: 9
+citations: 10
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

@@ -11,6 +11,7 @@ authors:
   - "Darby RR"
   - "Cohen AL"
 year: 2026
+citations: 1
 areas: ["autism", "methods", "network-mapping", "lesion-derived"]
 scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=P9Z-BEcAAAAJ&pagesize=100&citation_for_view=P9Z-BEcAAAAJ:JQOojiI6XY0C"
 journal: "Brain Communications"

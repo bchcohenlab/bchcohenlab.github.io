@@ -13,7 +13,7 @@ journal: "Trends in Cognitive Sciences"
 doi: "10.1016/j.tics.2008.01.001"
 pmid: "18262825"
 pmcid: "PMC3632449"
-citations: 2491
+citations: 2502
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false
