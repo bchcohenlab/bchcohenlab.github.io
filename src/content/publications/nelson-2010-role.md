@@ -14,7 +14,7 @@ journal: "Brain Structure & Function"
 doi: "10.1007/s00429-010-0260-2"
 pmid: "20512372"
 pmcid: "PMC2886908"
-citations: 578
+citations: 579
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false
