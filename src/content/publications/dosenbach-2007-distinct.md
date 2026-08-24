@@ -20,7 +20,7 @@ journal: "Proceedings of the National Academy of Sciences"
 doi: "10.1073/pnas.0704320104"
 pmid: "17576922"
 pmcid: "PMC1904171"
-citations: 3355
+citations: 3356
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false
