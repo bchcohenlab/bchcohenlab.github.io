@@ -11,7 +11,7 @@ scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&us
 journal: "Journal of Autism and Developmental Disorders"
 doi: "10.1007/s10803-021-04971-4"
 pmid: "33743118"
-citations: 14
+citations: 15
 isMenteePaper: true
 menteeFirstAuthor: true
 cohenFirstOrSenior: true
