@@ -30,7 +30,7 @@ journal: "Annals of Clinical and Translational Neurology"
 doi: "10.1002/acn3.52215"
 pmid: "39394714"
 pmcid: "PMC11651206"
-citations: 6
+citations: 7
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

@@ -13,7 +13,7 @@ journal: "Annals of Neurology"
 doi: "10.1002/ana.26709"
 pmid: "37289520"
 pmcid: "PMC10524951"
-citations: 34
+citations: 35
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: true
