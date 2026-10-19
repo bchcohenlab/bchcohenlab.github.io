@@ -12,7 +12,7 @@ scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&us
 journal: "IEEE Transactions on Medical Imaging"
 doi: "10.1109/TMI.2021.3107829"
 pmid: "34432631"
-citations: 21
+citations: 22
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false

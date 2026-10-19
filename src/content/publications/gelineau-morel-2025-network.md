@@ -15,7 +15,7 @@ scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=en&us
 journal: "Annals of Neurology"
 doi: "10.1002/ana.27224"
 pmid: "40059836"
-citations: 9
+citations: 11
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false
