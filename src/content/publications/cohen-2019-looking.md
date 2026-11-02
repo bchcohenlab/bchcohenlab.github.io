@@ -14,7 +14,7 @@ journal: "Brain"
 doi: "10.1093/brain/awz332"
 pmid: "31740940"
 pmcid: "PMC6906597"
-citations: 154
+citations: 157
 isMenteePaper: true
 menteeFirstAuthor: false
 cohenFirstOrSenior: true
