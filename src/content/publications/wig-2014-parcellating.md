@@ -18,7 +18,7 @@ journal: "Cerebral Cortex"
 doi: "10.1093/cercor/bht056"
 pmid: "23476025"
 pmcid: "PMC4089380"
-citations: 152
+citations: 153
 isMenteePaper: false
 menteeFirstAuthor: false
 cohenFirstOrSenior: false
